@@ -1,5 +1,12 @@
-body {
-  margin: 0;
-}
+$white : #efeee9;
+$beige: #eeebdf;
+$main-font-color : #373e42;
 
-@import 'common/greating';
+//layout setups
+@import "common/setups";
+@import "common/fonts";
+
+//mixins
+@import "helpers/mixins";
+
+@import "blocks/**/*";
