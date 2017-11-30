@@ -1,5 +1,5 @@
 {
-  "name": "loftschool-builder",
+  "name": "my_portfolio",
   "devDependencies": {
     "browser-sync": "~2.18.7",
     "del": "~3.0.0",
