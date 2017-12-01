@@ -23,6 +23,7 @@
 .settings
 .tmproj
 Thumbs.db
+bash.exe.stackdump
 
 # Folders to ignore
 .CVS
@@ -37,3 +38,4 @@ build
 # Node.JS
 node_modules
 npm-debug.log
+

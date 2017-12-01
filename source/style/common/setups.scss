@@ -6,12 +6,15 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Roboto", Arial, sans-serif;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 16px;
   line-height: 1.42;
   -webkit-font-smoothing: antialiased;
 }
 
 .wrapper {
+  margin: 0 auto;
+  max-width: 1800px;
   min-height: 100%;
   position: relative;
   overflow: hidden;

@@ -1,29 +1,32 @@
 .user {
-	text-align: center;
+  text-align: center;
+  width: 100%;
+  //padding-top: 30px;
 }
 
 .user__photo {
-	width: 147px;
-	height: 147px;
-	border-radius: 50%;
-	margin-bottom: 25px;
-	overflow: hidden;
-	display: inline-block;
+  width: 141px;
+  height: 141px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  overflow: hidden;
+  display: inline-block;
 }
 
 .user__photo-avatar {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 .user__name {
-	margin-bottom: 10px;
-	color: #ffffff;
-	font-size: 35px;
+  //margin-bottom: 5px;
+  color: #ffffff;
+  font-size: 35px;
+  font-weight: 400;
 }
 
 .user__desc {
-	font-weight: 100;
-	color: #ffffff;
+  font-weight: 400;
+  color: #ffffff;
 }
 
