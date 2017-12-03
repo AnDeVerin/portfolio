@@ -6,10 +6,12 @@
   float: left;
   width: 50%;
   position: relative;
+  //width: 100%;
 }
 
 .about__left {
-  background: $white;
+  background: $beige_light;
+  @extend %clearfix;
 }
 
 .about__right {
@@ -20,4 +22,19 @@
   position: absolute;
   bottom: 100%;
 }
+.about__triangles_left {
+  // для FF, т.к. съезжает в центр
+  left: 0;
+}
 
+.about__section-title {
+  float: left;
+  width: 45%;
+  margin-top: -28px;
+  text-align: right;
+}
+
+.about__section-user {
+  float: right;
+  width: 55%;
+}
