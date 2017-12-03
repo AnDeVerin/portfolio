@@ -15,7 +15,12 @@
 
 .user__photo-avatar {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+.user__photo-img {
+  height: 100%;
+  margin-left: -20px;
 }
 
 .user__name {

@@ -1,0 +1,20 @@
+.subtitle {
+  font-family: SansusWebissimo;
+  color: $main-font-color;
+  font-size: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  &:after {
+    content: '';
+    display: block;
+    background-color: rgba(71, 75, 87, 0.5);
+    width: 89px;
+    height: 3px;
+    margin: 28px auto 0;
+  }
+}
+.subtitle__second-line {
+  display: inline-block;
+  margin-top: 5px;
+}
