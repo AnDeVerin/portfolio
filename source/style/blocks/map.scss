@@ -1,0 +1,10 @@
+.map {
+  height: 1114px;
+  overflow: hidden;
+  position: relative;
+}
+
+.map__contacts {
+  @include centered();
+  top: 40%;
+}

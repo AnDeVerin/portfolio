@@ -1,0 +1,42 @@
+.contacts {
+  background-color: #fff;
+  width: 580px;
+  padding: 40px 30px 20px 30px;
+  opacity: 0.8;
+}
+
+.contact__contact-list {
+  margin-top: 30px;
+  columns: 2;
+}
+
+.contact__item {
+  margin-bottom: 30px;
+}
+.contact__icon {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  vertical-align: middle;
+  fill: $bright-blue-color;
+}
+
+.contact__icon-name {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: Roboto;
+  color: #474b57;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.contact__link:hover .contact__icon {
+  fill: $dark-blue-color;
+  opacity: 1;
+}
+
+.contact__link:hover .contact__icon-name {
+  color: $bright-blue-color;
+  opacity: 1;
+}

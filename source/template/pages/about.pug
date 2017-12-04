@@ -4,11 +4,11 @@ block title
     | Обо мне
 
 block content
-    section.section.hero
+    header.section.hero
         .hero__bg
             img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
 
-        ul.socials
+        ul.socials__hero
             each item, key in socialLinks
                 li.socials__item
                     a(href=`${item}` class='socials__link')
@@ -32,12 +32,12 @@ block content
                 .user__name Андрей Вершинин
                 .user__desc Личный сайт веб-разработчика
 
-    section.section.about
+    main.section.about
         .about__left
             svg(
             viewbox="0 0 1000 100"
             preserveAspectRatio="none"
-            class="triangle triangle_fill_white about__triangles about__triangles_left")
+            class="triangle triangle_fill_left about__triangles about__triangles_left")
                 polygon(points="0,0 0,100 1000,100")
 
             +title('Обо мне', 'stars2.png', 'about__section-title')
@@ -55,7 +55,7 @@ block content
             svg(
             viewbox="0 0 1000 100"
             preserveAspectRatio="none"
-            class="triangle triangle_fill_beige about__triangles")
+            class="triangle triangle_fill_right about__triangles")
                 polygon(points="0,100 1000,100 1000,0")
             .about-data
                 .about-data__description.about-user-info
@@ -79,6 +79,77 @@ block content
                                                     img(src="assets/img/content/circle.png", alt="").skill__circle
                                                     //- svg.skill__circle
                                                     .skill__name= skillName
+
+    section.section.map
+        .map__bg
+                img(src="assets/img/content/map-bg.png", alt="Карта").map__bg-img
+
+        .contacts.map__contacts
+            .contact__title.subtitle Контакты
+            ul.contact__contact-list
+                li.contact__item
+                    a(href=contacts.skype.link).contact__link
+                        svg.contact__icon
+                            use(xlink:href='assets/img/sprite.svg#skype_n')
+                        span.contact__icon-name= contacts.skype.name
+                li.contact__item
+                    a(href=contacts.email.link).contact__link
+                        svg.contact__icon
+                            use(xlink:href='assets/img/sprite.svg#envelope_n')
+                        span.contact__icon-name adw006 &#128021 yandex
+                li.contact__item
+                    a(href=contacts.tel.link).contact__link
+                        svg.contact__icon
+                            use(xlink:href='assets/img/sprite.svg#phone_n')
+                        span.contact__icon-name= contacts.tel.name
+                li.contact__item
+                    .contact__link
+                        svg.contact__icon
+                            use(xlink:href='assets/img/sprite.svg#map_n')
+                        span.contact__icon-name= contacts.adr.name
+
+        footer.footer.footer__about
+            .infoblock.footer__infoblock
+                ul.infoblock__list
+                    li.infoblock__item
+                        .infoblock__text.footer__text
+                            | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+                    li.infoblock__item
+                        .infoblock__links
+                            ul.infoblock__page-links
+                                li.page-links__item
+                                    a(href="#").page-links__link Мои работы
+                                li.page-links__item
+                                    a(href="#").page-links__link Обо мне
+                                li.page-links__item
+                                    a(href="#").page-links__link Блог
+                                li.page-links__item
+                                    a(href="#").page-links__link Авторизация
+
+                            ul.infoblock___socials
+                                each item, key in socialLinks
+                                    li.socials__item
+                                        a(href=`${item}` class='socials__link')
+                                            svg.socials__icon.socials__icon_grey
+                                                use(xlink:href=`assets/img/sprite.svg#${key}`)
+
+
+
+                    li.infoblock__item
+                        ul.infoblock__contacts
+                            li.infoblock__contacts-item
+                                a(href=contacts.skype.link).infoblock__contacts-link.footer__text Skype: adw006
+                            li.infoblock__contacts-item
+                                a(href=contacts.email.link).infoblock__contacts-link.footer__text adw006 &#128021 yandex
+                            li.infoblock__contacts-item
+                                a(href=contacts.tel.link).infoblock__contacts-link.footer__text= contacts.tel.name
+                            li.infoblock__contacts-item
+                                span.footer__text= contacts.adr.name
+
+
+            .copyright.footer__text
+                | &#169; Вёрстка и программирование Андрей Вершинин, дизайн и идея LoftSchool, 2017
+
 
 
 

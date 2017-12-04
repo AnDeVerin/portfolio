@@ -1,0 +1,20 @@
+.page-links__item {
+  display: inline-block;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.page-links__link {
+  margin-right: 40px;
+  font-family: Roboto;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: 0.1s;
+  &:hover {
+    color: $bright-blue-color;
+    opacity: 1;
+  }
+}

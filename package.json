@@ -21,7 +21,8 @@
     "gulp-svgmin": "~1.2.2"
   },
   "dependencies": {
+    "jquery": "~3.2.1",
     "normalize.css": "~7.0.0",
-    "jquery": "~3.2.1"
+    "svgxuse": "^1.2.6"
   }
 }

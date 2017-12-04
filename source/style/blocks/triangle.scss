@@ -4,12 +4,12 @@
 
   &_fill {
 
-    &_white {
-      fill: $beige_light;
+    &_left {
+      fill: $beige;
     }
 
-    &_beige {
-      fill: $beige;
+    &_right {
+      fill: $beige_light;
     }
 
   }

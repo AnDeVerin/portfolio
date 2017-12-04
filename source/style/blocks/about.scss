@@ -1,21 +1,20 @@
 .about {
-  @extend %clearfix;
+  display: flex;
 }
 
 .about__left, .about__right {
-  float: left;
   width: 50%;
   position: relative;
-  //width: 100%;
 }
 
 .about__left {
-  background: $beige_light;
-  @extend %clearfix;
+  display: flex;
+  align-items: start;
+  background: $beige;
 }
 
 .about__right {
-  background: $beige;
+  background: $beige_light;
 }
 
 .about__triangles {
