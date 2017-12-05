@@ -1,0 +1,40 @@
+
+footer.footer
+    .infoblock
+        ul.infoblock__list
+            li.infoblock__item
+                .infoblock__text.footer__text
+                    | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+
+            li.infoblock__item
+                .infoblock__links
+                    ul.infoblock__page-links
+                        li.page-links__item
+                            a(href="#").page-links__link Мои работы
+                        li.page-links__item
+                            a(href="#").page-links__link Обо мне
+                        li.page-links__item
+                            a(href="#").page-links__link Блог
+                        li.page-links__item
+                            a(href="#").page-links__link Авторизация
+
+                    ul.infoblock___socials
+                        each item, key in socialLinks
+                            li.socials__item
+                                a(href=`${item}` class='socials__link')
+                                    svg.socials__icon.socials__icon_grey
+                                        use(xlink:href=`assets/img/sprite.svg#${key}`)
+
+            li.infoblock__item
+                ul.infoblock__contacts
+                    li.infoblock__contacts-item
+                        a(href=contacts.skype.link).infoblock__contacts-link.footer__text Skype: adw006
+                    li.infoblock__contacts-item
+                        a(href=contacts.email.link).infoblock__contacts-link.footer__text adw006 &#128021 yandex
+                    li.infoblock__contacts-item
+                        a(href=contacts.tel.link).infoblock__contacts-link.footer__text= contacts.tel.name
+                    li.infoblock__contacts-item
+                        span.footer__text= contacts.adr.name
+
+    .copyright.footer__text
+        | &#169; Вёрстка и программирование Андрей Вершинин, дизайн и идея LoftSchool, 2017

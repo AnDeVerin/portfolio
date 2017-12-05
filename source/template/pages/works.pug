@@ -1,0 +1,19 @@
+extends ../_template
+
+block title
+    | Мои работы
+
+block content
+
+    //придётся делать свой хедер на каждой странице
+    include ../common/header-high
+
+    main.section.works
+        .works__title
+            +title('Мои работы', 'stars2.png', 'works__section-title')
+        .works-block.works__block
+            .works-block__left
+
+            .works-block__right
+
+    section.talks

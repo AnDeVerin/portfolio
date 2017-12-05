@@ -4,33 +4,8 @@ block title
     | Обо мне
 
 block content
-    header.section.hero
-        .hero__bg
-            img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
 
-        ul.socials__hero
-            each item, key in socialLinks
-                li.socials__item
-                    a(href=`${item}` class='socials__link')
-                        svg.socials__icon.socials__icon_white
-                            use(xlink:href=`assets/img/sprite.svg#${key}`)
-
-        a(href="#").hamburger
-            svg.hamburger__icon
-                use(xlink:href='assets/img/sprite.svg#hamburger')
-
-        a(href="#").down-arrow
-            svg.down-arrow__icon
-                use(xlink:href='assets/img/sprite.svg#arrow_down')
-
-        .hero__title
-            img(src="assets/img/content/stars1.svg", alt="").section-title
-            .user.hero__user-block
-                .user__photo
-                    .user__photo-avatar
-                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
-                .user__name Андрей Вершинин
-                .user__desc Личный сайт веб-разработчика
+    include ../common/header-high
 
     main.section.about
         .about__left
@@ -108,47 +83,7 @@ block content
                             use(xlink:href='assets/img/sprite.svg#map_n')
                         span.contact__icon-name= contacts.adr.name
 
-        footer.footer.footer__about
-            .infoblock.footer__infoblock
-                ul.infoblock__list
-                    li.infoblock__item
-                        .infoblock__text.footer__text
-                            | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
-                    li.infoblock__item
-                        .infoblock__links
-                            ul.infoblock__page-links
-                                li.page-links__item
-                                    a(href="#").page-links__link Мои работы
-                                li.page-links__item
-                                    a(href="#").page-links__link Обо мне
-                                li.page-links__item
-                                    a(href="#").page-links__link Блог
-                                li.page-links__item
-                                    a(href="#").page-links__link Авторизация
 
-                            ul.infoblock___socials
-                                each item, key in socialLinks
-                                    li.socials__item
-                                        a(href=`${item}` class='socials__link')
-                                            svg.socials__icon.socials__icon_grey
-                                                use(xlink:href=`assets/img/sprite.svg#${key}`)
-
-
-
-                    li.infoblock__item
-                        ul.infoblock__contacts
-                            li.infoblock__contacts-item
-                                a(href=contacts.skype.link).infoblock__contacts-link.footer__text Skype: adw006
-                            li.infoblock__contacts-item
-                                a(href=contacts.email.link).infoblock__contacts-link.footer__text adw006 &#128021 yandex
-                            li.infoblock__contacts-item
-                                a(href=contacts.tel.link).infoblock__contacts-link.footer__text= contacts.tel.name
-                            li.infoblock__contacts-item
-                                span.footer__text= contacts.adr.name
-
-
-            .copyright.footer__text
-                | &#169; Вёрстка и программирование Андрей Вершинин, дизайн и идея LoftSchool, 2017
 
 
 
