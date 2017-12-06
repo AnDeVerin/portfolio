@@ -1,8 +1,6 @@
 .works {
   position: relative;
   display: flex;
-
-  height: 500px;
 }
 
 .works__title {
@@ -25,15 +23,3 @@
   bottom: 100%;
 }
 
-.works-block__left,
-.works-block__right {
-  width: 50%;
-}
-
-.works-block__left {
-  background: $beige_light;
-}
-
-.works-block__right {
-  background: $beige_darker;
-}

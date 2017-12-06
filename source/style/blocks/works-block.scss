@@ -1,0 +1,14 @@
+.works-block {
+  width: 50%;
+}
+
+.works-block__left {
+  background: $beige_light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.works-block__right {
+  background: $beige_darker;
+}

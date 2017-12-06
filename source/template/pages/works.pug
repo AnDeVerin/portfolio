@@ -46,8 +46,47 @@ block content
         class="polygon works__polygon polygon_fill_black_semitransparent")
             polygon(points="0,0 0,34 100,34 100,0 50,15")
 
-        .works-block__left
+        .works-block.works-block__left
+            .work-description.works-block__description
+                .work-description__title.subtitle
+                    | Сайт школы онлайн образования
+                .work-description__technology
+                    | HTML, CSS, JavaScript
+                a(href='#').button.work-description__button
+                    svg.link__icon
+                        use(xlink:href='assets/img/sprite.svg#link')
+                    | Посмотреть сайт
 
-        .works-block__right
+        .works-block.works-block__right
+            .preview.works-block__preview
+                img(src="assets/img/content/w1.png", alt="my work").preview__img
+            .preview-pages.works-block__preview-pages
+                a(href="#").preview-page.preview-page_prev
+                    svg.preview-page__icon
+                        use(xlink:href='assets/img/sprite.svg#portf_arrow_down')
+
+                a(href="#").preview-page.preview-page_next
+                    svg.preview-page__icon
+                        use(xlink:href='assets/img/sprite.svg#portf_arrow_up')
+
 
     section.talks
+        +title('Что обо мне говорят', 'stars3.png', 'talks__section-title')
+        .talks__speakers
+            .speaker
+                img(src="assets/img/content/face_kd.png", alt="фото Ковальчук Дмитрий").speaker__img
+                .speaker__text
+                    | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                .speaker__name
+                    strong Ковальчук Дмитрий
+                    br
+                    span &mdash; основатель Loftschool
+
+            .speaker
+                img(src="assets/img/content/face_sv.png", alt="фото Сабанцев Владимир").speaker__img
+                .speaker__text
+                    | Этот код выдержит любые испытания. Только пожалуйста, не загружается сайт на слишком старых браузерах!
+                .speaker__name
+                    strong Сабанцев Владимир
+                    br
+                    span &mdash; преподаватель

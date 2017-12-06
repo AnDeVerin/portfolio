@@ -1,0 +1,15 @@
+.button {
+  display: block;
+  padding: 0 10px;
+  font-family: Roboto;
+  color: rgba(#fff, 0.95);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 45px;
+  text-align: center;
+  text-decoration: none;
+  background: $bright-blue-color;
+  &:hover {
+    background: $dark-blue-color;
+  }
+}

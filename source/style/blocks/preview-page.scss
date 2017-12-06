@@ -1,0 +1,38 @@
+.preview-page {
+  display: block;
+  height: 100%;
+  width: 50%;
+  background-size: auto 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, #a4a5ad, #cdced6);
+    opacity: 0.7;
+  }
+}
+
+.preview-page__icon {
+  @include centered();
+  width: 43px;
+  height: 27px;
+  fill: #fff;
+  filter: drop-shadow(1px 2px 2px #727272);
+  overflow: visible;
+}
+
+
+.preview-page_prev {
+  background-image: url(../img/content/w1.png);
+}
+
+.preview-page_next {
+  background-image: url(../img/content/w1.png);
+}
+
