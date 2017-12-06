@@ -4,6 +4,22 @@
   position: relative;
 }
 
+.hero-wrapper {
+  overflow: hidden;
+  //height: auto;
+}
+
+.hero-wrapper__works-title {
+  height: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__works {
+  overflow: visible;
+}
+
 .hero__title {
   position: absolute;
   top: 45%;

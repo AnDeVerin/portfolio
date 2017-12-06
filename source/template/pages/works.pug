@@ -5,15 +5,49 @@ block title
 
 block content
 
-    //придётся делать свой хедер на каждой странице
-    include ../common/header-high
+    header.section
+        .hero-wrapper
+            .hero.hero__works
+                .hero__bg
+                    img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
+
+                    .hero__header
+                        ul.socials__hero
+                            each item, key in socialLinks
+                                li.socials__item
+                                    a(href=`${item}` class='socials__link')
+                                        svg.socials__icon.socials__icon_white
+                                            use(xlink:href=`assets/img/sprite.svg#${key}`)
+
+                        a(href="#").hamburger
+                            svg.hamburger__icon
+                                use(xlink:href='assets/img/sprite.svg#hamburger')
+
+                        a(href="#").down-arrow
+                            svg.down-arrow__icon
+                                use(xlink:href='assets/img/sprite.svg#arrow_down')
+
+                        .hero__title
+                            img(src="assets/img/content/stars1.svg", alt="").section-title
+                            .user.hero__user-block
+                                .user__photo
+                                    .user__photo-avatar
+                                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
+                                .user__name Андрей Вершинин
+                                .user__desc Личный сайт веб-разработчика
+
+            .hero-wrapper__works-title
+                +title('Мои работы', 'stars2-2.png', 'works__section-title')
 
     main.section.works
-        .works__title
-            +title('Мои работы', 'stars2.png', 'works__section-title')
-        .works-block.works__block
-            .works-block__left
+        svg(
+        viewbox="0 0 100 34"
+        preserveAspectRatio="none"
+        class="polygon works__polygon polygon_fill_black_semitransparent")
+            polygon(points="0,0 0,34 100,34 100,0 50,15")
 
-            .works-block__right
+        .works-block__left
+
+        .works-block__right
 
     section.talks

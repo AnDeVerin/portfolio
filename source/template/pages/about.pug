@@ -5,15 +5,42 @@ block title
 
 block content
 
-    include ../common/header-high
+    header.section.hero
+        .hero__bg
+            img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
+
+        ul.socials__hero
+            each item, key in socialLinks
+                li.socials__item
+                    a(href=`${item}` class='socials__link')
+                        svg.socials__icon.socials__icon_white
+                            use(xlink:href=`assets/img/sprite.svg#${key}`)
+
+        a(href="#").hamburger
+            svg.hamburger__icon
+                use(xlink:href='assets/img/sprite.svg#hamburger')
+
+        a(href="#").down-arrow
+            svg.down-arrow__icon
+                use(xlink:href='assets/img/sprite.svg#arrow_down')
+
+        .hero__title
+            img(src="assets/img/content/stars1.svg", alt="").section-title
+            .user.hero__user-block
+                .user__photo
+                    .user__photo-avatar
+                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
+                .user__name Андрей Вершинин
+                .user__desc Личный сайт веб-разработчика
+
 
     main.section.about
         .about__left
             svg(
-            viewbox="0 0 1000 100"
+            viewbox="0 0 100 10"
             preserveAspectRatio="none"
             class="triangle triangle_fill_left about__triangles about__triangles_left")
-                polygon(points="0,0 0,100 1000,100")
+                polygon(points="0,0 0,10 100,10")
 
             +title('Обо мне', 'stars2.png', 'about__section-title')
             .user-about.about__section-user
@@ -28,10 +55,10 @@ block content
 
         .about__right
             svg(
-            viewbox="0 0 1000 100"
+            viewbox="0 0 100 10"
             preserveAspectRatio="none"
             class="triangle triangle_fill_right about__triangles")
-                polygon(points="0,100 1000,100 1000,0")
+                polygon(points="0,10 100,10 100,0")
             .about-data
                 .about-data__description.about-user-info
                     .about-user-info__title
@@ -54,6 +81,7 @@ block content
                                                     img(src="assets/img/content/circle.png", alt="").skill__circle
                                                     //- svg.skill__circle
                                                     .skill__name= skillName
+
 
     section.section.map
         .map__bg
