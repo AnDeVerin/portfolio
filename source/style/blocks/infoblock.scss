@@ -1,13 +1,12 @@
 .infoblock {
+  display: flex;
   width: 100%;
   background-color: rgba(28, 31, 41, 0.85);
   padding: 30px 0;
 }
 
-.infoblock__item {
-  display: inline-block;
-  vertical-align: top;
-  width: 33%;
+.infoblock__section {
+  width: 33.33%;
   padding: 0 30px;
 }
 

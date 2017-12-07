@@ -11,17 +11,23 @@
 }
 
 .talks__section-title {
+  padding-top: 25px !important;
+  padding-bottom: 25px !important;
   width: 35%;
 }
 
 .talks__section-title {
   color: #fff;
   text-align: center;
-  margin-top: 35px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
 .talks__speakers {
   display: flex;
   width: 47%;
+}
+
+.talks__contact-me {
+  margin-top: 60px;
 }

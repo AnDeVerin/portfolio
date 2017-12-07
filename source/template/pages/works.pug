@@ -85,8 +85,22 @@ block content
             .speaker
                 img(src="assets/img/content/face_sv.png", alt="фото Сабанцев Владимир").speaker__img
                 .speaker__text
-                    | Этот код выдержит любые испытания. Только пожалуйста, не загружается сайт на слишком старых браузерах!
+                    | Этот код выдержит любые испытания. Только, пожалуйста, не загружайте сайт на слишком старых браузерах!
                 .speaker__name
                     strong Сабанцев Владимир
                     br
                     span &mdash; преподаватель
+
+        .contact-me.talks__contact-me
+            .subtitle.contact-me__subtitle Связаться со мной
+            form(action='#').contact-form
+                .contact-form__fields-section
+                    input(type='text' id='contact-name' name='contactName' placeholder='Ваше имя' required).contact-form__name
+                    input(type='email' id='contact-email' name='contactEmail' placeholder='Ваш email' required).contact-form__email
+                    textarea(id='contact-mess' name='contactMess' placeholder='Ваше сообщение' required).contact-form__mess
+                input(type='submit' value='Отправить').contact-form__submit.button
+                input(type='reset' value='Очистить').contact-form__reset.button
+
+        a(href="#").up-arrow
+            svg.up-arrow__icon
+                use(xlink:href='assets/img/sprite.svg#arrow_up')
