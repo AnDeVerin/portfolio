@@ -9,6 +9,7 @@
     height: 61px;
     position: absolute;
     top: 40%;
+    left: 10px;
     transform: translateY(-50%);
     background-size: contain;
     background-repeat: no-repeat;
@@ -21,7 +22,7 @@
   display: block;
   width: 77px;
   height: 77px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 10px auto;
 }
 
 .speaker__text,
@@ -34,7 +35,7 @@
 
 .speaker__text {
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .speaker__name {

@@ -3,3 +3,11 @@
   text-align: center;
   background-color: rgba($dark-blue-color, 0.85);
 }
+
+.copyright__ls {
+  color: rgba(#ffffff, 0.9);
+  &:hover {
+    text-decoration: none;
+    color: $bright-blue-color;
+  }
+}

@@ -1,9 +1,9 @@
-.down-arrow {
+.up-arrow {
   display: block;
   width: 40px;
   height: 40px;
-  bottom: 50px;
-  @include centered(x);
+  position: relative;
+  top: 50px;
   z-index: 1;
   opacity: 0.6;
   &:hover {
@@ -12,7 +12,7 @@
   }
 }
 
-.down-arrow__icon {
+.up-arrow__icon {
   width: 26px;
   height: 30px;
   fill: #fff;

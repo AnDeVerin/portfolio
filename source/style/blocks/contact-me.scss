@@ -1,0 +1,13 @@
+.contact-me {
+  width: 380px;
+  background: rgba(#fff, 0.03);
+}
+
+.contact-me__subtitle {
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  &:after {
+    background-color: rgba(242, 240, 232, 0.5) !important;
+  }
+}

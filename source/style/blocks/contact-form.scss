@@ -1,0 +1,44 @@
+.contact-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-form__name,
+.contact-form__email,
+.contact-form__mess {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: rgba(#fff, 0.07);
+  border-color: transparent;
+  outline: none;
+  color: rgba(255, 255, 255, 0.95);
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.contact-form__fields-section {
+  width: 100%;
+  padding: 0 20px 0 20px;
+}
+
+.contact-form__mess {
+  height: 130px;
+  resize: none;
+}
+
+.contact-form__submit,
+.contact-form__reset {
+  cursor: pointer;
+  width: 50%;
+  border-color: transparent;
+  outline: none;
+}
+.contact-form__reset {
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  &:hover {
+    color: rgba(255, 255, 255, 0.95);
+  }
+}
