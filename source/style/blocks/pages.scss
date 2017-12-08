@@ -1,0 +1,19 @@
+.pages {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+}
+
+.pages__item {
+  &:first-child {
+    width: 40%;
+  }
+  &:nth-child(2) {
+    width: 30%;
+  }
+  &:last-child {
+    width: 30%;
+  }
+}

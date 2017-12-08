@@ -1,0 +1,66 @@
+include ../common/data
+
+doctype html
+html(lang='ru')
+    head
+        meta(charset="utf-8")
+        meta(content="" name="author")
+        meta(content="" name="description")
+        meta(content="" name="keywords")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        meta(content="ie=edge" http-equiv="x-ua-compatible")
+
+        //- favicon block start
+        //- favicon block end
+
+        link(rel='stylesheet' href='./assets/css/foundation.css')
+        link(rel='stylesheet' href='./assets/css/app.css')
+        //- script(src='/assets/js/foundation.js' defer)
+        //- script(src='/assets/js/app.js' defer)
+
+        // polyfill to use svg sprite in IE
+        script(src='./assets/js/svgxuse.min.js' defer)
+
+        <!--[if lt IE 9]>
+        script(src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js")
+        <![endif]-->
+
+        title Welcome
+
+
+    body
+        .wrapper
+            main.welcome
+                .welcome__bg
+                    img(src="assets/img/bg/head-bg.jpg", alt="").welcome__bg-img
+
+                a(href="#").button.welcome__button Авторизоваться
+
+                .welcome__title
+                    .user.welcome__user-block
+                        .user__photo
+                            .user__photo-avatar
+                                img(src="assets/img/content/about.jpg", alt="").user__photo-img
+                        .user__name Андрей Вершинин
+                        .user__desc Личный сайт веб-разработчика
+
+                    ul.socials
+                        each item, key in socialLinks
+                            li.socials__item
+                                a(href=`${item}` class='socials__link')
+                                    svg.socials__icon.socials__icon_grey
+                                        use(xlink:href=`assets/img/sprite.svg#${key}`)
+
+                    ul.pages
+                        li.pages__item
+                            a(href='works.html').button.pages__button Мои работы
+                        li.pages__item
+                            a(href='about.html').button.pages__button Обо мне
+                        li.pages__item
+                            a(href='#').button.pages__button Блог
+
+
+                footer.welcome__footer.footer__text
+                    | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн &#32;
+                    a(href='https://loftschool.com/').copyright__ls LoftSchool
+                    | , 2017
