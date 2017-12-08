@@ -4,15 +4,13 @@
   flex-direction: column;
   height: 1351px;
   width: 100%;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-image: url(../img/bg/talks-bg.jpg);
 }
 
 .talks__section-title {
-  padding-top: 25px !important;
-  padding-bottom: 25px !important;
   width: 35%;
 }
 
