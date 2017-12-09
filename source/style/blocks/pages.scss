@@ -11,9 +11,26 @@
     width: 40%;
   }
   &:nth-child(2) {
+    position: relative;
     width: 30%;
   }
   &:last-child {
     width: 30%;
+  }
+  &:nth-child(2):before,
+  &:nth-child(2):after {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 1px;
+    background: rgba(222, 227, 231, 0.5);
+    top: 0;
+  }
+  &:nth-child(2):before {
+    left: 0;
+  }
+  &:nth-child(2):after {
+    right: 0;
   }
 }

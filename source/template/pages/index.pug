@@ -44,7 +44,7 @@ html(lang='ru')
                         .user__name Андрей Вершинин
                         .user__desc Личный сайт веб-разработчика
 
-                    ul.socials
+                    ul.welcome__socials
                         each item, key in socialLinks
                             li.socials__item
                                 a(href=`${item}` class='socials__link')
@@ -57,10 +57,10 @@ html(lang='ru')
                         li.pages__item
                             a(href='about.html').button.pages__button Обо мне
                         li.pages__item
-                            a(href='#').button.pages__button Блог
+                            a(href='blog.html').button.pages__button Блог
 
 
                 footer.welcome__footer.footer__text
                     | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн &#32;
-                    a(href='https://loftschool.com/').copyright__ls LoftSchool
+                    a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool
                     | , 2017

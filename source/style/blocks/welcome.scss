@@ -25,9 +25,15 @@
 
 .welcome__title {
   width: 380px;
-  height: 395px;
+  padding-top: 40px;
+  padding-bottom: 45px;
   background-color: rgba(28, 31, 41, 0.5);
   @include centered();
+}
+
+.welcome__socials {
+  margin: 35px auto;
+  text-align: center;
 }
 
 .welcome__footer {

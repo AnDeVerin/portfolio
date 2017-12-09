@@ -4,7 +4,7 @@ footer.footer
         .infoblock__section
             .infoblock__text.footer__text
                 | Этот сайт я сделал в рамках самостоятельного обучения по программе "Продвинутый курс по веб-разработке" онлайн-школы &#32;
-                a(href='https://loftschool.com/').copyright__ls LoftSchool.
+                a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool.
 
         .infoblock__section
             .infoblock__links
@@ -14,9 +14,9 @@ footer.footer
                     li.page-links__item
                         a(href="about.html").page-links__link Обо мне
                     li.page-links__item
-                        a(href="#").page-links__link Блог
+                        a(href="blog.html").page-links__link Блог
                     li.page-links__item
-                        a(href="#").page-links__link Авторизация
+                        a(href="index.html").page-links__link Авторизация
 
                 ul.infoblock___socials
                     each item, key in socialLinks
@@ -38,5 +38,5 @@ footer.footer
 
     .copyright.footer__text
         | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн &#32;
-        a(href='https://loftschool.com/').copyright__ls LoftSchool
+        a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool
         |, 2017
