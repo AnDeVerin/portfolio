@@ -1,7 +1,19 @@
 .hero {
-  height: 600px;
   overflow: hidden;
   position: relative;
+}
+
+.hero_about {
+  height: 600px;
+}
+
+.hero_blog {
+  height: 400px;
+}
+
+.hero_works {
+  height: 600px;
+  overflow: visible;
 }
 
 .hero-wrapper {
@@ -14,10 +26,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.hero__works {
-  overflow: visible;
 }
 
 .hero__title {

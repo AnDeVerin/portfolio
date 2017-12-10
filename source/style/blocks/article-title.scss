@@ -1,0 +1,19 @@
+.article-title {
+  padding: 10px 16px 10px  0;
+  text-align: right;
+  margin-bottom: 12px;
+}
+
+.article-title__link {
+  text-decoration: none;
+  color: $main-font-color;
+}
+
+.article-title_active {
+  border-right: 3px solid $dark-blue-color;
+}
+
+.article-title_active .article-title__link {
+  font-weight: 700;
+  color: $dark-blue-color;
+}

@@ -1,0 +1,25 @@
+.blog {
+  position: relative;
+  background: $beige_light;
+  display: flex;
+  padding-top: 70px;
+  padding-bottom: 200px;
+}
+
+.blog__two-triangles {
+  position: absolute;
+  bottom: 100%;
+}
+
+.blog__table-of-contents {
+  width: 30%;
+  margin-top: 15px;
+  margin-right: 115px;
+  margin-left: 125px;
+}
+
+.blog__articles {
+  width: 70%;
+  margin-right: 415px;
+}
+
