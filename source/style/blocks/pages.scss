@@ -1,24 +1,13 @@
 .pages {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   position: absolute;
   bottom: 0;
 }
 
 .pages__item {
-  &:first-child {
-    width: 40%;
-  }
-  &:nth-child(2) {
-    position: relative;
-    width: 30%;
-  }
-  &:last-child {
-    width: 30%;
-  }
-  &:nth-child(2):before,
-  &:nth-child(2):after {
+  position: relative;
+  &:not(:last-child):after {
     position: absolute;
     content: '';
     display: block;
@@ -26,11 +15,18 @@
     width: 1px;
     background: rgba(222, 227, 231, 0.5);
     top: 0;
-  }
-  &:nth-child(2):before {
-    left: 0;
-  }
-  &:nth-child(2):after {
     right: 0;
   }
+}
+
+.pages__item_w50 {
+  width: 50%;
+}
+
+.pages__item_w40 {
+  width: 40%;
+}
+
+.pages__item_w30 {
+  width: 30%;
 }

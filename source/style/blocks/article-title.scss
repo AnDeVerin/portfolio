@@ -7,6 +7,9 @@
 .article-title__link {
   text-decoration: none;
   color: $main-font-color;
+  &:hover {
+    color: $bright-blue-color;
+  }
 }
 
 .article-title_active {
