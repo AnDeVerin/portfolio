@@ -1,0 +1,144 @@
+.login__title {
+  font-family: SansusWebissimo;
+  color: #ffffff;
+  font-size: 35px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.login__input {
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.login__input-field {
+  width: 100%;
+  padding: 12px 15px 12px 60px;
+}
+
+.login__img {
+  height: 18px;
+  width: 18px;
+  left: 40px;
+  @include centered(y);
+}
+
+.login__img_fill_grey {
+  fill: #c4cbcd;
+}
+
+.login__img_fill_red {
+  fill: $red-color;
+}
+
+.login__img_fill_blue {
+  fill: $bright-blue-color;
+}
+
+.login__button {
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  border: 0;
+}
+
+.login__check-text,
+.login__radio-quest,
+.login__radio-text {
+  vertical-align: middle;
+  color: rgba(#ffffff, 0.75);
+}
+
+.login__radio-quest {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.login__check-text,
+.login__radio-text {
+  padding-left: 10px;
+}
+
+.login__check-field {
+  display: inline-block;
+}
+
+.login__checkbox,
+.login__radio {
+  display: none;
+}
+
+.login__checkbox-wrapper,
+.login__radio-wrapper,
+.login__radio-quest {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.login__checkbox-wrapper {
+    margin-bottom: 20px;
+}
+
+.login__checkmark,
+.login__radio-mark {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.login__checkmark {
+  border-radius: 2px;
+  background: $bright-blue-color;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 4px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+}
+
+.login__checkbox:checked + .login__checkmark:after {
+  display: block;
+}
+
+.login__radio-mark {
+  border-radius: 50%;
+  background: #ffffff;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: $bright-blue-color;
+    border-radius: 50%;
+  }
+}
+
+.login__radio:checked + .login__radio-mark:after {
+  display: block;
+}
+
+.login__radio-wrapper {
+  margin-bottom: 40px;
+}
+
+.login__radio-label:first-child {
+  margin-right: 40px;
+}

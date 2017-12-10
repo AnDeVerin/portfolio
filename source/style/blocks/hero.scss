@@ -18,7 +18,6 @@
 
 .hero-wrapper {
   overflow: hidden;
-  //height: auto;
 }
 
 .hero-wrapper__works-title {
@@ -49,6 +48,6 @@
 
 .hero__bg-img {
   width: 100%;
-  //margin: -400px 0 0 -60px;
-  vertical-align: top;
+  object-fit: cover;
+  //  height: 100%;
 }
