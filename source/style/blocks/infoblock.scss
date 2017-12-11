@@ -8,10 +8,24 @@
 .infoblock__section {
   width: 33.33%;
   padding: 0 30px;
+  @include hd {
+    &:first-child {
+      width: 30%;
+    }
+    &:nth-child(2) {
+      width: 40%;
+    }
+    &:last-child {
+      width: 30%;
+    }
+  }
 }
 
 .infoblock__text {
   width: 80%;
+  @include hd {
+    width: 95%;
+  }
 }
 
 .infoblock__contacts-item {

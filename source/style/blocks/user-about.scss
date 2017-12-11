@@ -1,9 +1,15 @@
 .user-about {
   padding: 20px;
+
+  @include hd {
+    padding: 20px 80px;
+  }
 }
 
 .user-about__picture-img {
-  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 
 .user-about__title {
@@ -15,6 +21,7 @@
   margin-bottom: 10px;
   padding-right: 30px;
 }
+
 .user-about__text p {
   margin-bottom: 10px;
 }

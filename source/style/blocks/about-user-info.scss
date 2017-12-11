@@ -2,3 +2,9 @@
   margin-top: -8px;
   margin-bottom: 28px;
 }
+.about-user-info__title,
+.about-user-info__text {
+  @include hd {
+    padding-right: 64px;
+  }
+}

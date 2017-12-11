@@ -1,12 +1,16 @@
 .page-links__item {
   display: inline-block;
+  margin-right: 40px;
   &:last-child {
     margin-right: 0;
+  }
+  @include hd {
+    margin-right: 25px;
   }
 }
 
 .page-links__link {
-  margin-right: 40px;
+
   font-family: Roboto;
   color: #ffffff;
   font-weight: 700;

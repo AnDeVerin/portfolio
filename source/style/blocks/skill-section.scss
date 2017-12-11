@@ -4,7 +4,13 @@
 
 .skill-section__item {
   display: inline-block;
-  margin-right: 36px;
+  &:not(:last-child) {
+    margin-right: 36px;
+
+    @include hd {
+      margin-right: 25px;
+    }
+  }
 }
 
 .skill-section__title {

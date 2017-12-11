@@ -6,11 +6,14 @@ $bright-blue-color: #0548be;
 $dark-blue-color: #083c96;
 $red-color: #cc3333;
 
+//mixins
+@import "helpers/mixins";
+
 //layout setups
 @import "common/setups";
 @import "common/fonts";
 
-//mixins
-@import "helpers/mixins";
+/*//mixins
+@import "helpers/mixins";*/
 
 @import "blocks/**/*";

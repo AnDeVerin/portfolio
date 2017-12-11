@@ -11,6 +11,10 @@
   display: flex;
   align-items: start;
   background: $beige;
+
+  @include hd {
+    flex-direction: column;
+  }
 }
 
 .about__right {
@@ -28,13 +32,20 @@
 
 .about__section-title {
   color: $main-font-color;
-  float: left;
   width: 45%;
   margin-top: -28px;
   text-align: right;
+
+  @include hd {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .about__section-user {
-  float: right;
   width: 55%;
+
+  @include hd {
+    width: 100%;
+  }
 }
