@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 1351px;
   width: 100%;
   background-size: cover;
   background-position: center center;
@@ -28,4 +27,8 @@
 
 .talks__contact-me {
   margin-top: 60px;
+}
+
+.talks__up-arrow {
+  margin-bottom: 300px;
 }

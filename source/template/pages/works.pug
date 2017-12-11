@@ -48,7 +48,12 @@ block content
             polygon(points="0,0 0,34 100,34 100,0 50,15")
 
         .works-block.works-block__left
-            .work-description.works-block__description
+
+        .works-block.works-block__right
+            .preview.works-block__preview
+                img(src="assets/img/content/w1.png", alt="my work").preview__img
+
+            .work-description
                 .work-description__title.subtitle
                     | Сайт школы онлайн образования
                 .work-description__technology
@@ -58,9 +63,7 @@ block content
                         use(xlink:href='assets/img/sprite.svg#link')
                     | Посмотреть сайт
 
-        .works-block.works-block__right
-            .preview.works-block__preview
-                img(src="assets/img/content/w1.png", alt="my work").preview__img
+
             .preview-pages.works-block__preview-pages
                 a(href="#").preview-page.preview-page_prev
                     svg.preview-page__icon
@@ -102,6 +105,6 @@ block content
                 input(type='submit' value='Отправить').contact-form__submit.button
                 input(type='reset' value='Очистить').contact-form__reset.button
 
-        a(href="#").up-arrow
+        a(href="#").up-arrow.talks__up-arrow
             svg.up-arrow__icon
                 use(xlink:href='assets/img/sprite.svg#arrow_up')
