@@ -1,9 +1,14 @@
 .triangle {
   height: 150px;
   width: 50%;
-
   @include desktop {
     height: 110px;
+  }
+  @include laptop {
+    height: 85px;
+  }
+  @include tablet {
+    height: 60px;
   }
   @include phone {
     height: 35px;
