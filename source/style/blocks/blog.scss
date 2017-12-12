@@ -16,10 +16,19 @@
   margin-top: 15px;
   margin-right: 115px;
   margin-left: 125px;
+  @include hd {
+    width: 35%;
+    margin-right: 100px;
+    margin-left: 4%; //45px;
+  }
 }
 
 .blog__articles {
   width: 70%;
-  margin-right: 415px;
+  margin-right: 20%;
+  @include hd {
+    width: 65%;
+    margin-right: 9%;
+  }
 }
 

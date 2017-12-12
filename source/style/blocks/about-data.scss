@@ -1,10 +1,24 @@
 .about-data {
   padding: 20px 64px 20px 40px;
-
   @include hd {
     padding-right: 0;
   }
+  @include laptop {
+    padding: 53px 0;
+  }
 }
+
 .about-data__description {
   margin-bottom: 46px;
+}
+
+.about-data__content {
+  @include laptop {
+    padding-right: 9%;
+    padding-left: 9%;
+  }
+  @include tablet {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
 }

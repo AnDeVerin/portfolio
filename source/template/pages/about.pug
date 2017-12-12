@@ -6,7 +6,7 @@ block title
 block content
 
     header.section.hero.hero_about
-        .hero__bg
+        //.hero__bg
             img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
 
         ul.socials__hero
@@ -35,13 +35,19 @@ block content
 
 
     main.section.about
-        .about__left
-            svg(
-            viewbox="0 0 100 10"
-            preserveAspectRatio="none"
-            class="triangle triangle_fill_left about__triangles about__triangles_left")
-                polygon(points="0,0 0,10 100,10")
+        svg(
+        viewbox="0 0 100 10"
+        preserveAspectRatio="none"
+        class="triangle triangle_fill_left about__triangles about__triangles_left")
+            polygon(points="0,0 0,10 100,10")
 
+        svg(
+        viewbox="0 0 100 10"
+        preserveAspectRatio="none"
+        class="triangle triangle_fill_right about__triangles about__triangles_right")
+            polygon(points="0,10 100,10 100,0")
+
+        .about__left
             +title('Обо мне', 'stars2.png', 'about__section-title')
             .user-about.about__section-user
                 .user-about__picture
@@ -54,11 +60,6 @@ block content
                     p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
         .about__right
-            svg(
-            viewbox="0 0 100 10"
-            preserveAspectRatio="none"
-            class="triangle triangle_fill_right about__triangles")
-                polygon(points="0,10 100,10 100,0")
             .about-data
                 .about-data__description.about-user-info
                     .about-user-info__title

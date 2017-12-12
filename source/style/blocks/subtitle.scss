@@ -2,6 +2,9 @@
   font-family: SansusWebissimo;
   color: $main-font-color;
   font-size: 35px;
+  @include laptop {
+    font-size: 32px;
+  }
   text-align: center;
   text-transform: uppercase;
   line-height: 1;

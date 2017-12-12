@@ -8,6 +8,10 @@
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+
+  @include laptop {
+    font-size: 53px;
+  }
 }
 
 .title_blog {

@@ -1,15 +1,25 @@
 .skill-section {
-  margin-bottom: 30px;
+  width: 100%;
 }
 
 .skill-section__item {
   display: inline-block;
+  margin-bottom: 15px;
   &:not(:last-child) {
     margin-right: 36px;
-
     @include hd {
       margin-right: 25px;
     }
+    @include laptop {
+      margin-right: 2.3%;
+    }
+  }
+}
+
+.skill-section__item {
+  @include laptop {
+    margin-right: 2.3%;
+    margin-left: 2.3%;
   }
 }
 
@@ -17,4 +27,15 @@
   font-size: 28px;
   font-weight: 500;
   margin-bottom: 10px;
+  @include laptop {
+    text-align: center;
+  }
+}
+
+.skill-section__list {
+  @include laptop {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }

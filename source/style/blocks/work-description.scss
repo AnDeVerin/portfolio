@@ -11,8 +11,12 @@
 
 .work-description__title {
   text-align: center;
-  width: 40%;
+  width: 45%;
   margin: 0 auto 28px auto;
+
+  @include hd {
+    width: 55%;
+  }
 }
 
 .work-description__technology {

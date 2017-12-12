@@ -1,8 +1,16 @@
 .user-about {
   padding: 20px;
-
   @include hd {
     padding: 20px 80px;
+  }
+  @include laptop {
+    padding-bottom: 45px;
+    padding-left: 18%;
+    padding-right: 18%;
+  }
+  @include tablet {
+    padding-left: 12%;
+    padding-right: 12%;
   }
 }
 
@@ -19,7 +27,6 @@
 
 .user-about__text {
   margin-bottom: 10px;
-  padding-right: 30px;
 }
 
 .user-about__text p {

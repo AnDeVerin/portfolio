@@ -1,7 +1,13 @@
 .map {
-  height: 1114px;
+  height: 1115px;
   overflow: hidden;
   position: relative;
+  @include desktop {
+    height: 975px;
+  }
+  @include laptop {
+    height: 950px;
+  }
 }
 
 .map__contacts {

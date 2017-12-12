@@ -3,16 +3,27 @@
   width: 580px;
   padding: 40px 30px 20px 30px;
   opacity: 0.8;
+  @include tablet {
+    width: 330px;
+    padding: 36px 36px 10px 36px;
+  }
 }
 
 .contact__contact-list {
   margin-top: 30px;
   columns: 2;
+  @include tablet {
+    columns: 1;
+  }
 }
 
 .contact__item {
   margin-bottom: 30px;
+  @include tablet {
+    margin-bottom: 20px;
+  }
 }
+
 .contact__icon {
   display: inline-block;
   height: 45px;

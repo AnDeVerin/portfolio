@@ -1,6 +1,13 @@
 .triangle {
   height: 150px;
-  width: 100%;
+  width: 50%;
+
+  @include desktop {
+    height: 110px;
+  }
+  @include phone {
+    height: 35px;
+  }
 
   &_fill {
 
@@ -10,6 +17,9 @@
 
     &_right {
       fill: $beige_light;
+      @include laptop {
+        fill: $beige;
+      }
     }
 
   }

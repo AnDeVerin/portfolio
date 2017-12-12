@@ -1,10 +1,21 @@
 .about-user-info__title {
   margin-top: -8px;
+  @include laptop {
+    margin-top: 0;
+  }
   margin-bottom: 28px;
 }
 .about-user-info__title,
 .about-user-info__text {
   @include hd {
     padding-right: 64px;
+  }
+  @include laptop {
+    padding-left: 18%;
+    padding-right: 18%;
+  }
+  @include tablet {
+    padding-left: 12%;
+    padding-right: 12%;
   }
 }

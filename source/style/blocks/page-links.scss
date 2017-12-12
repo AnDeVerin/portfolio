@@ -1,16 +1,11 @@
 .page-links__item {
   display: inline-block;
-  margin-right: 40px;
-  &:last-child {
-    margin-right: 0;
-  }
-  @include hd {
-    margin-right: 25px;
+  @include laptop {
+    margin-right: 30px;
   }
 }
 
 .page-links__link {
-
   font-family: Roboto;
   color: #ffffff;
   font-weight: 700;

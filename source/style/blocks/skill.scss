@@ -1,3 +1,19 @@
+.skills {
+  @include laptop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.skills__item {
+  margin-bottom: 15px;
+  @include laptop {
+    margin-bottom: 35px;
+  }
+  width: 100%;
+}
+
 .skill {
   width: 120px;
   height: 120px;
@@ -6,6 +22,10 @@
   @include hd {
     width: 110px;
     height: 110px;
+  }
+  @include laptop {
+    width: 115px;
+    height: 115px;
   }
 }
 

@@ -3,8 +3,19 @@
   position: relative;
 }
 
-.hero_about {
+.hero_about,
+.hero_blog {
   height: 600px;
+  background: #003366;
+  background-image: url(../img/bg/head-bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  @include laptop {
+    height: 505px;
+  }
+  @include phone {
+    height: 640px;
+  }
 }
 
 .hero_blog {
@@ -18,6 +29,11 @@
 
 .hero-wrapper {
   overflow: hidden;
+
+  background: #003366;
+  background-image: url(../img/bg/head-bg.jpg);
+  background-position: center center;
+  background-size: cover;
 }
 
 .hero-wrapper__works-title {
@@ -34,7 +50,12 @@
   transform: translate(-50%, -50%);
   text-align: center;
   width: 459px;
-  height: 270px;
+  @include desktop {
+    width: 400px;
+  }
+  @include laptop {
+    width: 350px;
+  }
 }
 
 .hero__user-block {
