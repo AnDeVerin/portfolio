@@ -2,6 +2,15 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  @include tablet {
+    min-height: 660px;
+  }
+  @include phone {
+    min-height: 510px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }
 
 .welcome__bg {
@@ -25,6 +34,19 @@
   &:hover {
     border-color: transparent;
   }
+  @include hd {
+    right: 24px;
+  }
+  @include laptop {
+    top: 20px;
+    right: 20px;
+  }
+  @include tablet {
+    @include centered(x);
+  }
+  @include phone {
+    top: 3%;
+  }
 }
 
 .welcome__title,
@@ -35,6 +57,11 @@
   background-color: rgba(28, 31, 41, 0.5);
   @include centered();
   top: 45%;
+  @include phone {
+    width: 74%;
+    min-width: 300px;
+    top: 55%;
+  }
 }
 
 .welcome__socials {
@@ -45,4 +72,12 @@
 .welcome__footer {
   @include centered(x);
   bottom: 40px;
+  width: 80%;
+  text-align: center;
+  @include tablet {
+    bottom: 20px;
+  }
+  @include phone {
+    display: none;
+  }
 }
