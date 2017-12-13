@@ -14,8 +14,20 @@
 .works__section-title {
   color: #fff;
   text-align: center;
-  padding: 55px 60px;
+  padding: 55px 0;
   z-index: 1;
+  @include hd {
+    padding: 45px 0;
+  }
+  @include laptop {
+    padding: 38px 0;
+  }
+  @include tablet {
+    padding: 30px 0;
+  }
+  @include phone {
+    padding: 15px 0;
+  }
 }
 
 .works__polygon {

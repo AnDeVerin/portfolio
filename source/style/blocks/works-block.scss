@@ -1,5 +1,8 @@
 .works-block {
   width: 50%;
+  @include laptop {
+    width: 100%;
+  }
 }
 
 .works-block__left {
@@ -7,6 +10,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @include laptop {
+    display: none;
+  }
 }
 
 .works-block__right {

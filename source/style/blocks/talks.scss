@@ -7,20 +7,30 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-image: url(../img/bg/talks-bg.jpg);
-}
-
-.talks__section-title {
-  width: 35%;
-  @include hd {
-    width: 40%;
+  @include phone {
+    padding-bottom: 45px;
   }
 }
 
 .talks__section-title {
+  width: 35%;
   color: #fff;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 10px;
+  @include hd {
+    width: 40%;
+  }
+  @include desktop {
+    width: 55%;
+  }
+  @include laptop {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  @include tablet {
+    width: 75%;
+  }
 }
 
 .talks__speakers {
@@ -29,12 +39,35 @@
   @include hd {
     width: 70%;
   }
+  @include desktop {
+    width: 80%;
+  }
+  @include laptop {
+    width: 98%;
+  }
+  @include tablet {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .talks__contact-me {
   margin-top: 60px;
+  @include laptop {
+    margin-top: 40px;
+  }
 }
 
 .talks__up-arrow {
   margin-bottom: 300px;
+  @include laptop {
+    margin-bottom: 350px;
+  }
+  @include tablet {
+    margin-bottom: 400px;
+  }
+  @include phone {
+    margin-bottom: 40px;
+  }
 }

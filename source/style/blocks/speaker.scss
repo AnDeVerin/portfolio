@@ -14,7 +14,12 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url(../img/content/quote.png);
-
+  }
+  @include laptop {
+    width: 80%;
+  }
+  @include phone {
+    width: 94%;
   }
 }
 

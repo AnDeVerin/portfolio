@@ -1,6 +1,18 @@
 .polygon {
   height: 340px;
   width: 100%;
+  @include hd {
+    height: 290px;
+  }
+  @include laptop {
+    height: 250px;
+  }
+  @include tablet {
+    height: 200px;
+  }
+  @include phone {
+    height: 125px;
+  }
 }
 
 .polygon_fill_black_semitransparent {

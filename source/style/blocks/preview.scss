@@ -3,6 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @include tablet {
+    height: 400px;
+  }
+  @include phone {
+    height: 280px;
+  }
 }
 
 .preview__img {

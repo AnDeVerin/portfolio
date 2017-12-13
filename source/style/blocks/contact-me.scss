@@ -1,6 +1,10 @@
 .contact-me {
   width: 380px;
   background: rgba(#fff, 0.03);
+  @include phone {
+    width: 80%;
+    min-width: 320px;
+  }
 }
 
 .contact-me__subtitle {
