@@ -3,9 +3,16 @@
   position: relative;
 }
 
+.hero_about {
+  height: 600px;
+}
+
+.hero_blog {
+  height: 400px;
+}
+
 .hero_about,
 .hero_blog {
-  height: 600px;
   background: #003366;
   background-image: url(../img/bg/head-bg.jpg);
   background-position: center center;
@@ -13,10 +20,6 @@
   @include laptop {
     height: 590px;
   }
-}
-
-.hero_blog {
-  height: 400px;
 }
 
 .hero_works {

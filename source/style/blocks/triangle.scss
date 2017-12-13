@@ -1,6 +1,6 @@
-.triangle {
+.triangle,
+.two-triangles {
   height: 150px;
-  width: 50%;
   @include desktop {
     height: 110px;
   }
@@ -13,19 +13,27 @@
   @include phone {
     height: 35px;
   }
+}
 
+.triangle {
+  width: 50%;
   &_fill {
-
     &_left {
       fill: $beige;
     }
-
     &_right {
       fill: $beige_light;
       @include laptop {
         fill: $beige;
       }
     }
-
   }
+}
+
+.two-triangles {
+  width: 100%;
+}
+
+.two-triangles_fill_beige-light {
+  fill: $beige_light;
 }

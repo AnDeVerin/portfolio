@@ -6,7 +6,7 @@ block title
 block content
 
     header.section.hero.hero_blog
-        //.hero__bg
+        //-.hero__bg
             img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
 
         ul.socials__hero
@@ -64,3 +64,44 @@ block content
                 p.article__text
                     | Не следует, однако забывать, что укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании систем массового участия. Идейные соображения высшего порядка, а также рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Товарищи! постоянный количественный рост и сфера нашей активности способствует подготовки и реализации модели развития. С другой стороны рамки и место обучения кадров влечет за собой процесс внедрения и модернизации системы обучения кадров, соответствует насущным потребностям.
 
+    footer.footer.footer__blog
+        .infoblock
+            .infoblock__section
+                .infoblock__text.footer__text
+                    | Этот сайт я сделал в рамках самостоятельного обучения по программе онлайн-школы &#32;
+                    a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool.
+
+            .infoblock__section
+                .infoblock__links
+                    ul.infoblock__page-links
+                        li.page-links__item
+                            a(href="works.html").page-links__link Мои работы
+                        li.page-links__item
+                            a(href="about.html").page-links__link Обо мне
+                        li.page-links__item
+                            a(href="blog.html").page-links__link Блог
+                        li.page-links__item
+                            a(href="index.html").page-links__link Авторизация
+
+                    ul.infoblock___socials
+                        each item, key in socialLinks
+                            li.socials__item
+                                a(href=`${item}` class='socials__link')
+                                    svg.socials__icon.socials__icon_grey
+                                        use(xlink:href=`assets/img/sprite.svg#${key}`)
+
+            .infoblock__section
+                ul.infoblock__contacts
+                    li.infoblock__contacts-item
+                        a(href=contacts.skype.link).infoblock__contacts-link.footer__text Skype: adw006
+                    li.infoblock__contacts-item
+                        a(href=contacts.email.link).infoblock__contacts-link.footer__text adw006 &#128021 yandex
+                    li.infoblock__contacts-item
+                        a(href=contacts.tel.link).infoblock__contacts-link.footer__text= contacts.tel.name
+                    li.infoblock__contacts-item
+                        span.footer__text= contacts.adr.name
+
+        .copyright.footer__text
+            | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн &#32;
+            a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool
+            | , 2017

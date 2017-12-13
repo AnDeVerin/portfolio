@@ -3,32 +3,49 @@
   background: $beige_light;
   display: flex;
   padding-top: 70px;
-  padding-bottom: 200px;
+  @include laptop {
+    padding-top: 50px;
+  }
+  @include tablet {
+    padding-top: 40px;
+  }
+  @include phone {
+    padding-top: 30px;
+  }
 }
 
 .blog__two-triangles {
   position: absolute;
   bottom: 100%;
+  transform: translateY(1px);
 }
 
 .blog__table-of-contents {
-  width: 30%;
+  width: 22%;
   margin-top: 15px;
-  margin-right: 115px;
   margin-left: 125px;
   @include hd {
-    width: 35%;
-    margin-right: 100px;
-    margin-left: 4%; //45px;
+    width: 26%;
+    margin-left: 4%;
+  }
+  @include laptop {
+    display: none;
   }
 }
 
 .blog__articles {
-  width: 70%;
+  width: 78%;
+  margin-left: 115px;
   margin-right: 20%;
   @include hd {
-    width: 65%;
+    width: 74%;
+    margin-left: 8%;
     margin-right: 9%;
+  }
+  @include laptop {
+    width: 100%;
+    margin-left: 3%;
+    margin-right: 3%;
   }
 }
 
