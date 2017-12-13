@@ -2,9 +2,6 @@
   font-family: SansusWebissimo;
   color: $main-font-color;
   font-size: 35px;
-  @include laptop {
-    font-size: 32px;
-  }
   text-align: center;
   text-transform: uppercase;
   line-height: 1;
@@ -15,6 +12,15 @@
     width: 89px;
     height: 3px;
     margin: 28px auto 0;
+    @include laptop {
+      margin-top: 20px;
+    }
+  }
+  @include laptop {
+    font-size: 30px;
+  }
+  @include phone {
+    font-size: 24px;
   }
 }
 .subtitle__second-line {

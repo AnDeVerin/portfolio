@@ -3,6 +3,9 @@
   @include laptop {
     margin-right: 30px;
   }
+  @include tablet {
+    margin: 0;
+  }
 }
 
 .page-links__link {

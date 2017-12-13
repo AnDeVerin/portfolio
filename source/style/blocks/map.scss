@@ -8,11 +8,32 @@
   @include laptop {
     height: 950px;
   }
+  @include tablet {
+    height: 905px;
+  }
+  @include phone {
+    height: auto;
+  }
 }
 
 .map__contacts {
   @include centered();
   top: 40%;
+  @include tablet {
+    top: 33%;
+  }
+  @include phone {
+    position: static;
+    transform: translate(0, 0);
+    left: 0;
+    top: 0;
+  }
+}
+
+.map__bg {
+  @include phone {
+    height: 525px;
+  }
 }
 
 .map__bg-img {

@@ -6,13 +6,16 @@
   @include laptop {
     flex-wrap: wrap;
   }
+  @include tablet {
+    padding: 20px 0;
+  }
 }
 
 .infoblock__section {
   position: relative;
   width: 33.33%;
   padding: 0 30px;
-  @include gt1024 {
+  @include gt992 {
     &:not(:last-child):after {
       content: '';
       position: absolute;
@@ -23,7 +26,6 @@
       background: rgba(#fff, 0.2);
     }
   }
-
   @include hd {
     &:first-child {
       width: 30%;
@@ -44,10 +46,20 @@
       margin-bottom: 16px;
     }
     &:nth-child(2) {
-      width: 65%;
+      width: auto;
+      margin-right: auto;
     }
     &:last-child {
-      width: 35%;
+      width: auto;
+    }
+  }
+  @include tablet {
+    &:nth-child(2) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    &:last-child {
+      width: 100%;
     }
   }
 }
@@ -79,6 +91,9 @@
   @include laptop {
     text-align: right;
   }
+  @include tablet {
+    margin: 0 2%;
+  }
 }
 
 .infoblock__contacts-link {
@@ -93,6 +108,22 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  @include tablet {
+    align-items: center;
+  }
+  @include tablet {
+    position: relative;
+    padding-bottom: 16px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(#fff, 0.2);
+    }
+  }
 }
 
 .infoblock__page-links {
@@ -102,11 +133,27 @@
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+  @include tablet {
+    width: 100%;
+    justify-content: space-around;
+  }
 }
 
 .infoblock___socials {
   margin-top: auto;
   @include laptop {
     margin-top: 20px;
+  }
+}
+
+.infoblock__contacts {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  @include phone {
+    flex-direction: column;
+    align-items: center;
   }
 }

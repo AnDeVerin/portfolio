@@ -2,10 +2,16 @@
   width: 100%;
   position: absolute;
   bottom: 0;
+  @include phone {
+    position: static;
+  }
 }
 .footer__text {
   font-family: Roboto;
   color: rgba(#ffffff, 0.7);
   font-size: 16px;
   font-weight: 300;
+  @include tablet {
+    font-size: 15px;
+  }
 }

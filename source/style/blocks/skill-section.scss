@@ -4,7 +4,7 @@
 
 .skill-section__item {
   display: inline-block;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   &:not(:last-child) {
     margin-right: 36px;
     @include hd {
@@ -37,5 +37,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+  }
+  @include phone {
+    justify-content: space-around;
   }
 }

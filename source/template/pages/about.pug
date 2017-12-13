@@ -6,7 +6,7 @@ block title
 block content
 
     header.section.hero.hero_about
-        //.hero__bg
+        //-.hero__bg
             img(src="assets/img/bg/head-bg.jpg", alt="").hero__bg-img
 
         ul.socials__hero
@@ -57,7 +57,7 @@ block content
                         | Кто я
                 .user-about__text
                     p Я веб разработчик из Кирова. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём контент. А пока посмотрите, как тут всё классно и красиво!
 
         .about__right
             .about-data
@@ -85,9 +85,6 @@ block content
 
 
     section.section.map
-        .map__bg
-                img(src="assets/img/content/map-bg.png", alt="Карта").map__bg-img
-
         .contacts.map__contacts
             .contact__title.subtitle Контакты
             ul.contact__contact-list
@@ -112,8 +109,5 @@ block content
                             use(xlink:href='assets/img/sprite.svg#map_n')
                         span.contact__icon-name= contacts.adr.name
 
-
-
-
-
-
+        .map__bg
+            img(src="assets/img/content/map-bg.png", alt="Карта").map__bg-img

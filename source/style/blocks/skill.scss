@@ -8,10 +8,16 @@
 
 .skills__item {
   margin-bottom: 15px;
+  width: 100%;
   @include laptop {
     margin-bottom: 35px;
   }
-  width: 100%;
+  @include tablet {
+    margin-bottom: 15px;
+  }
+  @include phone {
+    margin-bottom: 5px;
+  }
 }
 
 .skill {

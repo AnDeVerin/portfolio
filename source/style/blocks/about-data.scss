@@ -4,12 +4,22 @@
     padding-right: 0;
   }
   @include laptop {
-    padding: 53px 0;
+    padding: 50px 0;
+  }
+  @include phone {
+    padding-top: 30px;
+    padding-bottom: 0;
   }
 }
 
 .about-data__description {
   margin-bottom: 46px;
+  @include laptop {
+    margin-bottom: 40px;
+  }
+  @include phone {
+    margin-bottom: 30px;
+  }
 }
 
 .about-data__content {

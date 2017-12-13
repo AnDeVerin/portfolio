@@ -11,10 +11,10 @@
   background-position: center center;
   background-size: cover;
   @include laptop {
-    height: 505px;
+    height: 590px;
   }
   @include phone {
-    height: 640px;
+    height: 590px;
   }
 }
 
@@ -55,6 +55,9 @@
   }
   @include laptop {
     width: 350px;
+  }
+  @include phone {
+    width: 320px;
   }
 }
 

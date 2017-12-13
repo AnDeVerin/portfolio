@@ -9,8 +9,12 @@
     padding-right: 18%;
   }
   @include tablet {
+    padding-bottom: 30px;
     padding-left: 12%;
     padding-right: 12%;
+  }
+  @include phone {
+    padding: 20px 0;
   }
 }
 
@@ -27,6 +31,9 @@
 
 .user-about__text {
   margin-bottom: 10px;
+  @include phone {
+    padding: 0 3%;
+  }
 }
 
 .user-about__text p {

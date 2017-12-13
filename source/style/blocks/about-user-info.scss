@@ -18,4 +18,8 @@
     padding-left: 12%;
     padding-right: 12%;
   }
+  @include phone {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 }
