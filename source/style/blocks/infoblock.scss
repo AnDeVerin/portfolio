@@ -108,10 +108,11 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  @include tablet {
-    align-items: center;
+  @include gt992 {
+    justify-content: space-between;
   }
   @include tablet {
+    align-items: center;
     position: relative;
     padding-bottom: 16px;
     &:after {
@@ -140,7 +141,6 @@
 }
 
 .infoblock___socials {
-  margin-top: auto;
   @include laptop {
     margin-top: 20px;
   }
