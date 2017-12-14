@@ -4,7 +4,6 @@
 const welcome = document.querySelector('#welcome');
 const bgContainer = document.querySelector('#welcome-bg');
 const moveFactor = 0.01;
-const shiftX = 1150;
 
 function moveBackground(e) {
   let initialX = (welcome.clientWidth / 2) - e.pageX;
@@ -12,7 +11,7 @@ function moveBackground(e) {
   let positionX = initialX * moveFactor;
   let positionY = initialY * moveFactor;
 
-  bgContainer.style.transform = `translate( ${ positionX - shiftX }px, 
+  bgContainer.style.transform = `translate( ${ positionX }px, 
                                             ${ positionY }px)`;
 }
 

@@ -16,27 +16,26 @@
 }
 
 .welcome__bg {
-  position: absolute;
-  height: 100%;
-  width: 2300px;
-  bottom: -100px;
-  left: 50%;
-  transform: translateX(-1150px);
+  position: fixed;
+  width: 270vh;
+  height: 75vh;
+  left: -25vh;
+  bottom: -20vh;
   background-image: url(../img/bg/bg-nofill.png);
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: center;
+  background-size: contain;
 /*  @include widescreen {
     width: 5760px;
     background-image: url(../img/bg/bg-nofill-x2.png);
   }*/
 }
 .welcome__video {
-  display: block;
   position: fixed;
-  right: -0.5%;
-  bottom: 0;
-  min-width: 101%;
-  min-height: 101%;
+  min-width: 102%;
+  min-height: 102%;
+  left: -1%;
+  top: 0;
 }
 
 .welcome__button {
