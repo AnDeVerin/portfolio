@@ -2,6 +2,8 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
+  background: $main-bg-color;
   @include tablet {
     min-height: 660px;
   }
@@ -14,14 +16,27 @@
 }
 
 .welcome__bg {
+  position: absolute;
   height: 100%;
-  width: 100%;
+  width: 2300px;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-1150px);
+  background-image: url(../img/bg/bg-nofill.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+/*  @include widescreen {
+    width: 5760px;
+    background-image: url(../img/bg/bg-nofill-x2.png);
+  }*/
 }
-
-.welcome__bg-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.welcome__video {
+  display: block;
+  position: fixed;
+  right: -0.5%;
+  bottom: 0;
+  min-width: 101%;
+  min-height: 101%;
 }
 
 .welcome__button {
