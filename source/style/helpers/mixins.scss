@@ -62,3 +62,9 @@
     @content;
   }
 }
+
+@mixin widescreen {
+  @media (min-width: 1922px) {
+    @content;
+  }
+}
