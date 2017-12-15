@@ -4,6 +4,10 @@
   position: relative;
   overflow: hidden;
   background: $main-bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../img/bg/welcome-bg-small.jpg);
   @include tablet {
     min-height: 660px;
   }
@@ -17,6 +21,7 @@
 
 .welcome__bg {
   position: fixed;
+  min-width: 100%;
   width: 270vh;
   height: 75vh;
   left: -25vh;
@@ -25,17 +30,20 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-/*  @include widescreen {
-    width: 5760px;
-    background-image: url(../img/bg/bg-nofill-x2.png);
-  }*/
+  @include laptop {
+    display: none;
+  }
 }
+
 .welcome__video {
   position: fixed;
   min-width: 102%;
   min-height: 102%;
   left: -1%;
   top: 0;
+  @include laptop {
+    display: none;
+  }
 }
 
 .welcome__button {
