@@ -39,68 +39,69 @@ html(lang='ru')
                     source(src="./assets/img/bg/night.mp4" type="video/mp4")
                 .welcome__bg#welcome-bg
 
-                a(href="#").button.welcome__button Авторизоваться
+                a(href="#").button.welcome__button#auth-button Авторизоваться
 
-                .welcome__title
-                    .user.welcome__user-block
-                        .user__photo
-                            .user__photo-avatar
-                                img(src="assets/img/content/about.jpg", alt="").user__photo-img
-                        .user__name Андрей Вершинин
-                        .user__desc Личный сайт веб-разработчика
+                .flip-container
+                    .welcome__title#login-front
+                        .user.welcome__user-block
+                            .user__photo
+                                .user__photo-avatar
+                                    img(src="assets/img/content/about.jpg", alt="").user__photo-img
+                            .user__name Андрей Вершинин
+                            .user__desc Личный сайт веб-разработчика
 
-                    ul.welcome__socials
-                        each item, key in socialLinks
-                            li.socials__item
-                                a(href=`${item}` class='socials__link')
-                                    svg.socials__icon.socials__icon_grey
-                                        use(xlink:href=`assets/img/sprite.svg#${key}`)
-
-                    ul.pages
-                        li.pages__item.pages__item_w40
-                            a(href='works.html').button.pages__button.button_w40 Мои работы
-                        li.pages__item.pages__item_w30
-                            a(href='about.html').button.pages__button.button_w30 Обо мне
-                        li.pages__item.pages__item_w30
-                            a(href='blog.html').button.pages__button.button_w30 Блог
-
-
-                .login.welcome__login
-                    .login__title Авторизуйтесь
-                    form(action='#').login__form
-                        .login__input
-                            input(type='text' placeholder='Логин' name='uName' required).login__input-field
-                            svg.login__img.login__img_fill_grey
-                                use(xlink:href='assets/img/sprite.svg#login')
-                        .login__input
-                            input(type='password' placeholder='Пароль' name='psw' required).login__input-field
-                            svg.login__img.login__img_fill_grey
-                                use(xlink:href='assets/img/sprite.svg#password')
-
-                        .login__checkbox-wrapper
-                            label.login__check-field
-                                input(type='checkbox').login__checkbox
-                                .login__checkmark
-                                span.login__check-text Я человек
-
-                        .login__radio-quest Вы точно не робот?
-
-                        .login__radio-wrapper
-                            label.login__radio-label
-                                input(type='radio' name='robot' value='yes').login__radio
-                                .login__radio-mark
-                                span.login__radio-text Да
-
-                            label.login__radio-label
-                                input(type='radio' name='robot' value='no').login__radio
-                                .login__radio-mark
-                                span.login__radio-text Не уверен
+                        ul.welcome__socials
+                            each item, key in socialLinks
+                                li.socials__item
+                                    a(href=`${item}` class='socials__link')
+                                        svg.socials__icon.socials__icon_grey
+                                            use(xlink:href=`assets/img/sprite.svg#${key}`)
 
                         ul.pages
-                            li.pages__item.pages__item_w50
-                                a(href='index.html').button.login__button На главную
-                            li.pages__item.pages__item_w50
-                                button(type='submit').button.login__button Войти
+                            li.pages__item.pages__item_w40
+                                a(href='works.html').button.pages__button.button_w40 Мои работы
+                            li.pages__item.pages__item_w30
+                                a(href='about.html').button.pages__button.button_w30 Обо мне
+                            li.pages__item.pages__item_w30
+                                a(href='blog.html').button.pages__button.button_w30 Блог
+
+
+                    .login.welcome__login#login-back
+                        .login__title Авторизуйтесь
+                        form(action='#').login__form
+                            .login__input
+                                input(type='text' placeholder='Логин' name='uName' required).login__input-field
+                                svg.login__img.login__img_fill_grey
+                                    use(xlink:href='assets/img/sprite.svg#login')
+                            .login__input
+                                input(type='password' placeholder='Пароль' name='psw' required).login__input-field
+                                svg.login__img.login__img_fill_grey
+                                    use(xlink:href='assets/img/sprite.svg#password')
+
+                            .login__checkbox-wrapper
+                                label.login__check-field
+                                    input(type='checkbox').login__checkbox
+                                    .login__checkmark
+                                    span.login__check-text Я человек
+
+                            .login__radio-quest Вы точно не робот?
+
+                            .login__radio-wrapper
+                                label.login__radio-label
+                                    input(type='radio' name='robot' value='yes').login__radio
+                                    .login__radio-mark
+                                    span.login__radio-text Да
+
+                                label.login__radio-label
+                                    input(type='radio' name='robot' value='no').login__radio
+                                    .login__radio-mark
+                                    span.login__radio-text Не уверен
+
+                            ul.pages
+                                li.pages__item.pages__item_w50
+                                    a(href='#').button.login__button#to-main-button На главную
+                                li.pages__item.pages__item_w50
+                                    button(type='submit').button.login__button Войти
 
 
 

@@ -1,0 +1,13 @@
+.flip-container {
+  width: 380px;
+  height: 411px;
+  position: relative;
+  top: -5%;
+  @include phone {
+    width: 74%;
+    min-width: 300px;
+    top: 5%;
+  }
+
+  perspective: 1000px;
+}
