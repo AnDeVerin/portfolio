@@ -11,7 +11,7 @@ function ready() {
   let animationDisable = false;
 
   //--- if table or phone, remove video and parallax blocks
-  if (screen.width <= '992') {
+  if (window.innerWidth <= 992) {
     animationDisable = true;
     welcome.querySelector('video').remove();
     welcome.querySelector('#welcome-bg').remove();
