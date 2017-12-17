@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   let pageId = document.querySelector('[data-page]');
+  if(!pageId) return;
 
   switch (pageId.dataset.page) {
     case 'about':
@@ -14,8 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     case 'works':
       worksPage();
       break;
-    default:
+    case 'index':
       indexPage();
+      break;
+    default:
+      return;
   }
 });
 
@@ -31,7 +35,7 @@ function indexPage() {
   const loginFront = document.querySelector('#login-front');
   const loginBack = document.querySelector('#login-back');
 
-  //--- if table or phone, remove video and parallax blocks ---
+  //--- if small screen, remove video and parallax blocks ---
   if (screen.width < 1200) {
     animationDisable = true;
     welcome.querySelector('video').remove();
@@ -45,7 +49,7 @@ function indexPage() {
   //--- auth-button on click -------------------------------------------------
   if (authButton) {
     authButton.addEventListener('click', (event) => {
-      authButton.style.display = 'none';      // hide auth-button
+      authButton.style.display = 'none';                // hide auth-button
       loginFront.style.transform = 'rotateY(180deg)';   // flip login bar
       loginBack.style.transform = 'rotateY(0)';
       event.preventDefault();
@@ -54,8 +58,8 @@ function indexPage() {
   //--- to-main-button on click ----------------------------------------------
   if (toMainButton) {
     toMainButton.addEventListener('click', (event) => {
-      authButton.style.display = '';      // show auth-button
-      loginFront.style.transform = 'rotateY(0)';   // flip login bar
+      authButton.style.display = '';                // show auth-button
+      loginFront.style.transform = 'rotateY(0)';    // flip login bar
       loginBack.style.transform = 'rotateY(-180deg)';
       event.preventDefault();
     });
@@ -67,9 +71,9 @@ function indexPage() {
     let initialY = (welcome.clientHeight / 2) - e.pageY;
     let positionX = initialX * moveFactor;
     let positionY = initialY * moveFactor;
-
-    bgContainer.style.transform = `translate( ${ positionX }px, 
-                                            ${ positionY }px)`;
+    let transformString = `translate3d(${ positionX }px, ${ positionY }px, 0)`;
+    bgContainer.style.transform = transformString;
+    bgContainer.style.webkitTransform = transformString;
   }
 }
 
