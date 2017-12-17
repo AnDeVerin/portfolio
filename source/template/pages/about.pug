@@ -5,6 +5,8 @@ block title
 
 block content
 
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDILP5EZUZ83YuEMhvenzi26j4SKtiVB_Y&callback=initMap")
+
     header.section.hero.hero_about(data-page='about')
 
 
@@ -34,18 +36,7 @@ block content
             .user__name Андрей Вершинин
             .user__desc Личный сайт веб-разработчика
 
-
-        //-.hero__title
-            img(src="assets/img/content/stars1.svg", alt="").section-title
-            .user.hero__user-block
-                .user__photo
-                    .user__photo-avatar
-                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
-                .user__name Андрей Вершинин
-                .user__desc Личный сайт веб-разработчика
-
-
-    main.section.about
+    main.section.about#section-about
         svg(
         viewbox="0 0 100 10"
         preserveAspectRatio="none"
@@ -120,7 +111,6 @@ block content
                             use(xlink:href='assets/img/sprite.svg#map_n')
                         span.contact__icon-name= contacts.adr.name
 
-        .map__bg
-            img(src="assets/img/content/map-bg.png", alt="Карта").map__bg-img
+        .map__bg#map
 
     include ../common/footer

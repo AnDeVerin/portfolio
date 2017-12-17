@@ -17,11 +17,9 @@
 }
 
 .map__contacts {
+  z-index: 1;
   @include centered();
-  top: 40%;
-  @include tablet {
-    top: 33%;
-  }
+  top: 30%;
   @include phone {
     position: static;
     transform: translate(0, 0);
@@ -31,6 +29,8 @@
 }
 
 .map__bg {
+  width: 100%;
+  height: 100%;
   @include phone {
     height: 525px;
   }
