@@ -3,16 +3,9 @@
   position: relative;
 }
 
-.hero_about {
-  height: 600px;
-}
-
-.hero_blog {
-  height: 400px;
-}
-
 .hero_about,
 .hero_blog {
+  height: 600px;
   background: #003366;
   background-image: url(../img/bg/head-bg.jpg);
   background-position: center center;
@@ -56,7 +49,7 @@
 
 .hero__title {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -89,4 +82,12 @@
   @include laptop {
     height: 130%;
   }
+}
+
+.hero__bg_about {
+  height: 120%;
+}
+
+.hero__bg_blog {
+  height: 120%;
 }

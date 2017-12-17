@@ -18,15 +18,16 @@ block content
             svg.hamburger__icon
                 use(xlink:href='assets/img/sprite.svg#hamburger')
 
-        .hero__title
-            img(src="assets/img/content/stars1.svg", alt="").section-title
-            .user.hero__user-block
-                .user__photo
-                    .user__photo-avatar
-                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
-                .title.title_blog Блог
-                .user__desc Статьи, которые я написал
 
+        .hero__bg.hero__bg_blog
+        .hero__title
+            img(src="assets/img/content/stars1.svg", alt="Background smart object").section-title
+        .user.hero__user-block
+            .user__photo
+                .user__photo-avatar
+                    img(src="assets/img/content/about.jpg", alt="").user__photo-img
+            .title.title_blog Блог
+            .user__desc Статьи, которые я написал
 
     main.section.blog
         svg(
@@ -100,6 +101,4 @@ block content
                         span.footer__text= contacts.adr.name
 
         .copyright.footer__text
-            | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн &#32;
-            a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool
-            | , 2017
+            | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн LoftSchool, 2017

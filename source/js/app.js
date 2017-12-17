@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   let pageId = document.querySelector('[data-page]');
-  if(!pageId) return;
+  if (!pageId) return;
 
   switch (pageId.dataset.page) {
     case 'about':
@@ -80,17 +80,19 @@ function indexPage() {
 // == about page ==============================================================
 function aboutPage() {
   initNav();
+  initParallax();
 }
 
 // == about page ==============================================================
 function blogPage() {
   initNav();
+  initParallax();
 }
 
 // == about page ==============================================================
 function worksPage() {
   initNav();
-
+  initParallax();
 }
 
 // == common functions ========================================================
@@ -118,6 +120,48 @@ function initNav() {
       break;
     }
   }
+}
+
+//----------------------------------------------------------------------------
+function initParallax() {
+
+  let vHeight = document.documentElement.clientHeight;
+  if (vHeight < 600 && vHeight > 430) {
+    document.querySelector('.hero').style.height = `${vHeight}px`;
+
+    console.log(vHeight);
+  }
+
+  window.onscroll = function() {
+    let wScroll = window.pageYOffset;
+    parallax.init(wScroll);
+  };
+
+//-- parallax on header -- transform to the module structure --
+  let parallax = (function() {
+    let bg = document.querySelector('.hero__bg');
+    let user = document.querySelector('.hero__user-block');
+    let section = document.querySelector('.hero__title');
+
+    return {
+      move: function(block, windowScroll, shift, strafeAmount) {
+        let strafe = -(windowScroll / strafeAmount);
+        let transformString = `translate3d(${ shift }%, ${ shift +
+        strafe }%, 0)`;
+
+        let style = block.style;
+        style.transform = transformString;
+        style.webkitTransform = transformString;
+      },
+
+      init: function(wScroll) {
+        this.move(bg, wScroll, 0, 70);
+        this.move(section, wScroll, -50, 10);
+        this.move(user, wScroll, -50, 5);
+      },
+    };
+  }());
+
 }
 
 //----------------------------------------------------------------------------
