@@ -5,39 +5,36 @@ block title
 
 block content
 
-    header.section(data-page='works')
-        .hero-wrapper
-            .hero.hero_works
-                .hero__bg
+    header.section.hero-wrapper(data-page='works')
+        .hero.hero_works
+            ul.socials__hero
+                each item, key in socialLinks
+                    li.socials__item
+                        a(href=`${item}` class='socials__link')
+                            svg.socials__icon.socials__icon_white
+                                use(xlink:href=`assets/img/sprite.svg#${key}`)
 
-                    .hero__header
-                        ul.socials__hero
-                            each item, key in socialLinks
-                                li.socials__item
-                                    a(href=`${item}` class='socials__link')
-                                        svg.socials__icon.socials__icon_white
-                                            use(xlink:href=`assets/img/sprite.svg#${key}`)
+            a(href="#").hamburger#hamburger
+                svg.hamburger__icon
+                    use(xlink:href='assets/img/sprite.svg#hamburger')
 
-                        a(href="#").hamburger#hamburger
-                            svg.hamburger__icon
-                                use(xlink:href='assets/img/sprite.svg#hamburger')
+            a(href="#").down-arrow
+                svg.down-arrow__icon
+                    use(xlink:href='assets/img/sprite.svg#arrow_down')
 
-                        a(href="#").down-arrow
-                            svg.down-arrow__icon
-                                use(xlink:href='assets/img/sprite.svg#arrow_down')
-
-                        .hero__title
-                            img(src="assets/img/content/stars1.svg", alt="").section-title
-                            .user.hero__user-block
-                                .user__photo
-                                    .user__photo-avatar
-                                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
-                                .user__name Андрей Вершинин
-                                .user__desc Личный сайт веб-разработчика
+            .hero__bg
+            .hero__title
+                img(src="assets/img/content/stars1.svg", alt="Background smart object").section-title
+            .user.hero__user-block
+                .user__photo
+                    .user__photo-avatar
+                        img(src="assets/img/content/about.jpg", alt="").user__photo-img
+                .user__name Андрей Вершинин
+                .user__desc Личный сайт веб-разработчика
 
 
-            .hero-wrapper__works-title
-                +title('Мои работы', 'stars2-2.png', 'works__section-title')
+        .hero-wrapper__works-title
+            +title('Мои работы', 'stars2-2.png', 'works__section-title')
 
     main.section.works
         svg(

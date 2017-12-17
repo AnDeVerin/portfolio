@@ -1,5 +1,6 @@
 .hamburger {
   position: absolute;
+  z-index: 1;
   top: 30px;
   right: 30px;
   @include phone {

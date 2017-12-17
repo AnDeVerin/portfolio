@@ -33,9 +33,6 @@
 .hero-wrapper {
   overflow: hidden;
   background: #003366;
-  background-image: url(../img/bg/head-bg.jpg);
-  background-position: center center;
-  background-size: cover;
 }
 
 .hero-wrapper__works-title {
@@ -81,11 +78,15 @@
 }
 
 .hero__bg {
-  height: 100%;
-}
-
-.hero__bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150%;
   width: 100%;
-  object-fit: cover;
-  //  height: 100%;
+  background-image: url(../img/bg/head-bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  @include laptop {
+    height: 130%;
+  }
 }
