@@ -1,18 +1,17 @@
 'use strict';
 
-let adrStringArray = window.location.pathname.split('/');
-const CURRENT_PAGE = adrStringArray[adrStringArray.length - 1];
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  switch (CURRENT_PAGE) {
-    case 'about.html':
+  let pageId = document.querySelector('[data-page]');
+
+  switch (pageId.dataset.page) {
+    case 'about':
       aboutPage();
       break;
-    case 'blog.html':
+    case 'blog':
       blogPage();
       break;
-    case 'works.html':
+    case 'works':
       worksPage();
       break;
     default:
@@ -33,7 +32,7 @@ function indexPage() {
   const loginBack = document.querySelector('#login-back');
 
   //--- if table or phone, remove video and parallax blocks ---
-  if (window.innerWidth <= 992) {
+  if (screen.width < 1200) {
     animationDisable = true;
     welcome.querySelector('video').remove();
     welcome.querySelector('#welcome-bg').remove();
@@ -96,6 +95,7 @@ function initNav() {
   let closeNavButton = document.querySelector('#close-nav-button');
   let navLinkList = document.querySelectorAll('.nav__link');
   let navElement = document.querySelector('#nav');
+  let pageId = document.querySelector('[data-page]');
 
   openNavButton.addEventListener('click', (event) => {
     navElement.style.width = '100%';
@@ -108,9 +108,9 @@ function initNav() {
   });
 
   //-- mark current page in the navigation list --
-  for (let currentLink of navLinkList) {
-    if (currentLink.href.search(CURRENT_PAGE) > 0) {
-      currentLink.classList.add('nav__link_active');
+  for (let currentPage of navLinkList) {
+    if (currentPage.href.search(pageId.dataset.page) > 0) {
+      currentPage.classList.add('nav__link_active');
       break;
     }
   }
