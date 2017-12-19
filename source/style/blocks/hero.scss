@@ -7,9 +7,9 @@
 .hero_blog {
   height: 600px;
   background: #003366;
-  background-image: url(../img/bg/head-bg.jpg);
-  background-position: center center;
-  background-size: cover;
+//  background-image: url(../img/bg/head-bg.jpg);
+//  background-position: center center;
+//  background-size: cover;
   @include laptop {
     height: 590px;
   }
@@ -80,7 +80,11 @@
   background-position: center center;
   background-size: cover;
   @include laptop {
+    background-image: url(../img/bg/head-bg-medium.jpg);
     height: 130%;
+  }
+  @include phone {
+    background-image: url(../img/bg/head-bg-small.jpg);
   }
 }
 

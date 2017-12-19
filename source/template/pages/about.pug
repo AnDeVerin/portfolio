@@ -76,13 +76,16 @@ block content
                         each skillSection, skillSectionTitle in skills
                             li.skills__item
                                 .skill-section
-                                    .skill-section__title= skillSectionTitle
+                                    .skill-section__title(id=`${skillSectionTitle}`)= skillSectionTitle
                                     ul.skill-section__list
-                                        each skill, skillName in skillSection
+                                        each skillName in skillSection
                                             li.skill-section__item
                                                 .skill
-                                                    img(src="assets/img/content/circle.png", alt="").skill__circle
-                                                    //- svg.skill__circle
+                                                    svg.skill__circle.cirlce(viewBox='0 0 110 110')
+                                                        circle.circle__first(r="45" cx="50%" cy="50%" fill="none")
+                                                        circle.circle__second(r="45" cx="50%" cy="50%"
+                                                                fill="none" transform="rotate(-90 55 55)"
+                                                                data-skill-name=`${ skillName }`)
                                                     .skill__name= skillName
 
 
@@ -99,7 +102,7 @@ block content
                     a(href=contacts.email.link).contact__link
                         svg.contact__icon
                             use(xlink:href='assets/img/sprite.svg#envelope_n')
-                        span.contact__icon-name adw006 &#128021 yandex
+                        span.contact__icon-name adw006 &#128021; yandex
                 li.contact__item
                     a(href=contacts.tel.link).contact__link
                         svg.contact__icon

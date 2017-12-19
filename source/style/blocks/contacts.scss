@@ -1,8 +1,8 @@
 .contacts {
   background-color: #fff;
+  background: rgba(#fff, 0.8);
   width: 580px;
   padding: 40px 30px 20px 30px;
-  opacity: 0.8;
   @include tablet {
     width: 330px;
     padding: 36px 36px 10px 36px;

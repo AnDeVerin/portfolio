@@ -1,0 +1,23 @@
+.cirlce {
+  fill: none;
+  stroke-width: 18;
+}
+
+.circle__first {
+  stroke: #dfdcd5;
+}
+
+.circle__second {
+  //stroke: $skill-circle-fill-color;
+  stroke-dasharray: 0.001 282.6;
+  transition: all 1s;
+}
+// generate classes from .circle-0 to .circle-100
+// (opacity of the fill color)
+$i: 0;
+@for $i from 0 through 20 {
+  .circle-#{$i*5} {
+    stroke-dasharray: 0.001+282.6*$i/20 282.6;
+    stroke: rgba($skill-circle-fill-color, $i/20);
+  }
+}

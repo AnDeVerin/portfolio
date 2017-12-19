@@ -1,6 +1,6 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
 
   let pageId = document.querySelector('[data-page]');
   if (!pageId) return;
@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // == welcome page ============================================================
 function indexPage() {
+
+  // Сделать загрузку видео и большой фон через промис,
+  // и включать их после полной загрузки!!!
+
   let animationDisable = false;
   const moveFactor = 0.01;
   const welcome = document.querySelector('#welcome');
@@ -48,7 +52,7 @@ function indexPage() {
 
   //--- auth-button on click -------------------------------------------------
   if (authButton) {
-    authButton.addEventListener('click', (event) => {
+    authButton.addEventListener('click', function(event) {
       authButton.style.display = 'none';                // hide auth-button
       loginFront.style.transform = 'rotateY(180deg)';   // flip login bar
       loginBack.style.transform = 'rotateY(0)';
@@ -57,7 +61,7 @@ function indexPage() {
   }
   //--- to-main-button on click ----------------------------------------------
   if (toMainButton) {
-    toMainButton.addEventListener('click', (event) => {
+    toMainButton.addEventListener('click', function(event) {
       authButton.style.display = '';                // show auth-button
       loginFront.style.transform = 'rotateY(0)';    // flip login bar
       loginBack.style.transform = 'rotateY(-180deg)';
@@ -71,7 +75,8 @@ function indexPage() {
     let initialY = (welcome.clientHeight / 2) - e.pageY;
     let positionX = initialX * moveFactor;
     let positionY = initialY * moveFactor;
-    let transformString = `translate3d(${ positionX }px, ${ positionY }px, 0)`;
+    let transformString = 'translate3d(' + positionX + 'px, ' + positionY +
+        'px, 0)';
     bgContainer.style.transform = transformString;
     bgContainer.style.webkitTransform = transformString;
   }
@@ -80,10 +85,16 @@ function indexPage() {
 // == about page ==============================================================
 function aboutPage() {
   initNav();
-  initParallax();
 
+  //-- calculate skills animation position
+  let showSkillPosition = elmYPosition('Backend');
+  let windowHeight = document.documentElement.clientHeight;
+  let startSkillAnimationPosition = showSkillPosition - windowHeight;
+  initScroll(startSkillAnimationPosition);
+
+  //-- down arrow handler --
   let scrollDownButton = document.querySelector('.down-arrow');
-  scrollDownButton.addEventListener('click', (event) => {
+  scrollDownButton.addEventListener('click', function(event) {
     smoothScroll('section-about');
     event.preventDefault();
   });
@@ -93,22 +104,22 @@ function aboutPage() {
 // == blog page ==============================================================
 function blogPage() {
   initNav();
-  initParallax();
+  initScroll();
 }
 
 // == works page ==============================================================
 function worksPage() {
   initNav();
-  initParallax();
+  initScroll();
 
   let scrollDownButton = document.querySelector('.down-arrow');
-  scrollDownButton.addEventListener('click', (event) => {
+  scrollDownButton.addEventListener('click', function(event) {
     smoothScroll('section-works');
     event.preventDefault();
   });
 
   let scrollUpButton = document.querySelector('.up-arrow');
-  scrollUpButton.addEventListener('click', (event) => {
+  scrollUpButton.addEventListener('click', function(event) {
     smoothScroll('section-works');
     event.preventDefault();
   });
@@ -122,38 +133,53 @@ function initNav() {
   let navElement = document.querySelector('#nav');
   let pageId = document.querySelector('[data-page]');
 
-  openNavButton.addEventListener('click', (event) => {
+  openNavButton.addEventListener('click', function(event) {
     navElement.style.width = '100%';
     event.preventDefault();
   });
 
-  closeNavButton.addEventListener('click', (event) => {
+  closeNavButton.addEventListener('click', function(event) {
     navElement.style.width = '';
     event.preventDefault();
   });
 
   //-- mark current page in the navigation list --
-  for (let currentPage of navLinkList) {
-    if (currentPage.href.search(pageId.dataset.page) > 0) {
-      currentPage.classList.add('nav__link_active');
-      break;
-    }
-  }
+  navLinkList.forEach = [].forEach; // for IE support
+  navLinkList.forEach(
+      function(currentPage) {
+        if (currentPage.href.search(pageId.dataset.page) > 0) {
+          currentPage.classList.add('nav__link_active');
+        }
+      }
+  );
+
 }
 
 //----------------------------------------------------------------------------
-function initParallax() {
+function initScroll(skillPos) {
+  let skillPosition = skillPos || 0;
 
+  //-- set header height if screen is smaller
   let vHeight = document.documentElement.clientHeight;
   if (vHeight < 600 && vHeight > 430) {
-    document.querySelector('.hero').style.height = `${vHeight}px`;
-
-    console.log(vHeight);
+    document.querySelector('.hero').style.height = vHeight + 'px';
   }
 
   window.onscroll = function() {
     let wScroll = window.pageYOffset;
+    //console.log(wScroll);
+
+    //-- parallax effect --
     parallax.init(wScroll);
+    //-- skills animation --
+    if (skillPosition) {
+      if (wScroll >= skillPosition) {
+        skillPosition = 0;
+        setTimeout(function() {
+          showSkills();
+        }, 100);
+      }
+    }
   };
 
 //-- parallax on header -- transform to the module structure --
@@ -165,8 +191,8 @@ function initParallax() {
     return {
       move: function(block, windowScroll, shift, strafeAmount) {
         let strafe = -(windowScroll / strafeAmount);
-        let transformString = `translate3d(${ shift }%, ${ shift +
-        strafe }%, 0)`;
+        let transformString = 'translate3d(' + shift + '%, ' +
+                                            (shift + strafe) + '%, 0)';
 
         let style = block.style;
         style.transform = transformString;
@@ -242,185 +268,212 @@ function initMap() {
   let styledMapType = new google.maps.StyledMapType(
       [
         {
-          "elementType": "geometry",
-          "stylers": [
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#f5f5f5"
-            }
-          ]
+              'color': '#f5f5f5',
+            },
+          ],
         },
         {
-          "elementType": "labels.icon",
-          "stylers": [
+          'elementType': 'labels.icon',
+          'stylers': [
             {
-              "visibility": "off"
-            }
-          ]
+              'visibility': 'off',
+            },
+          ],
         },
         {
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#616161"
-            }
-          ]
+              'color': '#616161',
+            },
+          ],
         },
         {
-          "elementType": "labels.text.stroke",
-          "stylers": [
+          'elementType': 'labels.text.stroke',
+          'stylers': [
             {
-              "color": "#f5f5f5"
-            }
-          ]
+              'color': '#f5f5f5',
+            },
+          ],
         },
         {
-          "featureType": "administrative.land_parcel",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'administrative.land_parcel',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#bdbdbd"
-            }
-          ]
+              'color': '#bdbdbd',
+            },
+          ],
         },
         {
-          "featureType": "poi",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'poi',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#eeeeee"
-            }
-          ]
+              'color': '#eeeeee',
+            },
+          ],
         },
         {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'poi',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#757575"
-            }
-          ]
+              'color': '#757575',
+            },
+          ],
         },
         {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'poi.park',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#e5e5e5"
-            }
-          ]
+              'color': '#e5e5e5',
+            },
+          ],
         },
         {
-          "featureType": "poi.park",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'poi.park',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#9e9e9e"
-            }
-          ]
+              'color': '#9e9e9e',
+            },
+          ],
         },
         {
-          "featureType": "road",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'road',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#ffffff"
-            }
-          ]
+              'color': '#ffffff',
+            },
+          ],
         },
         {
-          "featureType": "road.arterial",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'road.arterial',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#757575"
-            }
-          ]
+              'color': '#757575',
+            },
+          ],
         },
         {
-          "featureType": "road.highway",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'road.highway',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#dadada"
-            }
-          ]
+              'color': '#dadada',
+            },
+          ],
         },
         {
-          "featureType": "road.highway",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'road.highway',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#616161"
-            }
-          ]
+              'color': '#616161',
+            },
+          ],
         },
         {
-          "featureType": "road.local",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'road.local',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#9e9e9e"
-            }
-          ]
+              'color': '#9e9e9e',
+            },
+          ],
         },
         {
-          "featureType": "transit.line",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'transit.line',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#e5e5e5"
-            }
-          ]
+              'color': '#e5e5e5',
+            },
+          ],
         },
         {
-          "featureType": "transit.station",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'transit.station',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#eeeeee"
-            }
-          ]
+              'color': '#eeeeee',
+            },
+          ],
         },
         {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [
+          'featureType': 'water',
+          'elementType': 'geometry',
+          'stylers': [
             {
-              "color": "#c9c9c9"
-            }
-          ]
+              'color': '#c9c9c9',
+            },
+          ],
         },
         {
-          "featureType": "water",
-          "elementType": "geometry.fill",
-          "stylers": [
+          'featureType': 'water',
+          'elementType': 'geometry.fill',
+          'stylers': [
             {
-              "color": "#4369aa"
+              'color': '#4369aa',
             },
             {
-              "visibility": "on"
-            }
-          ]
+              'visibility': 'on',
+            },
+          ],
         },
         {
-          "featureType": "water",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          'featureType': 'water',
+          'elementType': 'labels.text.fill',
+          'stylers': [
             {
-              "color": "#9e9e9e"
-            }
-          ]
-        }
+              'color': '#9e9e9e',
+            },
+          ],
+        },
       ],
       {name: 'Styled Map'});
 
   let map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 58.607, lng: 49.687},
     zoom: 13,
-    disableDefaultUI: true
+    disableDefaultUI: true,
   });
 
   map.mapTypes.set('styled_map', styledMapType);
   map.setMapTypeId('styled_map');
 }
+
 //----------------------------------------------------------------------------
+function showSkills() {
+
+  let skillsData = {
+    'HTML5': 90,
+    'CSS3': 80,
+    'JavaScript': 75,
+    'PHP': 20,
+    'mySQL': 20,
+    'Node.js & npm': 60,
+    'Mongo.db': 55,
+    'Git': 80,
+    'Gulp': 70,
+    'Webpack': 50,
+  };
+
+  let skillsList = document.querySelectorAll('.circle__second');
+  skillsList.forEach = [].forEach;
+  skillsList.forEach(function(skill) {
+    //let skillName = skill.dataset.skillName; //doesn't work in IE
+    //skill.classList.add('circle-' + skillsData[skillName]);
+    let skillName = skill.getAttribute('data-skill-name');
+    let newCircleClass = 'circle-' + skillsData[skillName];
+    skill.setAttribute('class','circle__second ' + newCircleClass);
+  });
+
+}

@@ -12,7 +12,12 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-image: url(../img/bg/welcome-bg-small.jpg);
+  @include desktop {
+    background-image: url(../img/bg/head-bg-medium.jpg);
+  }
+  @include phone {
+    background-image: url(../img/bg/head-bg-small.jpg);
+  }
   @include tablet {
     min-height: 660px;
   }
