@@ -175,9 +175,7 @@ function initScroll(skillPos) {
     if (skillPosition) {
       if (wScroll >= skillPosition) {
         skillPosition = 0;
-        setTimeout(function() {
-          showSkills();
-        }, 100);
+        showSkills();
       }
     }
   };
@@ -467,13 +465,20 @@ function showSkills() {
   };
 
   let skillsList = document.querySelectorAll('.circle__second');
-  skillsList.forEach = [].forEach;
-  skillsList.forEach(function(skill) {
+  //skillsList.forEach = [].forEach;
+
+  skillsList = [].slice.call(skillsList);
+  console.log(skillsList);
+  for (let i = 0, l = skillsList.length; i < l; i++) {
+  //skillsList.forEach(function(skill) {
     //let skillName = skill.dataset.skillName; //doesn't work in IE
     //skill.classList.add('circle-' + skillsData[skillName]);
-    let skillName = skill.getAttribute('data-skill-name');
-    let newCircleClass = 'circle-' + skillsData[skillName];
-    skill.setAttribute('class','circle__second ' + newCircleClass);
-  });
+
+    setTimeout(function() {
+      let skillName = skillsList[i].getAttribute('data-skill-name');
+      let newCircleClass = 'circle-' + skillsData[skillName];
+      skillsList[i].setAttribute('class','circle__second ' + newCircleClass);
+    }, 300 + i*50);
+  }
 
 }
