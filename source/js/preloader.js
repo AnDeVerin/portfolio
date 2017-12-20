@@ -56,8 +56,6 @@ function preloader() {
 
   loadImages(imgPaths);
 
-  console.log(imgPaths);
-
   function preloaderFadeOut() {
     preloader.classList.add('preloader_invisible');
     setTimeout(function() {

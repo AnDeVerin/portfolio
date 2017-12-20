@@ -35,11 +35,10 @@
   height: 57vh;
   left: -5%;
   bottom: -5%;
-  background-image: url(../img/bg/bg-nofill.png);
   background-repeat: repeat-x;
   background-position: left bottom;
   background-size: auto 100%;
-  @include laptop {
+  @include desktop {
     display: none;
   }
 }
@@ -50,7 +49,7 @@
   min-height: 102%;
   left: -1%;
   top: 0;
-  @include laptop {
+  @include desktop {
     display: none;
   }
 }
