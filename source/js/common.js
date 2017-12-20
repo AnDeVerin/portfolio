@@ -71,6 +71,7 @@ function showSkills() {
   };
 
   let skillsList = document.querySelectorAll('.circle__second');
+  skillsList.forEach = [].forEach;
   skillsList.forEach(function(skill) {
     setTimeout(function() {
       let skillName = skill.getAttribute('data-skill-name');
