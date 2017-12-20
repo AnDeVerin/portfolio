@@ -22,7 +22,7 @@ html(lang='ru')
         // polyfill to use svg sprite in IE
         script(src='./assets/js/svgxuse.min.js' defer)
 
-        //- paralax effect
+        //
         script(src='./assets/js/app.js')
 
         <!--[if lt IE 9]>
@@ -33,6 +33,7 @@ html(lang='ru')
 
 
     body
+        include ../common/preloader
         .wrapper
             main.welcome#welcome(data-page='index')
                 video(autoplay muted loop).welcome__video

@@ -2,10 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  let pageId = document.querySelector('[data-page]');
-  if (!pageId) return;
+  let pageIdElem = document.querySelector('[data-page]');
+  if (!pageIdElem) return;
 
-  switch (pageId.dataset.page) {
+  switch (pageIdElem.dataset.page) {
     case 'about':
       aboutPage();
       break;
@@ -23,67 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// == welcome page ============================================================
-function indexPage() {
-
-  // Сделать загрузку видео и большой фон через промис,
-  // и включать их после полной загрузки!!!
-
-  let animationDisable = false;
-  const moveFactor = 0.01;
-  const welcome = document.querySelector('#welcome');
-  const bgContainer = document.querySelector('#welcome-bg');
-
-  const authButton = document.querySelector('#auth-button');
-  const toMainButton = document.querySelector('#to-main-button');
-  const loginFront = document.querySelector('#login-front');
-  const loginBack = document.querySelector('#login-back');
-
-  //--- if small screen, remove video and parallax blocks ---
-  if (screen.width < 1200) {
-    animationDisable = true;
-    welcome.querySelector('video').remove();
-    welcome.querySelector('#welcome-bg').remove();
-  }
-
-  if (!animationDisable && welcome) {
-    welcome.addEventListener('mousemove', moveBackground);
-  }
-
-  //--- auth-button on click -------------------------------------------------
-  if (authButton) {
-    authButton.addEventListener('click', function(event) {
-      authButton.style.display = 'none';                // hide auth-button
-      loginFront.style.transform = 'rotateY(180deg)';   // flip login bar
-      loginBack.style.transform = 'rotateY(0)';
-      event.preventDefault();
-    });
-  }
-  //--- to-main-button on click ----------------------------------------------
-  if (toMainButton) {
-    toMainButton.addEventListener('click', function(event) {
-      authButton.style.display = '';                // show auth-button
-      loginFront.style.transform = 'rotateY(0)';    // flip login bar
-      loginBack.style.transform = 'rotateY(-180deg)';
-      event.preventDefault();
-    });
-  }
-
-  //--- parallax effect on index page-----------------------------------------
-  function moveBackground(e) {
-    let initialX = (welcome.clientWidth / 2) - e.pageX;
-    let initialY = (welcome.clientHeight / 2) - e.pageY;
-    let positionX = initialX * moveFactor;
-    let positionY = initialY * moveFactor;
-    let transformString = 'translate3d(' + positionX + 'px, ' + positionY +
-        'px, 0)';
-    bgContainer.style.transform = transformString;
-    bgContainer.style.webkitTransform = transformString;
-  }
-}
-
 // == about page ==============================================================
 function aboutPage() {
+  preloader();
   initNav();
 
   //-- calculate skills animation position
@@ -258,194 +200,6 @@ function smoothScroll(eID) {
     if (leapY < stopY) leapY = stopY;
     timer++;
   }
-}
-
-//----------------------------------------------------------------------------
-function initMap() {
-
-  let styledMapType = new google.maps.StyledMapType(
-      [
-        {
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#f5f5f5',
-            },
-          ],
-        },
-        {
-          'elementType': 'labels.icon',
-          'stylers': [
-            {
-              'visibility': 'off',
-            },
-          ],
-        },
-        {
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#616161',
-            },
-          ],
-        },
-        {
-          'elementType': 'labels.text.stroke',
-          'stylers': [
-            {
-              'color': '#f5f5f5',
-            },
-          ],
-        },
-        {
-          'featureType': 'administrative.land_parcel',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#bdbdbd',
-            },
-          ],
-        },
-        {
-          'featureType': 'poi',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#eeeeee',
-            },
-          ],
-        },
-        {
-          'featureType': 'poi',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#757575',
-            },
-          ],
-        },
-        {
-          'featureType': 'poi.park',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#e5e5e5',
-            },
-          ],
-        },
-        {
-          'featureType': 'poi.park',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#9e9e9e',
-            },
-          ],
-        },
-        {
-          'featureType': 'road',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#ffffff',
-            },
-          ],
-        },
-        {
-          'featureType': 'road.arterial',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#757575',
-            },
-          ],
-        },
-        {
-          'featureType': 'road.highway',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#dadada',
-            },
-          ],
-        },
-        {
-          'featureType': 'road.highway',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#616161',
-            },
-          ],
-        },
-        {
-          'featureType': 'road.local',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#9e9e9e',
-            },
-          ],
-        },
-        {
-          'featureType': 'transit.line',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#e5e5e5',
-            },
-          ],
-        },
-        {
-          'featureType': 'transit.station',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#eeeeee',
-            },
-          ],
-        },
-        {
-          'featureType': 'water',
-          'elementType': 'geometry',
-          'stylers': [
-            {
-              'color': '#c9c9c9',
-            },
-          ],
-        },
-        {
-          'featureType': 'water',
-          'elementType': 'geometry.fill',
-          'stylers': [
-            {
-              'color': '#4369aa',
-            },
-            {
-              'visibility': 'on',
-            },
-          ],
-        },
-        {
-          'featureType': 'water',
-          'elementType': 'labels.text.fill',
-          'stylers': [
-            {
-              'color': '#9e9e9e',
-            },
-          ],
-        },
-      ],
-      {name: 'Styled Map'});
-
-  let map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 58.607, lng: 49.687},
-    zoom: 13,
-    disableDefaultUI: true,
-  });
-
-  map.mapTypes.set('styled_map', styledMapType);
-  map.setMapTypeId('styled_map');
 }
 
 //----------------------------------------------------------------------------
