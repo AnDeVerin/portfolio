@@ -6,6 +6,7 @@ function preloader() {
   let allElems = document.querySelectorAll('*');
 
   // searching for images
+  allElems.forEach = [].forEach;
   allElems.forEach(function(item) {
     let path;
         let bgI = getComputedStyle(item).backgroundImage;

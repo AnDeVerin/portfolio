@@ -25,7 +25,7 @@ function initNav() {
         if (currentPage.href.search(pageId.dataset.page) > 0) {
           currentPage.classList.add('nav__link_active');
         }
-      },
+      }
   );
 }
 
