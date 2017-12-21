@@ -47,14 +47,14 @@ html(lang='ru')
                         .user.welcome__user-block
                             .user__photo
                                 .user__photo-avatar
-                                    img(src="assets/img/content/about.jpg", alt="").user__photo-img
+                                    img(src="assets/img/content/about.jpg", alt="my photo").user__photo-img
                             .user__name Андрей Вершинин
                             .user__desc Личный сайт веб-разработчика
 
                         ul.welcome__socials
                             each item, key in socialLinks
                                 li.socials__item
-                                    a(href=`${item}` class='socials__link')
+                                    a(href=`${item}` target='_blank' class='socials__link')
                                         svg.socials__icon.socials__icon_grey
                                             use(xlink:href=`assets/img/sprite.svg#${key}`)
 

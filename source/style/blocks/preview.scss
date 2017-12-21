@@ -11,10 +11,26 @@
   }
 }
 
-.preview__img {
-  max-width: 70%;
-  max-height: 75%;
+.preview__slideshow {
+  position: relative;
+  width: 70%;
+  height: 75%;
   @include hd {
-    max-width: 80%;
+    width: 80%;
   }
+}
+
+.preview__item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+.preview__item_active {
+  opacity: 1;
 }

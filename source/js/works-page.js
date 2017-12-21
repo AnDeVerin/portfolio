@@ -4,6 +4,7 @@ function worksPage() {
   setHeadHeight();
   initNav();
   initParallax();
+  initSlider();
 
   let scrollDownButton = document.querySelector('.down-arrow');
   scrollDownButton.addEventListener('click', function(event) {
