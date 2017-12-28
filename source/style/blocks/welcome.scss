@@ -12,6 +12,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-image: url(../img/bg/head-bg.jpg);
   @include desktop {
     background-image: url(../img/bg/head-bg-medium.jpg);
   }

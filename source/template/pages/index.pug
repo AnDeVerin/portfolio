@@ -35,10 +35,10 @@ html(lang='ru')
     body
         include ../common/preloader
         .wrapper
-            main.welcome#welcome(data-page='index')
-                video(autoplay muted loop).welcome__video
+            main.welcome(data-page='index')
+                //-video(autoplay muted loop).welcome__video
                     source(src="#" type="video/mp4")
-                .welcome__bg#welcome-bg
+                .welcome__bg
 
                 a(href="#").button.welcome__button#auth-button Авторизоваться
 

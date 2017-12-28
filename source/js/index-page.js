@@ -1,16 +1,24 @@
 function indexPage() {
 
   let animationEnabled = false;
-  let videoSrc = './assets/img/bg/night.mp4';
-  let bgNoFill = 'url(./assets/img/bg/bg-nofill.png)';
-  const welcome = document.querySelector('#welcome');
-  const bgContainer = document.querySelector('#welcome-bg');
+  const videoElement = document.createElement('video');
+  const videoSrc = './assets/img/bg/night.mp4';
+  const bgNoFill = 'url(./assets/img/bg/bg-nofill.png)';
+  const welcome = document.querySelector('.welcome');
+  const bgContainer = document.querySelector('.welcome__bg');
 
-  //--- if small screen, disable video and parallax ---
+  //--- if big screen, add video and parallax ---
   if (screen.width > 1200) {
     animationEnabled = true;
-    welcome.querySelector('source').src = videoSrc;
-    welcome.querySelector('#welcome-bg').style.backgroundImage = bgNoFill;
+
+    videoElement.src = videoSrc;
+    videoElement.setAttribute('autoplay', '');
+    videoElement.setAttribute('muted', '');
+    videoElement.setAttribute('loop', '');
+    videoElement.classList.add('welcome__video');
+    welcome.insertBefore(videoElement, welcome.firstChild);
+
+    bgContainer.style.backgroundImage = bgNoFill;
   }
 
   preloader();
