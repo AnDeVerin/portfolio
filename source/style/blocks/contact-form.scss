@@ -1,6 +1,7 @@
 .contact-form {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .contact-form__name,
@@ -40,5 +41,17 @@
   background: transparent;
   &:hover {
     color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+//-- js --
+.contact-form_disabled {
+  opacity: 0.4;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
   }
 }

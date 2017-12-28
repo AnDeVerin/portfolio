@@ -1,6 +1,7 @@
 'use strict';
 
 global.$ = {
+  dev: true,
   package: require('./package.json'),
   config: require('./gulp/config'),
   path: {
@@ -9,11 +10,11 @@ global.$ = {
     cssFoundation: require('./gulp/paths/css.foundation.js'),
     app: require('./gulp/paths/app.js'),
     svgxuse: require('./gulp/paths/svgxuse.js'),
-   },
+  },
   gulp: require('gulp'),
   del: require('del'),
   browserSync: require('browser-sync').create(),
-  gp: require('gulp-load-plugins')()
+  gp: require('gulp-load-plugins')(),
 };
 
 $.path.task.forEach(function(taskPath) {
@@ -21,20 +22,24 @@ $.path.task.forEach(function(taskPath) {
 });
 
 $.gulp.task('default', $.gulp.series(
-  'clean',
-  $.gulp.parallel(
-    'sass',
-    'pug',
-    //'js:foundation',
-    'js:process',
-    'js:svgxuse',
-    'copy:image',
-    'copy:fonts',
-    'css:foundation',
-    'sprite:svg'
-  ),
-  $.gulp.parallel(
-    'watch',
-    'serve'
-  )
+    'clean',
+    $.gulp.parallel(
+        'sass',
+        //'pug',
+        //'js:foundation',
+        'js:process',
+        'js:svgxuse',
+        'copy:image',
+        'copy:fonts',
+        'css:foundation',
+        'sprite:svg',
+        'create:version'
+    ),
+    $.gulp.parallel(
+        'nodemon'
+    ),
+    $.gulp.parallel(
+        'watch',
+        'serve',
+    ),
 ));

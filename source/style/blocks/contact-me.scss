@@ -15,3 +15,33 @@
     background-color: rgba(242, 240, 232, 0.5) !important;
   }
 }
+
+.contact-me__confirm {
+  display: none;
+  width: 280px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 23px;
+  z-index: 10;
+}
+
+.contact-me__confirm-mess {
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  color: #20222a;
+  text-align: center;
+}
+
+.contact-me__confirm-button {
+  width: 104px;
+  border-radius: 5px;
+  margin: 20px  auto  0 auto;
+}
+
+// js-activated
+.contact-me__confirm_visible {
+  display: block;
+}
