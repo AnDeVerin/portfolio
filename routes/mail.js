@@ -3,14 +3,6 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const config = require('../config.json');
 
-/*router.get('/mail', function (req, res) {
-  let obj = {
-    title: 'Works'
-  };
-  Object.assign(obj, req.app.locals.settings);
-  res.render('pages/works', obj);
-});*/
-
 router.post('/mail', function (req, res) {
   //требуем наличия имени, обратной почты и текста
   if (!req.body.name || !req.body.email || !req.body.text) {

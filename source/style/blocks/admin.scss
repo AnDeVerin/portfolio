@@ -1,0 +1,66 @@
+.admin {
+  color: #3b3e48;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../img/bg/head-bg-small.jpg);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin__header {
+  padding: 32px;
+  background-color: $bright-blue-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin__header-name {
+  font-size: 28px;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.admin__header-link {
+  font-size: 16px;
+  color: rgba(#fff, 0.8);
+}
+
+.admin__tabs {
+  display: flex;
+  background: #f0efe9;
+}
+
+.tabs__item {
+  border-right: 2px solid #fff;
+}
+.tabs__item_active {
+  background: #ffffff;
+  & .tabs__link {
+    color: $bright-blue-color;
+  }
+}
+
+.tabs__link {
+  display: block;
+  font-weight: 500;
+  padding: 25px 60px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #7a7b7c;
+  &:hover {
+    color: $bright-blue-color;
+  }
+}
+
+.admin__pages {
+  background: rgba(#fff, 0.8);
+  flex: 1;
+  padding: 50px 30px;
+}
+
+.admin__page-title {
+  font-size: 21px;
+  font-weight: 500;
+}

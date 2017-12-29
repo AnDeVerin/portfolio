@@ -9,6 +9,9 @@
       "auth": {
         "user": "andevprosite@gmail.com",
         "pass": "n`vyfzyjxm1905"
+      },
+      "tls": {
+        "rejectUnauthorized": false
       }
     }
   }

@@ -26,16 +26,16 @@
   filter: drop-shadow(1px 2px 2px #727272);
   overflow: visible;
   z-index: 2;
-  transition: top 0.3s;
-  transition-timing-function: cubic-bezier(1, -0.39, 0, 1.56);
+  transition: top 0.2s;
+  transition-timing-function: cubic-bezier(0.95,-0.1, 0.37, 0.85);
 }
 
 .preview-page_prev:hover .preview-page__icon {
-  top: 60%;
+  top: 55%;
 }
 
 .preview-page_next:hover .preview-page__icon {
-  top: 40%;
+  top: 45%;
 }
 
 .preview-page:active .preview-page__icon {

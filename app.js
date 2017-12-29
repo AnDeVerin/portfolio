@@ -30,9 +30,7 @@ app.use(express.static(path.join(__dirname, currentStatic)));
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/works'));
 app.use('/', require('./routes/mail'));
-
-/*app.use('/login', require('./routes/login'));
-app.use('/admin', require('./routes/admin'));*/
+app.use('/', require('./routes/admin'));
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {

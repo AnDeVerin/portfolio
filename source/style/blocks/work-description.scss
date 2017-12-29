@@ -22,6 +22,7 @@
   text-align: center;
   width: 45%;
   margin: 0 auto 28px auto;
+  transition: opacity 0.3s;
   @include hd {
     width: 55%;
   }
@@ -34,6 +35,7 @@
 }
 
 .work-description__technology {
+  transition: opacity 0.3s;
   font-family: Roboto;
   text-transform: uppercase;
   color: rgba($dark-blue-color, 0.85);
@@ -43,6 +45,7 @@
 }
 
 .work-description__button {
+  transition: opacity 0.3s;
   margin: 58px auto 0;
   width: 200px;
   @include tablet {

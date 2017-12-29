@@ -58,7 +58,7 @@ block content
                                     data-preview-technology='HTML5 & CSS3'
                                     data-preview-link='https://interiorsite.000webhostapp.com/')
                     li.preview__item(style=`background-image: url(assets/img/content/s3.png)`
-                                    data-preview-title='Лендинг пейдж интернет-агентства'
+                                    data-preview-title='Лендинг интернет-агентства'
                                     data-preview-technology='HTML5 & CSS3'
                                     data-preview-link='https://andeverin.github.io/waxom-homepage/')
 
@@ -118,17 +118,18 @@ block content
 
         .contact-me.talks__contact-me
             .contact-me__confirm
-                //.contact-me__confirm_visible
                 .contact-me__confirm-mess Сообщение
                 a.contact-me__confirm-button.button(href='#') Закрыть
 
             .subtitle.contact-me__subtitle Связаться со мной
             form.contact-form
-                //.contact-form_disabled
                 .contact-form__fields-section
-                    input(type='text' name='name' placeholder='Ваше имя' required).contact-form__name
-                    input(type='email' name='email' placeholder='Ваш email' required).contact-form__email
-                    textarea(name='text' placeholder='Ваше сообщение' required).contact-form__mess
+                    .contact-form__input-wrapper
+                        input(type='text' name='name' placeholder='Ваше имя *').contact-form__name
+                    .contact-form__input-wrapper
+                        input(type='text' name='email' placeholder='Ваш email *').contact-form__email
+                    .contact-form__input-wrapper
+                        textarea(name='text' placeholder='Ваше сообщение *').contact-form__mess
                 input(type='submit' value='Отправить').contact-form__submit.button
                 input(type='reset' value='Очистить').contact-form__reset.button
 

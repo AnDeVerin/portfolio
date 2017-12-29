@@ -24,7 +24,7 @@
     }
   });
 
-//=== proloader.js ============================================================
+//=== preloader.js ============================================================
   function preloader() {
     let percentTotal = 0;
     let preloader = document.querySelector('.preloader');
@@ -266,7 +266,7 @@
 
 //=== slider.js ================================================================
   function initSlider() {
-    let duration = '300ms';
+    let duration = 300;
 
     let prevButton = document.querySelector('.preview-page_prev');
     let nextButton = document.querySelector('.preview-page_next');
@@ -278,20 +278,20 @@
     //--- Button handlers ------------------------------------------------------
     prevButton.addEventListener('click', function(e) {
       e.preventDefault();
-      changeSlide(previewSet, 'down');
-      changeSlide(prevSlideSet, 'down');
-      changeSlide(nextSlideSet, 'down');
+      changeSlide(previewSet, 'down', 1);
+      changeSlide(prevSlideSet, 'down', 1);
+      changeSlide(nextSlideSet, 'down', -1);
     });
 
     nextButton.addEventListener('click', function(e) {
       e.preventDefault();
-      changeSlide(previewSet, 'up');
-      changeSlide(prevSlideSet, 'up');
-      changeSlide(nextSlideSet, 'up');
+      changeSlide(previewSet, 'up', 1);
+      changeSlide(prevSlideSet, 'up', -1);
+      changeSlide(nextSlideSet, 'up', 1);
     });
 
     //--------------------------------------------------------------------------
-    function changeSlide(sliderList, direction) {
+    function changeSlide(sliderList, direction, reverse) {
       direction = (direction === 'down') ? 1 : -1;
 
       let activeSlideIndex = -1;
@@ -304,7 +304,7 @@
           activeSlideIndex = i;
         }
         if (item.classList.contains('preview__item_active')) {
-          activeSlideIndex = i;
+          activeSlideIndex = i;       //- slide show
           slideShow = true;
         }
       });
@@ -324,23 +324,38 @@
         sliderList[activeSlideIndex].classList.remove('preview__item_active');
         sliderList[nextSlide].classList.add('preview__item_active');
 
+
         let slideTitle = sliderList[nextSlide].dataset.previewTitle;
         let slideTechno = sliderList[nextSlide].dataset.previewTechnology;
         let slideLink = sliderList[nextSlide].dataset.previewLink;
 
-        document.querySelector(
-            '.work-description__title').textContent = slideTitle;
-        document.querySelector(
-            '.work-description__technology').textContent = slideTechno;
-        document.querySelector('.work-description__button').href = slideLink;
+        let titleItem = document.querySelector('.work-description__title');
+        let techItem = document.querySelector('.work-description__technology');
+        let linkItem = document.querySelector('.work-description__button');
+
+        titleItem.style.opacity = '0';
+        techItem.style.opacity = '0';
+
+        setTimeout(function() {
+          titleItem.textContent = slideTitle;
+          techItem.textContent = slideTechno;
+          linkItem.href = slideLink;
+
+          titleItem.style.opacity = '';
+          techItem.style.opacity = '';
+
+        }, 300);
+
+
+
 
         return;
       }
 
       //- moving 2 slides
-      sliderList[activeSlideIndex].style.transition = 'top ' + duration;
-      sliderList[nextSlide].style.transition = 'top ' + duration;
-      sliderList[activeSlideIndex].style.top = direction * 100 + '%';
+      sliderList[activeSlideIndex].style.transition = 'top ' + duration + 'ms';
+      sliderList[nextSlide].style.transition = 'top ' + duration + 'ms';
+      sliderList[activeSlideIndex].style.top = direction * 100 * reverse + '%';
       sliderList[nextSlide].style.top = 0 + '%';
 
       //- set default values after animation
@@ -474,7 +489,7 @@
     });
   }
 
-//--- sendMail from form ------------------------------------------------------
+//--- sendMail form -----------------------------------------------------------
   function sendMail() {
     const confirmation = document.querySelector('.contact-me__confirm');
     const confCloseButton = document.querySelector('.contact-me__confirm-button');
@@ -483,24 +498,67 @@
     const formMail = document.querySelector('.contact-form');
 
     if (formMail) {
-      formMail.addEventListener('submit', prepareSendMail);
+      formMail.addEventListener('submit', function(event) {
+        event.preventDefault(); // cancel default action
+        if (!validateForm()) {
+          return;
+        }
+        prepareSendMail();
+      });
     }
 
-    //--- close confirmation window ---
-    confCloseButton.addEventListener('click', function(event) {
-      event.preventDefault();
-      confirmation.classList.remove('contact-me__confirm_visible');
-      formMail.classList.remove('contact-form_disabled');
-    });
+    //--- contact form validation ----------------------------------------------------
+    function validateForm() {
+      const nameRE = /^[а-яА-ЯёЁa-zA-Z]+[\sа-яА-ЯёЁa-zA-Z-]*/i;
+      const emailRE = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      const textRE = /^[а-яА-ЯёЁa-zA-Z]+[\sа-яА-ЯёЁa-zA-Z-]*/i;
+
+      if (!nameRE.test(formMail.name.value)) {  //validate name
+        formMail.name.classList.add('contact-form__input_error');
+        let wrapper =  formMail.name.closest('.contact-form__input-wrapper');
+        wrapper.classList.add('contact-form__name_error');
+
+        formMail.name.onfocus = function() {
+          formMail.name.classList.remove('contact-form__input_error');
+          wrapper.classList.remove('contact-form__name_error');
+        };
+        return;
+      }
+
+      if (!emailRE.test(formMail.email.value)) {  //validate email
+        formMail.email.classList.add('contact-form__input_error');
+        let wrapper =  formMail.email.closest('.contact-form__input-wrapper');
+        wrapper.classList.add('contact-form__email_error');
+
+        formMail.email.onfocus = function() {
+          formMail.email.classList.remove('contact-form__input_error');
+          wrapper.classList.remove('contact-form__email_error');
+        };
+        return;
+      }
+
+      if (!textRE.test(formMail.text.value)) {  //validate text
+        formMail.text.classList.add('contact-form__input_error');
+        let wrapper =  formMail.text.closest('.contact-form__input-wrapper');
+        wrapper.classList.add('contact-form__text_error');
+
+        formMail.text.onfocus = function() {
+          formMail.text.classList.remove('contact-form__input_error');
+          wrapper.classList.remove('contact-form__text_error');
+        };
+        return;
+      }
+      return true;
+    }
+
     //------------------------------------------------------------------------
     function prepareSendMail(event) {
-      event.preventDefault(); // cancel default action
       formMail.classList.add('contact-form_disabled');
-      // ###############!!! add validation before sending !!!#################
+
       let data = {
         name: formMail.name.value,
         email: formMail.email.value,
-        text: formMail.text.value
+        text: formMail.text.value,
       };
 
       sendAjaxJson('/mail', data, function(data) {
@@ -509,7 +567,15 @@
         confirmation.classList.add('contact-me__confirm_visible');
       });
     }
+
+    //--- close confirmation window ---
+    confCloseButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      confirmation.classList.remove('contact-me__confirm_visible');
+      formMail.classList.remove('contact-form_disabled');
+    });
   }
+
 //=== sendAjaxJson ============================================================
   function sendAjaxJson(url, data, callback) {
     let xhr = new XMLHttpRequest();
@@ -526,195 +592,194 @@
     };
     xhr.send(JSON.stringify(data));
   }
-
-//=== init-map.js =============================================================
-  function initMap() {
-
-    let styledMapType = new google.maps.StyledMapType(
-        [
-          {
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#f5f5f5',
-              },
-            ],
-          },
-          {
-            'elementType': 'labels.icon',
-            'stylers': [
-              {
-                'visibility': 'off',
-              },
-            ],
-          },
-          {
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#616161',
-              },
-            ],
-          },
-          {
-            'elementType': 'labels.text.stroke',
-            'stylers': [
-              {
-                'color': '#f5f5f5',
-              },
-            ],
-          },
-          {
-            'featureType': 'administrative.land_parcel',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#bdbdbd',
-              },
-            ],
-          },
-          {
-            'featureType': 'poi',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#eeeeee',
-              },
-            ],
-          },
-          {
-            'featureType': 'poi',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#757575',
-              },
-            ],
-          },
-          {
-            'featureType': 'poi.park',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#e5e5e5',
-              },
-            ],
-          },
-          {
-            'featureType': 'poi.park',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#9e9e9e',
-              },
-            ],
-          },
-          {
-            'featureType': 'road',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#ffffff',
-              },
-            ],
-          },
-          {
-            'featureType': 'road.arterial',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#757575',
-              },
-            ],
-          },
-          {
-            'featureType': 'road.highway',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#dadada',
-              },
-            ],
-          },
-          {
-            'featureType': 'road.highway',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#616161',
-              },
-            ],
-          },
-          {
-            'featureType': 'road.local',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#9e9e9e',
-              },
-            ],
-          },
-          {
-            'featureType': 'transit.line',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#e5e5e5',
-              },
-            ],
-          },
-          {
-            'featureType': 'transit.station',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#eeeeee',
-              },
-            ],
-          },
-          {
-            'featureType': 'water',
-            'elementType': 'geometry',
-            'stylers': [
-              {
-                'color': '#c9c9c9',
-              },
-            ],
-          },
-          {
-            'featureType': 'water',
-            'elementType': 'geometry.fill',
-            'stylers': [
-              {
-                'color': '#4369aa',
-              },
-              {
-                'visibility': 'on',
-              },
-            ],
-          },
-          {
-            'featureType': 'water',
-            'elementType': 'labels.text.fill',
-            'stylers': [
-              {
-                'color': '#9e9e9e',
-              },
-            ],
-          },
-        ],
-        {name: 'Styled Map'});
-
-    let map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 58.607, lng: 49.687},
-      zoom: 13,
-      disableDefaultUI: true,
-    });
-
-    map.mapTypes.set('styled_map', styledMapType);
-    map.setMapTypeId('styled_map');
-  }
-
 //=============================================================================
-
 })();
+
+//=== init-map for Google-map==================================================
+function initMap() {
+
+  let styledMapType = new google.maps.StyledMapType(
+      [
+        {
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#f5f5f5',
+            },
+          ],
+        },
+        {
+          'elementType': 'labels.icon',
+          'stylers': [
+            {
+              'visibility': 'off',
+            },
+          ],
+        },
+        {
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#616161',
+            },
+          ],
+        },
+        {
+          'elementType': 'labels.text.stroke',
+          'stylers': [
+            {
+              'color': '#f5f5f5',
+            },
+          ],
+        },
+        {
+          'featureType': 'administrative.land_parcel',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#bdbdbd',
+            },
+          ],
+        },
+        {
+          'featureType': 'poi',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#eeeeee',
+            },
+          ],
+        },
+        {
+          'featureType': 'poi',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#757575',
+            },
+          ],
+        },
+        {
+          'featureType': 'poi.park',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#e5e5e5',
+            },
+          ],
+        },
+        {
+          'featureType': 'poi.park',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#9e9e9e',
+            },
+          ],
+        },
+        {
+          'featureType': 'road',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#ffffff',
+            },
+          ],
+        },
+        {
+          'featureType': 'road.arterial',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#757575',
+            },
+          ],
+        },
+        {
+          'featureType': 'road.highway',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#dadada',
+            },
+          ],
+        },
+        {
+          'featureType': 'road.highway',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#616161',
+            },
+          ],
+        },
+        {
+          'featureType': 'road.local',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#9e9e9e',
+            },
+          ],
+        },
+        {
+          'featureType': 'transit.line',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#e5e5e5',
+            },
+          ],
+        },
+        {
+          'featureType': 'transit.station',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#eeeeee',
+            },
+          ],
+        },
+        {
+          'featureType': 'water',
+          'elementType': 'geometry',
+          'stylers': [
+            {
+              'color': '#c9c9c9',
+            },
+          ],
+        },
+        {
+          'featureType': 'water',
+          'elementType': 'geometry.fill',
+          'stylers': [
+            {
+              'color': '#4369aa',
+            },
+            {
+              'visibility': 'on',
+            },
+          ],
+        },
+        {
+          'featureType': 'water',
+          'elementType': 'labels.text.fill',
+          'stylers': [
+            {
+              'color': '#9e9e9e',
+            },
+          ],
+        },
+      ],
+      {name: 'Styled Map'});
+
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 58.607, lng: 49.687},
+    zoom: 13,
+    disableDefaultUI: true,
+  });
+
+  map.mapTypes.set('styled_map', styledMapType);
+  map.setMapTypeId('styled_map');
+}
+

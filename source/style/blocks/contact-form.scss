@@ -36,6 +36,7 @@
   border-color: transparent;
   outline: none;
 }
+
 .contact-form__reset {
   color: rgba(255, 255, 255, 0.6);
   background: transparent;
@@ -53,5 +54,85 @@
     width: 100%;
     height: 100%;
     z-index: 3;
+  }
+}
+
+.contact-form__input_error {
+  outline: 1px solid $red-color;
+}
+
+.contact-form__input-wrapper {
+  position: relative;
+}
+
+.contact-form__name_error {
+  &:before {
+    content: '';
+    @include centered('x');
+    top: 47px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 6px solid $red-color;
+    z-index: 1;
+  }
+  &:after {
+    @include centered('x');
+    top: 53px;
+    content: 'Введите ваше имя';
+    padding: 16px;
+    width: 180px;
+    text-align: center;
+    background: $red-color;
+    color: #ffffff;
+    border-radius: 5px;
+    z-index: 1;
+  }
+}
+
+.contact-form__email_error {
+  &:before {
+    content: '';
+    @include centered('x');
+    top: 47px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 6px solid $red-color;
+    z-index: 1;
+  }
+  &:after {
+    @include centered('x');
+    top: 53px;
+    content: 'Некоректный email';
+    padding: 16px;
+    width: 180px;
+    text-align: center;
+    background: $red-color;
+    color: #ffffff;
+    border-radius: 5px;
+    z-index: 1;
+  }
+}
+
+.contact-form__text_error {
+  &:before {
+    content: '';
+    @include centered('x');
+    top: 131px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 6px solid $red-color;
+    z-index: 1;
+  }
+  &:after {
+    @include centered('x');
+    top: 137px;
+    content: 'Напишите что-нибудь';
+    padding: 16px;
+    width: 180px;
+    text-align: center;
+    background: $red-color;
+    color: #ffffff;
+    border-radius: 5px;
+    z-index: 1;
   }
 }
