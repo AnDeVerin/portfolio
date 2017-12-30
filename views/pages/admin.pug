@@ -1,3 +1,5 @@
+include ../common/data
+
 doctype html
 html(lang='ru')
     head
@@ -34,56 +36,33 @@ html(lang='ru')
             ul.admin__pages
                 li.admin__page.admin-about
                     .admin__page-title Страница "Обо мне"
+
                     ul.admin-about__skills
+                        each skillSection, skillSectionTitle in skills
+                            li.admin-about__item
+                                .admin-about__item-name=skillSectionTitle
+                                ul.admin-about__skills-set
+                                    each skillName in skillSection
+                                        li.admin-about__skill-item
+                                            .admin-about__skill-name= skillName
+                                            .admin-about__skill-value 0%
+                                            input.admin-about__skills-input(type='range' min='0' max='100' step='5' value='0')
+                    input.admin-about__button.button(type='button' value='Сохранить')
 
-                        li.admin-about__item
-                            .admin-about__item-name Frontend
-                            ul.admin-about__skills-set
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name HTML
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name CSS
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name JavaScript
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
+                li.admin__page.admin-blog
+                    .admin__page-title Страница "Блог"
+                    form.admin-blog__form
+                        .admin-blog__form-name.admin-about__item-name Добавить запись
+                        input.admin-blog__form-title(type='text' name='title' placeholder='Название')
+                        input.admin-blog__form-date(type='date' name='date' placeholder='Дата')
+                        textarea.admin-blog__form-text(name='text' placeholder='Содержание')
+                        input.admin-about__button.button(type='submit' value='Добавить')
 
-                        li.admin-about__item
-                            .admin-about__item-name Backend
-                            ul.admin-about__skills-set
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name PHP
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name mySQL
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name Node.js
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name Mongo.db
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-
-                        li.admin-about__item
-                            .admin-about__item-name Workflow
-                            ul.admin-about__skills-set
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name Git
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name Gulp
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
-                                li.admin-about__skill-item
-                                    .admin-about__skill-name Webpack
-                                    .admin-about__skill-value 0
-                                    input.admin-about__skills-input(type='range' min='0' max='100' step='5')
+                li.admin__page.admin-works.admin__page_active
+                    .admin__page-title Страница "Мои работы"
+                    form.admin-works__form
+                        .admin-about__item-name Добавить работу
+                        input.admin-blog__form-title(type='text' name='title' placeholder='Название проекта')
+                        input.admin-blog__form-title(type='text' name='tech' placeholder='Технологии')
+                        input.admin-about__file-button(type='file')
+                        input.admin-about__button.button(type='submit' value='Добавить')

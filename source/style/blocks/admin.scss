@@ -64,3 +64,10 @@
   font-size: 21px;
   font-weight: 500;
 }
+
+.admin__page {
+  display: none;
+}
+.admin__page_active {
+  display: block;
+}

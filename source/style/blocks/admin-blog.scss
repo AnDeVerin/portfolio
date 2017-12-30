@@ -1,0 +1,28 @@
+.admin-blog__form,
+.admin-works__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.admin-blog__form-title,
+.admin-blog__form-date,
+.admin-blog__form-text {
+  width: 300px;
+  padding: 16px;
+  outline: none;
+  border-radius: 5px;
+  border-color: transparent;
+  margin-bottom: 20px;
+}
+
+.admin-blog__form-text {
+  width: 600px;
+  height: 150px;
+  resize: none;
+}
+
+.admin-about__file-button {
+  margin-bottom: 50px;
+}
