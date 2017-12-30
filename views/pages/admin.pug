@@ -26,15 +26,15 @@ html(lang='ru')
                 a.admin__header-link(href="/") Вернуться на сайт
 
             ul.admin__tabs
-                li.tabs__item.tabs__item_active
+                li.tabs__item.tabs__item_active(data-page='admin-about')
                     a.tabs__link(href='#') Обо мне
-                li.tabs__item
+                li.tabs__item(data-page='admin-blog')
                     a.tabs__link(href='#') Блог
-                li.tabs__item
+                li.tabs__item(data-page='admin-works')
                     a.tabs__link(href='#') Мои работы
 
             ul.admin__pages
-                li.admin__page.admin-about
+                li.admin__page.admin-about.admin__page_active
                     .admin__page-title Страница "Обо мне"
 
                     ul.admin-about__skills
@@ -58,11 +58,12 @@ html(lang='ru')
                         textarea.admin-blog__form-text(name='text' placeholder='Содержание')
                         input.admin-about__button.button(type='submit' value='Добавить')
 
-                li.admin__page.admin-works.admin__page_active
+                li.admin__page.admin-works
                     .admin__page-title Страница "Мои работы"
                     form.admin-works__form
                         .admin-about__item-name Добавить работу
                         input.admin-blog__form-title(type='text' name='title' placeholder='Название проекта')
                         input.admin-blog__form-title(type='text' name='tech' placeholder='Технологии')
+                        input.admin-blog__form-title(type='text' name='link' placeholder='Ссылка')
                         input.admin-about__file-button(type='file')
                         input.admin-about__button.button(type='submit' value='Добавить')

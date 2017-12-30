@@ -43,6 +43,10 @@ html(lang='ru')
                 a(href="#").button.welcome__button#auth-button Авторизоваться
 
                 .flip-container
+                    .contact-me__confirm
+                        .contact-me__confirm-mess Сообщение
+                        a.contact-me__confirm-button.button(href='#') Закрыть
+
                     .welcome__title#login-front
                         .user.welcome__user-block
                             .user__photo
@@ -68,20 +72,21 @@ html(lang='ru')
 
 
                     .login.welcome__login#login-back
+
                         .login__title Авторизуйтесь
-                        form(action='#').login__form
+                        form(action='#' method='POST').login__form
                             .login__input
-                                input(type='text' placeholder='Логин' name='uName' required).login__input-field
+                                input(type='text' placeholder='Логин' name='name').login__input-field
                                 svg.login__img.login__img_fill_grey
                                     use(xlink:href='assets/img/sprite.svg#login')
                             .login__input
-                                input(type='password' placeholder='Пароль' name='psw' required).login__input-field
+                                input(type='password' placeholder='Пароль' name='pass').login__input-field
                                 svg.login__img.login__img_fill_grey
                                     use(xlink:href='assets/img/sprite.svg#password')
 
                             .login__checkbox-wrapper
                                 label.login__check-field
-                                    input(type='checkbox').login__checkbox
+                                    input(type='checkbox' name='human').login__checkbox
                                     .login__checkmark
                                     span.login__check-text Я человек
 

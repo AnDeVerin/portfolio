@@ -19,6 +19,9 @@
       case 'index':
         indexPage();
         break;
+      case 'admin':
+        adminPage();
+        break;
       default:
         return;
     }
@@ -95,7 +98,6 @@
     }
   }
 
-//=== common.js ================================================================
 // == common functions ========================================================
 
 //--- init hamburger menu -----------------------------------------------------
@@ -324,7 +326,6 @@
         sliderList[activeSlideIndex].classList.remove('preview__item_active');
         sliderList[nextSlide].classList.add('preview__item_active');
 
-
         let slideTitle = sliderList[nextSlide].dataset.previewTitle;
         let slideTechno = sliderList[nextSlide].dataset.previewTechnology;
         let slideLink = sliderList[nextSlide].dataset.previewLink;
@@ -345,9 +346,6 @@
           techItem.style.opacity = '';
 
         }, 300);
-
-
-
 
         return;
       }
@@ -426,6 +424,120 @@
       });
     }
 
+    //--- login form ----------------------------------------------------------
+    if (loginBack) {
+      const loginForm = loginBack.querySelector('.login__form');
+
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+          event.preventDefault(); // cancel default action
+          if (!validateForm(loginForm)) {
+            return;
+          }
+          sendLogin(loginForm);
+        });
+      }
+    }
+
+    //- send login info -------------------------------------------------------
+    function sendLogin(loginForm) {
+
+      let confirmation = document.querySelector('.contact-me__confirm');
+      let confCloseButton = confirmation.querySelector('.button');
+      let confMessage = document.querySelector('.contact-me__confirm-mess');
+      confMessage.textContent = 'Неверный логин';
+
+
+      console.log('Login sent to server');
+      loginBack.classList.add('login_disabled');
+
+      let data = {
+        name: loginForm.name.value,
+        pass: loginForm.pass.value
+      };
+
+/*      sendAjaxJson('/admin', data, function(data) {
+        formMail.reset();
+        confMessage.textContent = data;
+        confirmation.classList.add('contact-me__confirm_visible');
+      });*/
+
+      setTimeout(function() {
+        loginForm.reset();
+        confirmation.classList.add('contact-me__confirm_visible');
+      }, 1000);
+
+      //--- close confirmation window ---
+      confCloseButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        confirmation.classList.remove('contact-me__confirm_visible');
+        loginBack.classList.remove('login_disabled');
+      });
+
+    //top.location.href='/admin';
+    }
+
+    //- validate login form ---------------------------------------------------
+    function validateForm(loginForm) {
+      const testRE = /^[a-z][\w-]{2,12}$/i;
+      //-  handle login input -
+      let loginField = loginForm.name;
+      let loginIcon = loginField.nextSibling;
+      let loginWrapper = loginForm.name.closest('.login__input');
+
+      if (!testRE.test(loginForm.name.value)) {
+        loginField.classList.add('login__input-field_error');
+        loginIcon.classList.add('login__img_fill_red');
+        loginIcon.classList.remove('login__img_fill_blue');
+        loginWrapper.classList.add('login__input_error');
+
+        loginField.onfocus = function() { // remove error on focus
+          loginField.classList.remove('login__input-field_error');
+          loginIcon.classList.remove('login__img_fill_red');
+          loginWrapper.classList.remove('login__input_error');
+        };
+        return;
+      } else {
+        loginIcon.classList.add('login__img_fill_blue');
+      }
+
+      //-  handle password input -
+      let passField = loginForm.pass;
+      let passIcon = passField.nextSibling;
+      let passWrapper = loginForm.pass.closest('.login__input');
+
+      if (!testRE.test(loginForm.pass.value)) {
+        passField.classList.add('login__input-field_error');
+        passIcon.classList.add('login__img_fill_red');
+        passIcon.classList.remove('login__img_fill_blue');
+        passWrapper.classList.add('pass__input_error');
+
+        passField.onfocus = function() { // remove error on focus
+          passField.classList.remove('login__input-field_error');
+          passIcon.classList.remove('login__img_fill_red');
+          passWrapper.classList.remove('pass__input_error');
+        };
+        return;
+      } else {
+        passIcon.classList.add('login__img_fill_blue');
+      }
+
+      //-  handle checkbox and radio input -
+      let robotCheck = loginForm.human.closest('.login__checkbox-wrapper');
+
+      if (!loginForm.human.checked ||
+          !loginForm.robot[0].checked) {
+        robotCheck.classList.add('login__checkbox-wrapper_error');
+
+        loginForm.addEventListener('click', function() {
+          robotCheck.classList.remove('login__checkbox-wrapper_error');
+        });
+        return;
+      }
+
+      return true;
+    }
+
     //--- parallax effect on index page-----------------------------------------
     function moveBackground(e) {
       let initialX = (welcome.clientWidth / 2) - e.pageX;
@@ -492,7 +604,8 @@
 //--- sendMail form -----------------------------------------------------------
   function sendMail() {
     const confirmation = document.querySelector('.contact-me__confirm');
-    const confCloseButton = document.querySelector('.contact-me__confirm-button');
+    const confCloseButton = document.querySelector(
+        '.contact-me__confirm-button');
     const confMessage = document.querySelector('.contact-me__confirm-mess');
 
     const formMail = document.querySelector('.contact-form');
@@ -515,7 +628,7 @@
 
       if (!nameRE.test(formMail.name.value)) {  //validate name
         formMail.name.classList.add('contact-form__input_error');
-        let wrapper =  formMail.name.closest('.contact-form__input-wrapper');
+        let wrapper = formMail.name.closest('.contact-form__input-wrapper');
         wrapper.classList.add('contact-form__name_error');
 
         formMail.name.onfocus = function() {
@@ -527,7 +640,7 @@
 
       if (!emailRE.test(formMail.email.value)) {  //validate email
         formMail.email.classList.add('contact-form__input_error');
-        let wrapper =  formMail.email.closest('.contact-form__input-wrapper');
+        let wrapper = formMail.email.closest('.contact-form__input-wrapper');
         wrapper.classList.add('contact-form__email_error');
 
         formMail.email.onfocus = function() {
@@ -539,7 +652,7 @@
 
       if (!textRE.test(formMail.text.value)) {  //validate text
         formMail.text.classList.add('contact-form__input_error');
-        let wrapper =  formMail.text.closest('.contact-form__input-wrapper');
+        let wrapper = formMail.text.closest('.contact-form__input-wrapper');
         wrapper.classList.add('contact-form__text_error');
 
         formMail.text.onfocus = function() {
@@ -592,6 +705,51 @@
     };
     xhr.send(JSON.stringify(data));
   }
+
+//==== admin page =============================================================
+  function adminPage() {
+
+    initAdminTabs();
+
+    //------------------------------------------------------------------------
+    function initAdminTabs() {
+      const menu = document.querySelector('.admin__tabs');
+      if (!menu) return;
+
+      menu.addEventListener('click', function(event) {
+        event.preventDefault();
+        let target = event.target.closest('.tabs__item'); // check if click on tab
+        if (!target) {
+          return;
+        }
+
+        const tabs = document.querySelectorAll('.tabs__item');
+        const pages = document.querySelectorAll('.admin__page');
+
+        let targetPage = target.dataset.page; // get target page name
+
+        //- set active tab
+        tabs.forEach(function(tab) {
+          if (tab === target) {
+            tab.classList.add('tabs__item_active');
+          } else {
+            tab.classList.remove('tabs__item_active');
+          }
+        });
+
+        //- set active page
+        pages.forEach(function(page) {
+          if (page.classList.contains(targetPage)) {
+            page.classList.add('admin__page_active');
+          } else {
+            page.classList.remove('admin__page_active');
+          }
+        });
+      });
+    }
+
+  }
+
 //=============================================================================
 })();
 
