@@ -21,6 +21,7 @@ html(lang='ru')
 
     body
         .wrapper.admin
+            span.admin__status Сообщение
             header.admin__header(data-page='admin')
                 .admin__header-name Панель администрирования
                 a.admin__header-link(href="/") Вернуться на сайт
@@ -53,9 +54,9 @@ html(lang='ru')
                     .admin__page-title Страница "Блог"
                     form.admin-blog__form
                         .admin-blog__form-name.admin-about__item-name Добавить запись
-                        input.admin-blog__form-title(type='text' name='title' placeholder='Название')
-                        input.admin-blog__form-date(type='date' name='date' placeholder='Дата')
-                        textarea.admin-blog__form-text(name='text' placeholder='Содержание')
+                        input.admin-blog__form-title(type='text' name='title' placeholder='Название' required)
+                        input.admin-blog__form-date(type='date' name='date' placeholder='Дата' required)
+                        textarea.admin-blog__form-text(name='text' placeholder='Содержание' required)
                         input.admin-about__button.button(type='submit' value='Добавить')
 
                 li.admin__page.admin-works

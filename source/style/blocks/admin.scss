@@ -7,6 +7,21 @@
   flex-direction: column;
 }
 
+.admin__status {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 70px;
+  color: $dark-blue-color;
+  font-weight: 500;
+  border-radius: 5px;
+  background: #f0eea4;
+  box-shadow: 0px 5px 10px 1px #c1c1c1;
+  z-index: 5;
+}
+
 .admin__header {
   padding: 32px;
   background-color: $bright-blue-color;
@@ -35,6 +50,7 @@
 .tabs__item {
   border-right: 2px solid #fff;
 }
+
 .tabs__item_active {
   background: #ffffff;
   & .tabs__link {
@@ -68,6 +84,7 @@
 .admin__page {
   display: none;
 }
+
 .admin__page_active {
   display: block;
 }

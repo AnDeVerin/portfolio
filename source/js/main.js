@@ -4,7 +4,9 @@
   document.addEventListener('DOMContentLoaded', function() {
 
     let pageIdElem = document.querySelector('[data-page]');
-    if (!pageIdElem) return;
+    if (!pageIdElem) {
+      return;
+    }
 
     switch (pageIdElem.dataset.page) {
       case 'about':
@@ -216,12 +218,17 @@
 //--- smooth scroll functions set --------------------------------------------
   function currentYPosition() {
     // Firefox, Chrome, Opera, Safari
-    if (self.pageYOffset) return self.pageYOffset;
+    if (self.pageYOffset) {
+      return self.pageYOffset;
+    }
     // Internet Explorer 6 - standards mode
-    if (document.documentElement && document.documentElement.scrollTop)
+    if (document.documentElement && document.documentElement.scrollTop) {
       return document.documentElement.scrollTop;
+    }
     // Internet Explorer 6, 7 and 8
-    if (document.body.scrollTop) return document.body.scrollTop;
+    if (document.body.scrollTop) {
+      return document.body.scrollTop;
+    }
     return 0;
   }
 
@@ -245,7 +252,9 @@
       return;
     }
     let speed = Math.round(distance / 100);
-    if (speed >= 30) speed = 30;
+    if (speed >= 30) {
+      speed = 30;
+    }
     let step = Math.round(distance / 25);
     let leapY = stopY > startY ? startY + step : startY - step;
     let timer = 0;
@@ -253,7 +262,9 @@
       for (let i = startY; i < stopY; i += step) {
         setTimeout('window.scrollTo(0, ' + leapY + ')', timer * speed);
         leapY += step;
-        if (leapY > stopY) leapY = stopY;
+        if (leapY > stopY) {
+          leapY = stopY;
+        }
         timer++;
       }
       return;
@@ -261,7 +272,9 @@
     for (let i = startY; i > stopY; i -= step) {
       setTimeout('window.scrollTo(0, ' + leapY + ')', timer * speed);
       leapY -= step;
-      if (leapY < stopY) leapY = stopY;
+      if (leapY < stopY) {
+        leapY = stopY;
+      }
       timer++;
     }
   }
@@ -311,7 +324,9 @@
         }
       });
 
-      if (activeSlideIndex === -1) return; // exit, if no active slide
+      if (activeSlideIndex === -1) {
+        return;
+      } // exit, if no active slide
 
       nextSlide = activeSlideIndex + direction;
       if (nextSlide >= sliderList.length) {
@@ -447,20 +462,19 @@
       let confMessage = document.querySelector('.contact-me__confirm-mess');
       confMessage.textContent = 'Неверный логин';
 
-
       console.log('Login sent to server');
       loginBack.classList.add('login_disabled');
 
       let data = {
         name: loginForm.name.value,
-        pass: loginForm.pass.value
+        pass: loginForm.pass.value,
       };
 
-/*      sendAjaxJson('/admin', data, function(data) {
-        formMail.reset();
-        confMessage.textContent = data;
-        confirmation.classList.add('contact-me__confirm_visible');
-      });*/
+      /*      sendAjaxJson('/admin', data, function(data) {
+              formMail.reset();
+              confMessage.textContent = data;
+              confirmation.classList.add('contact-me__confirm_visible');
+            });*/
 
       setTimeout(function() {
         loginForm.reset();
@@ -474,7 +488,7 @@
         loginBack.classList.remove('login_disabled');
       });
 
-    //top.location.href='/admin';
+      //top.location.href='/admin';
     }
 
     //- validate login form ---------------------------------------------------
@@ -497,7 +511,8 @@
           loginWrapper.classList.remove('login__input_error');
         };
         return;
-      } else {
+      }
+      else {
         loginIcon.classList.add('login__img_fill_blue');
       }
 
@@ -518,7 +533,8 @@
           passWrapper.classList.remove('pass__input_error');
         };
         return;
-      } else {
+      }
+      else {
         passIcon.classList.add('login__img_fill_blue');
       }
 
@@ -620,7 +636,8 @@
       });
     }
 
-    //--- contact form validation ----------------------------------------------------
+    //--- contact form validation
+    // ----------------------------------------------------
     function validateForm() {
       const nameRE = /^[а-яА-ЯёЁa-zA-Z]+[\sа-яА-ЯёЁa-zA-Z-]*/i;
       const emailRE = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -698,7 +715,8 @@
       let result;
       try {
         result = JSON.parse(xhr.responseText);
-      } catch (e) {
+      }
+      catch (e) {
         callback('Извините в данных ошибка');
       }
       callback(result.status);
@@ -709,16 +727,101 @@
 //==== admin page =============================================================
   function adminPage() {
 
+    let skills = {
+      'Frontend': {
+        'HTML5': 0,
+        'CSS3': 0,
+        'JavaScript': 0,
+      },
+      'Backend': {
+        'PHP': 0,
+        'mySQL': 0,
+        'Node.js & npm': 0,
+        'Mongo.db': 0,
+      },
+      'WorkFlow': {
+        'Git': 0,
+        'Gulp': 0,
+        'Webpack': 0,
+      },
+    };
+    let skillsChanged = false;
+
+    //- set status window and clean handler
+    const statusContainer = document.querySelector('.admin__status');
+    const adminSection = document.querySelector('.admin');
+    adminSection.addEventListener('click', cleanConfirmations);
+
+    const saveSkillsButton = document.querySelector('.admin-about__button');
+    saveSkillsButton.addEventListener('click', saveSkills);
+
+    const blogForm = document.querySelector('.admin-blog__form');
+    blogForm.addEventListener('submit', sendBlogPost); // sending post to blog
+
     initAdminTabs();
+    initSkillsInputs();
+
+    //------------------------------------------------------------------------
+    function saveSkills(event) {
+      event.stopPropagation();
+
+      if(!skillsChanged) {
+        statusContainer.textContent = 'Значения не менялись';
+        statusContainer.style.display = 'block';
+        return;
+      }
+
+      console.log(skills);
+      statusContainer.textContent = 'Saving new values...';
+      statusContainer.style.display = 'block';
+      // write skills to DB
+
+    }
+    //------------------------------------------------------------------------
+    function initSkillsInputs() {
+      const skillsList = document.querySelector('.admin-about__skills');
+      if (!skillsList) {
+        return;
+      }
+
+      //- set input values
+      skillsList.addEventListener('input', function(event) {
+        let inputValue = event.target.value;  // get input value
+        let printElem = event.target.previousElementSibling; // get print
+                                                             // container
+        printElem.textContent = inputValue + '%';  // print the value there
+
+        let nameElem = printElem.previousElementSibling;
+        let skillName = nameElem.textContent; // get the name of the skill
+
+        let skillSetItem = event.target.closest('.admin-about__skills-set');
+        let skillSetName = skillSetItem.previousElementSibling.textContent;
+
+        // now we have the full path to the object value and we write it
+        // skills.skillSetName.skillName = inputValue;
+        skills[skillSetName][skillName] = Number(inputValue);
+        skillsChanged = true;
+      });
+    }
+
+    //------------------------------------------------------------------------
+    function cleanConfirmations() {
+      const adminConf = document.querySelector('.admin__status');
+      adminConf.textContent = '';
+      adminConf.style = '';
+    }
 
     //------------------------------------------------------------------------
     function initAdminTabs() {
       const menu = document.querySelector('.admin__tabs');
-      if (!menu) return;
+      if (!menu) {
+        return;
+      }
 
       menu.addEventListener('click', function(event) {
         event.preventDefault();
-        let target = event.target.closest('.tabs__item'); // check if click on tab
+        let target = event.target.closest('.tabs__item'); // check if click on
+                                                          // tab
         if (!target) {
           return;
         }
@@ -732,7 +835,8 @@
         tabs.forEach(function(tab) {
           if (tab === target) {
             tab.classList.add('tabs__item_active');
-          } else {
+          }
+          else {
             tab.classList.remove('tabs__item_active');
           }
         });
@@ -741,10 +845,30 @@
         pages.forEach(function(page) {
           if (page.classList.contains(targetPage)) {
             page.classList.add('admin__page_active');
-          } else {
+          }
+          else {
             page.classList.remove('admin__page_active');
           }
         });
+      });
+    }
+
+    //------------------------------------------------------------------------
+    function sendBlogPost(event) {
+      event.preventDefault();
+
+      let data = {
+        title: blogForm.title.value,
+        date: blogForm.date.value,
+        text: blogForm.text.value,
+      };
+
+      statusContainer.textContent = 'Sending...';
+      statusContainer.style.display = 'block';
+
+      sendAjaxJson('/admin/addpost', data, function(data) {
+        blogForm.reset();
+        statusContainer.textContent = data;
       });
     }
 
