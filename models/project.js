@@ -3,7 +3,7 @@
 const mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     Project = new Schema({
-      name: {
+      title: {
         type: String,
         required: [true, 'Укажите описание проекта']
       },

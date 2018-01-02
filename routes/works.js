@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/works', function (req, res) {
   let obj = {
-    title: 'Works'
+    title: 'My works'
   };
   Object.assign(obj, req.app.locals.settings);
   res.render('pages/works', obj);

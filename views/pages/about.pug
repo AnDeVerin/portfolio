@@ -1,7 +1,7 @@
 extends ../_template
 
 block title
-    | Обо мне
+    = title
 
 block content
     include ../common/preloader
@@ -79,14 +79,15 @@ block content
                                 .skill-section
                                     .skill-section__title(id=`${skillSectionTitle}`)= skillSectionTitle
                                     ul.skill-section__list
-                                        each skillName in skillSection
+                                        each skillValue, skillName in skillSection
                                             li.skill-section__item
                                                 .skill
                                                     svg.skill__circle.cirlce(viewBox='0 0 110 110')
                                                         circle.circle__first(r="45" cx="50%" cy="50%" fill="none")
                                                         circle.circle__second(r="45" cx="50%" cy="50%"
                                                                 fill="none" transform="rotate(-90 55 55)"
-                                                                data-skill-name=`${ skillName }`)
+                                                                data-skill-name=`${ skillName }`
+                                                                data-skill-value=`${ skillValue }`)
                                                     .skill__name= skillName
 
 

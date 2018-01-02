@@ -159,25 +159,12 @@
 //--- animate skills circles on about page -----------------------------------
   function showSkills() {
 
-    let skillsData = {
-      'HTML5': 90,
-      'CSS3': 80,
-      'JavaScript': 75,
-      'PHP': 20,
-      'mySQL': 20,
-      'Node.js & npm': 60,
-      'Mongo.db': 55,
-      'Git': 80,
-      'Gulp': 70,
-      'Webpack': 50,
-    };
-
     let skillsList = document.querySelectorAll('.circle__second');
     skillsList.forEach = [].forEach;
     skillsList.forEach(function(skill) {
       setTimeout(function() {
-        let skillName = skill.getAttribute('data-skill-name');
-        let newCircleClass = 'circle-' + skillsData[skillName];
+        let skillValue = skill.getAttribute('data-skill-value');
+        let newCircleClass = 'circle-' + skillValue;
         skill.setAttribute('class', 'circle__second ' + newCircleClass);
       }, 300);
     });
@@ -736,8 +723,8 @@
       'Backend': {
         'PHP': 0,
         'mySQL': 0,
-        'Node.js & npm': 0,
-        'Mongo.db': 0,
+        'NodeJS & npm': 0,
+        'MongoDB': 0,
       },
       'WorkFlow': {
         'Git': 0,
@@ -758,25 +745,77 @@
     const blogForm = document.querySelector('.admin-blog__form');
     blogForm.addEventListener('submit', sendBlogPost); // sending post to blog
 
+    const worksForm = document.querySelector('.admin-works__form');
+    worksForm.addEventListener('submit', sendWork); // sending post to blog
+
     initAdminTabs();
+    setSkillsToLocalVar();
     initSkillsInputs();
 
+    //------------------------------------------------------------------------
+    function sendWork(event) {
+      event.preventDefault();
+
+      let formData = new FormData();
+
+      let file = worksForm.file.files[0];
+
+      formData.append('image', file, file.name);
+      formData.append('title', worksForm.title.value);
+      formData.append('tech', worksForm.tech.value);
+      formData.append('link', worksForm.link.value);
+
+      statusContainer.textContent = 'Sending...';
+      statusContainer.style.display = 'block';
+
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', '/admin/upload', true);
+      xhr.onload = function (event) {
+        let result = JSON.parse(xhr.responseText);
+        worksForm.reset();
+        statusContainer.textContent = result.status;
+        //console.log(event);
+      };
+
+      xhr.send(formData);
+    }
     //------------------------------------------------------------------------
     function saveSkills(event) {
       event.stopPropagation();
 
-      if(!skillsChanged) {
+      if (!skillsChanged) {
         statusContainer.textContent = 'Значения не менялись';
         statusContainer.style.display = 'block';
         return;
       }
 
-      console.log(skills);
+      // send skills to DB
       statusContainer.textContent = 'Saving new values...';
       statusContainer.style.display = 'block';
-      // write skills to DB
+
+      sendAjaxJson('/admin/saveskills', skills, function(data) {
+        statusContainer.textContent = data;
+      });
 
     }
+
+    //------------------------------------------------------------------------
+    function setSkillsToLocalVar() { // save values from html to skills variable
+      const inputList = document.querySelectorAll('.admin-about__skills-input');
+      if (!inputList) {
+        return;
+      }
+
+      inputList.forEach(function(inputElem) {
+        let skillValue = inputElem.value;
+        let skillName = inputElem.previousElementSibling.previousElementSibling.textContent;
+        let skillSetItem = inputElem.closest('.admin-about__skills-set');
+        let skillSetName = skillSetItem.previousElementSibling.textContent;
+
+        skills[skillSetName][skillName] = Number(skillValue);
+      });
+    }
+
     //------------------------------------------------------------------------
     function initSkillsInputs() {
       const skillsList = document.querySelector('.admin-about__skills');

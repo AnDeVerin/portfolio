@@ -36,6 +36,7 @@ require('./models/db-close');
 //подключаем модели(сущности, описывающие коллекции базы данных)
 require('./models/blog');
 require('./models/project');
+require('./models/skillset');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
