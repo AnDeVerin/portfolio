@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-//const skillSchema = new mongoose.Schema({data: {}});
-//const SkillSet = mongoose.model('SkillSet', skillSchema);
-
 router.get('/', function (req, res) {         // index page
   let obj = {
     title: 'Welcome'

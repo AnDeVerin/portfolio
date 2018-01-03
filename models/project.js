@@ -16,7 +16,8 @@ const mongoose = require('mongoose'),
         required: [true, 'Укажите ссылку на проект']
       },
       picture: {
-        type: String
+        type: String,
+        required: [true, 'Укажите ссылку на файл']
       }
     });
 

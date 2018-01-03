@@ -49,26 +49,25 @@ block content
         .works-block.works-block__right
             .preview.works-block__preview
                 ul.preview__slideshow
-                    li.preview__item(style=`background-image: url(assets/img/content/s1.png)`
-                                    data-preview-title='Мой сайт-портфолио'
-                                    data-preview-technology='JavaScript, Node.js, Mongo.db'
-                                    data-preview-link='index.html')
-                    li.preview__item.preview__item_active(style=`background-image: url(assets/img/content/s2.png)`
-                                    data-preview-title='Cайт интернет-магазина'
-                                    data-preview-technology='HTML5 & CSS3'
-                                    data-preview-link='https://interiorsite.000webhostapp.com/')
-                    li.preview__item(style=`background-image: url(assets/img/content/s3.png)`
-                                    data-preview-title='Лендинг интернет-агентства'
-                                    data-preview-technology='HTML5 & CSS3'
-                                    data-preview-link='https://andeverin.github.io/waxom-homepage/')
+                    each item, index in myWorks
+                        if index === 1
+                            li.preview__item.preview__item_active(
+                                            style=`background-image: url(${item.picture})`
+                                            data-preview-title= item.title
+                                            data-preview-technology= item.techStack
+                                            data-preview-link= item.link)
+                        else
+                            li.preview__item(
+                                            style=`background-image: url(${item.picture})`
+                                            data-preview-title= item.title
+                                            data-preview-technology= item.techStack
+                                            data-preview-link= item.link)
 
 
             .work-description
-                .work-description__title.subtitle
-                    | Cайт интернет-магазина
-                .work-description__technology
-                    | HTML5 & CSS3
-                a(href='https://interiorsite.000webhostapp.com/' target='_blank').button.work-description__button
+                .work-description__title.subtitle= myWorks[1].title
+                .work-description__technology= myWorks[1].techStack
+                a(href=myWorks[1].link target='_blank').button.work-description__button
                     svg.link__icon
                         use(xlink:href='assets/img/sprite.svg#link')
                     | Посмотреть сайт
@@ -79,20 +78,25 @@ block content
                     svg.preview-page__icon
                         use(xlink:href='assets/img/sprite.svg#portf_arrow_down')
                     ul.preview-page__slider.slider
-                        li.slider__item.slider__item_prev(style=`background-image: url(assets/img/content/s1.png)`)
-                        li.slider__item.slider__item_prev(style=`background-image: url(assets/img/content/s2.png)`)
-                        li.slider__item.slider__item_prev.slider__item_active(style=`background-image: url(assets/img/content/s3.png)`)
-
-
+                        each item, index in myWorks
+                            if index === 2
+                                li.slider__item.slider__item_prev.slider__item_active(
+                                                style=`background-image: url(${item.picture})`)
+                            else
+                                li.slider__item.slider__item_prev(
+                                                style=`background-image: url(${item.picture})`)
 
                 a(href="#").preview-page.preview-page_next
                     svg.preview-page__icon
                         use(xlink:href='assets/img/sprite.svg#portf_arrow_up')
                     ul.preview-page__slider.slider
-                        li.slider__item.slider__item_next.slider__item_active(style=`background-image: url(assets/img/content/s1.png)`)
-                        li.slider__item.slider__item_next(style=`background-image: url(assets/img/content/s2.png)`)
-                        li.slider__item.slider__item_next(style=`background-image: url(assets/img/content/s3.png)`)
-
+                        each item, index in myWorks
+                            if index === 0
+                                li.slider__item.slider__item_next.slider__item_active(
+                                style=`background-image: url(${item.picture})`)
+                            else
+                                li.slider__item.slider__item_next(
+                                style=`background-image: url(${item.picture})`)
 
 
     section.talks

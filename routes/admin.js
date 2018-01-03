@@ -14,10 +14,15 @@ router.get('/admin', function(req, res) {
   Object.assign(obj, req.app.locals.settings);
 
   const SkillSet = mongoose.model('SkillSet');
-  SkillSet.findOne().then(docObj => {
+
+  SkillSet.findOne()
+
+  .then(docObj => {
     Object.assign(obj, {skills: docObj.data});
     res.render('pages/admin', obj);
-  }).catch(err => { // if no data create empty object
+  })
+
+  .catch(err => { // if no data create empty object
     console.log(err);
 
     let skills = {
@@ -128,6 +133,8 @@ router.post('/admin/upload', (req, res) => {
             link: fields.link,
             picture: path.join(dir, files.image.name)
            });
+
+          console.log(item);
 
           item.save().then(
               i => res.json({status: 'Картинка успешно загружена'}),
