@@ -9,6 +9,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const server = http.createServer(app);
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const passport = require('passport');
+
 const jsonfile = require('jsonfile');
 const fileVersionControl = 'version.json';
 const currentStatic = require('./gulp/config').root;
@@ -25,7 +29,7 @@ mongoose.connect(
     `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
       //user: config.db.user,
       //pass: config.db.password,
-      useMongoClient: true
+      useMongoClient: true,
     }).catch(e => {
   console.error(e);
   throw e;
@@ -37,6 +41,26 @@ require('./models/db-close');
 require('./models/blog');
 require('./models/project');
 require('./models/skillset');
+require('./models/user');
+
+// session
+app.use(session({
+  secret: 'secret',
+  key: 'keys',
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    maxAge: null,
+  },
+  saveUninitialized: false,
+  resave: false,
+  store: new MongoStore({mongooseConnection: mongoose.connection}),
+}));
+
+// passport strategies
+require('./config-passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

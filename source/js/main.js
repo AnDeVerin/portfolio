@@ -447,26 +447,27 @@
       let confirmation = document.querySelector('.contact-me__confirm');
       let confCloseButton = confirmation.querySelector('.button');
       let confMessage = document.querySelector('.contact-me__confirm-mess');
-      confMessage.textContent = 'Неверный логин';
 
       console.log('Login sent to server');
       loginBack.classList.add('login_disabled');
 
       let data = {
-        name: loginForm.name.value,
-        pass: loginForm.pass.value,
+        username: loginForm.username.value,
+        password: loginForm.password.value,
       };
 
-      /*      sendAjaxJson('/admin', data, function(data) {
-              formMail.reset();
-              confMessage.textContent = data;
-              confirmation.classList.add('contact-me__confirm_visible');
-            });*/
-
-      setTimeout(function() {
+      sendAjaxJson('/submit', data, function(result) {
         loginForm.reset();
+        confMessage.textContent = result.status;
         confirmation.classList.add('contact-me__confirm_visible');
-      }, 1000);
+
+        if (result.logged) {
+          setTimeout(function() {
+            location.href = '/admin';
+          }, 1000);
+        }
+
+      });
 
       //--- close confirmation window ---
       confCloseButton.addEventListener('click', function(event) {
@@ -482,11 +483,11 @@
     function validateForm(loginForm) {
       const testRE = /^[a-z][\w-]{2,12}$/i;
       //-  handle login input -
-      let loginField = loginForm.name;
+      let loginField = loginForm.username;
       let loginIcon = loginField.nextSibling;
-      let loginWrapper = loginForm.name.closest('.login__input');
+      let loginWrapper = loginForm.username.closest('.login__input');
 
-      if (!testRE.test(loginForm.name.value)) {
+      if (!testRE.test(loginForm.username.value)) {
         loginField.classList.add('login__input-field_error');
         loginIcon.classList.add('login__img_fill_red');
         loginIcon.classList.remove('login__img_fill_blue');
@@ -504,11 +505,11 @@
       }
 
       //-  handle password input -
-      let passField = loginForm.pass;
+      let passField = loginForm.password;
       let passIcon = passField.nextSibling;
-      let passWrapper = loginForm.pass.closest('.login__input');
+      let passWrapper = loginForm.password.closest('.login__input');
 
-      if (!testRE.test(loginForm.pass.value)) {
+      if (!testRE.test(loginForm.password.value)) {
         passField.classList.add('login__input-field_error');
         passIcon.classList.add('login__img_fill_red');
         passIcon.classList.remove('login__img_fill_blue');
@@ -678,9 +679,9 @@
         text: formMail.text.value,
       };
 
-      sendAjaxJson('/mail', data, function(data) {
+      sendAjaxJson('/mail', data, function(result) {
         formMail.reset();
-        confMessage.textContent = data;
+        confMessage.textContent = result.status;
         confirmation.classList.add('contact-me__confirm_visible');
       });
     }
@@ -706,7 +707,7 @@
       catch (e) {
         callback('Извините в данных ошибка');
       }
-      callback(result.status);
+      callback(result);
     };
     xhr.send(JSON.stringify(data));
   }
@@ -793,8 +794,8 @@
       statusContainer.textContent = 'Saving new values...';
       statusContainer.style.display = 'block';
 
-      sendAjaxJson('/admin/saveskills', skills, function(data) {
-        statusContainer.textContent = data;
+      sendAjaxJson('/admin/saveskills', skills, function(result) {
+        statusContainer.textContent = result.status;
       });
 
     }
@@ -905,9 +906,9 @@
       statusContainer.textContent = 'Sending...';
       statusContainer.style.display = 'block';
 
-      sendAjaxJson('/admin/addpost', data, function(data) {
+      sendAjaxJson('/admin/addpost', data, function(result) {
         blogForm.reset();
-        statusContainer.textContent = data;
+        statusContainer.textContent = result.status;
       });
     }
 

@@ -5,8 +5,19 @@ const fs = require('fs');
 const path = require('path');
 const config = require('../config.json');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
-router.get('/admin', function(req, res) {
+//--
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  //- if no authorisation send to main page
+  res.redirect('/');
+}
+//--
+
+router.get('/admin', isLoggedIn, function(req, res) {
   let obj = {
     title: 'Admin panel',
   };
@@ -15,14 +26,10 @@ router.get('/admin', function(req, res) {
 
   const SkillSet = mongoose.model('SkillSet');
 
-  SkillSet.findOne()
-
-  .then(docObj => {
+  SkillSet.findOne().then(docObj => {
     Object.assign(obj, {skills: docObj.data});
     res.render('pages/admin', obj);
-  })
-
-  .catch(err => { // if no data create empty object
+  }).catch(err => { // if no data create empty object
     console.log(err);
 
     let skills = {
@@ -49,7 +56,24 @@ router.get('/admin', function(req, res) {
   });
 });
 
-router.post('/admin/addpost', (req, res) => {
+router.post('/submit', (req, res, next) => {
+  passport.authenticate('loginUsers', (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.json({status: 'Неправильный логин и пароль!'});
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return next(err);
+      }
+      return res.json({status: 'Добро пожаловать! \n Перенаправляем...', logged: true});
+    });
+  })(req, res, next);
+});
+
+router.post('/admin/addpost', isLoggedIn, (req, res) => {
   //требуем наличия заголовка, даты и текста
   if (!req.body.title || !req.body.date || !req.body.text) {
     //если что-либо не указано - сообщаем об этом
@@ -80,7 +104,7 @@ router.post('/admin/addpost', (req, res) => {
       });
 });
 
-router.post('/admin/saveskills', (req, res) => {
+router.post('/admin/saveskills', isLoggedIn, (req, res) => {
 
   // удаляем данные из БД перед сохранением
   const SkillSet = mongoose.model('SkillSet');
@@ -109,7 +133,7 @@ router.post('/admin/saveskills', (req, res) => {
       });
 });
 
-router.post('/admin/upload', (req, res) => {
+router.post('/admin/upload', isLoggedIn, (req, res) => {
 
   let form = new formidable.IncomingForm();
   form.uploadDir = path.join(process.cwd(), config.upload);
@@ -131,8 +155,8 @@ router.post('/admin/upload', (req, res) => {
             title: fields.title,
             techStack: fields.tech,
             link: fields.link,
-            picture: path.join(dir, files.image.name)
-           });
+            picture: path.join(dir, files.image.name),
+          });
 
           console.log(item);
 
