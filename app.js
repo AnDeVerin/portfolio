@@ -25,10 +25,12 @@ const uploadDir = path.join(__dirname, config.upload);
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://root:12345@ds137191.mlab.com:37191/testing');
+//mongodb://user:portfolio123@ds046047.mlab.com:46047/portfolio
 mongoose.connect(
-    `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
+    //`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
       //user: config.db.user,
       //pass: config.db.password,
+    'mongodb://user:portfolio123@ds046047.mlab.com:46047/portfolio', {
       useMongoClient: true,
     }).catch(e => {
   console.error(e);

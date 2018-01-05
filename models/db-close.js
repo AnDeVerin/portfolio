@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const config = require('../config');
 
 mongoose.connection.on('connected', function () {
-  console.log(`Mongoose default connection open mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
+  console.log('Mongoose default connection open.');
+  //console.log(`Mongoose default connection open mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
 });
 
 // If the connection throws an error
@@ -19,5 +20,6 @@ mongoose.connection.on('disconnected', function () {
 process.on('SIGINT', function() {
   mongoose.connection.close(function () {
     console.log('Mongoose default connection disconnected through app termination');
+    process.exit(0);
   });
 });

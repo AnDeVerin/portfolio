@@ -3,20 +3,19 @@ footer.footer
     .infoblock
         .infoblock__section
             .infoblock__text.footer__text
-                | Этот сайт я сделал в рамках самостоятельного обучения по программе онлайн-школы &#32;
-                a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool.
+                | This website is a result of my independent-study educational project.
 
         .infoblock__section
             .infoblock__links
                 ul.infoblock__page-links
                     li.page-links__item
-                        a(href="works").page-links__link Мои работы
+                        a(href="works").page-links__link Portfolio
                     li.page-links__item
-                        a(href="about").page-links__link Обо мне
+                        a(href="about").page-links__link About me
                     li.page-links__item
-                        a(href="blog").page-links__link Блог
+                        a(href="blog").page-links__link Blog
                     li.page-links__item
-                        a(href="/").page-links__link Авторизация
+                        a(href="/").page-links__link Login
 
                 ul.infoblock___socials
                     each item, key in socialLinks
@@ -37,4 +36,6 @@ footer.footer
                     span.footer__text= contacts.adr.name
 
     .copyright.footer__text
-        | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн LoftSchool, 2017
+        | &#169; Coded by Andrey Vershinin, designed by &#32;
+        a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool
+        | , 2017

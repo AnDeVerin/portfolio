@@ -127,7 +127,7 @@
           if (currentPage.href.search(pageId.dataset.page) > 0) {
             currentPage.classList.add('nav__link_active');
           }
-        },
+        }
     );
   }
 
@@ -347,7 +347,7 @@
           titleItem.style.opacity = '';
           techItem.style.opacity = '';
 
-        }, 300);
+        }, duration);
 
         return;
       }
@@ -600,7 +600,7 @@
 
     let scrollUpButton = document.querySelector('.up-arrow');
     scrollUpButton.addEventListener('click', function(event) {
-      smoothScroll('section-works');
+      smoothScroll('header');
       event.preventDefault();
     });
   }

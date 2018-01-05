@@ -1,5 +1,5 @@
 doctype html
-html(lang='ru')
+html(lang='en')
     head
         meta(charset="utf-8")
         meta(content="width=device-width, initial-scale=1" name="viewport")
@@ -19,22 +19,22 @@ html(lang='ru')
 
     body
         .wrapper.admin
-            span.admin__status Сообщение
+            span.admin__status
             header.admin__header(data-page='admin')
-                .admin__header-name Панель администрирования
-                a.admin__header-link(href="/") Вернуться на сайт
+                .admin__header-name Admin panel
+                a.admin__header-link(href="/") Back to the site
 
             ul.admin__tabs
                 li.tabs__item.tabs__item_active(data-page='admin-about')
-                    a.tabs__link(href='#') Обо мне
+                    a.tabs__link(href='#') About
                 li.tabs__item(data-page='admin-blog')
-                    a.tabs__link(href='#') Блог
+                    a.tabs__link(href='#') Blog
                 li.tabs__item(data-page='admin-works')
-                    a.tabs__link(href='#') Мои работы
+                    a.tabs__link(href='#') Portfolio
 
             ul.admin__pages
                 li.admin__page.admin-about.admin__page_active
-                    .admin__page-title Страница "Обо мне"
+                    .admin__page-title Section "About me"
 
                     ul.admin-about__skills
                         each skillSection, skillSectionTitle in skills
@@ -46,23 +46,23 @@ html(lang='ru')
                                             .admin-about__skill-name= skillName
                                             .admin-about__skill-value= `${skillValue}%`
                                             input.admin-about__skills-input(type='range' min='0' max='100' step='5' value=`${skillValue}`)
-                    input.admin-about__button.button(type='button' value='Сохранить')
+                    input.admin-about__button.button(type='button' value='Save values')
 
                 li.admin__page.admin-blog
-                    .admin__page-title Страница "Блог"
+                    .admin__page-title Section "Blog"
                     form.admin-blog__form
-                        .admin-blog__form-name.admin-about__item-name Добавить запись
-                        input.admin-blog__form-title(type='text' name='title' placeholder='Название' required)
-                        input.admin-blog__form-date(type='date' name='date' placeholder='Дата' required)
-                        textarea.admin-blog__form-text(name='text' placeholder='Содержание' required)
-                        input.admin-about__button.button(type='submit' value='Добавить')
+                        .admin-blog__form-name.admin-about__item-name Add an article
+                        input.admin-blog__form-title(type='text' name='title' placeholder='Title' required)
+                        input.admin-blog__form-date(type='date' name='date' placeholder='Date' required)
+                        textarea.admin-blog__form-text(name='text' placeholder='Article content' required)
+                        input.admin-about__button.button(type='submit' value='Add')
 
                 li.admin__page.admin-works
-                    .admin__page-title Страница "Мои работы"
+                    .admin__page-title Section "Portfolio'
                     form.admin-works__form
-                        .admin-about__item-name Добавить работу
-                        input.admin-blog__form-title(type='text' name='title' placeholder='Название проекта' required)
-                        input.admin-blog__form-title(type='text' name='tech' placeholder='Технологии' required)
-                        input.admin-blog__form-title(type='text' name='link' placeholder='Ссылка' required)
+                        .admin-about__item-name Add a project
+                        input.admin-blog__form-title(type='text' name='title' placeholder='Project name' required)
+                        input.admin-blog__form-title(type='text' name='tech' placeholder='Technologies used' required)
+                        input.admin-blog__form-title(type='text' name='link' placeholder='Link to the site' required)
                         input.admin-about__file-button(type='file' name='file' required)
-                        input.admin-about__button.button(type='submit' value='Добавить')
+                        input.admin-about__button.button(type='submit' value='Add')

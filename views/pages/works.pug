@@ -6,7 +6,7 @@ block title
 block content
     include ../common/preloader
 
-    header.section.hero-wrapper(data-page='works')
+    header.section.hero-wrapper(data-page='works')#header
         .hero.hero_works
             ul.socials__hero
                 each item, key in socialLinks
@@ -30,14 +30,14 @@ block content
                 .user__photo
                     .user__photo-avatar
                         img(src="assets/img/content/about.jpg", alt="").user__photo-img
-                .user__name Андрей Вершинин
-                .user__desc Личный сайт веб-разработчика
+                .user__name Andrey Vershinin
+                .user__desc Web-developer
 
 
-        .hero-wrapper__works-title#section-works
-            +title('Мои работы', 'stars2-2.png', 'works__section-title')
+        .hero-wrapper__works-title
+            +title('Portfolio', 'stars2-2.png', 'works__section-title')
 
-    main.section.works
+    main.section.works#section-works
         svg(
         viewbox="0 0 100 34"
         preserveAspectRatio="none"
@@ -70,7 +70,7 @@ block content
                 a(href=myWorks[1].link target='_blank').button.work-description__button
                     svg.link__icon
                         use(xlink:href='assets/img/sprite.svg#link')
-                    | Посмотреть сайт
+                    | Go to the website
 
 
             .preview-pages.works-block__preview-pages
@@ -100,42 +100,44 @@ block content
 
 
     section.talks
-        +title('Что обо мне говорят', 'stars3.png', 'talks__section-title')
+        +title('What people say about me', 'stars3.png', 'talks__section-title')
         .talks__speakers
             .speaker
-                img(src="assets/img/content/face_kd.png", alt="фото Ковальчук Дмитрий").speaker__img
+                img(src="assets/img/content/face_kd.png", alt="Dmitriy Kovalchuk").speaker__img
                 .speaker__text
-                    | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                    | This guy was trained in Loftschool, not elsewhere. 2 months of the hardest challenges and sleepless nights!
+                    //| Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
                 .speaker__name
-                    strong Ковальчук Дмитрий
+                    strong Dmitriy Kovalchuk
                     br
-                    span &mdash; основатель Loftschool
+                    span &mdash; a founder of Loftschool
 
             .speaker
-                img(src="assets/img/content/face_sv.png", alt="фото Сабанцев Владимир").speaker__img
+                img(src="assets/img/content/face_sv.png", alt="Vladiimir Sabantsev").speaker__img
                 .speaker__text
-                    | Этот код выдержит любые испытания. Только, пожалуйста, не загружайте сайт на слишком старых браузерах!
+                    | This code can go through any tests. Just don't use very old browsers, please!
+                    //| Этот код выдержит любые испытания. Только, пожалуйста, не загружайте сайт на слишком старых браузерах!
                 .speaker__name
-                    strong Сабанцев Владимир
+                    strong Vladiimir Sabantsev
                     br
-                    span &mdash; преподаватель
+                    span &mdash; a leading instructor
 
         .contact-me.talks__contact-me
             .contact-me__confirm
-                .contact-me__confirm-mess Сообщение
-                a.contact-me__confirm-button.button(href='#') Закрыть
+                .contact-me__confirm-mess
+                a.contact-me__confirm-button.button(href='#') Close
 
-            .subtitle.contact-me__subtitle Связаться со мной
+            .subtitle.contact-me__subtitle Contact me
             form.contact-form
                 .contact-form__fields-section
                     .contact-form__input-wrapper
-                        input(type='text' name='name' placeholder='Ваше имя *').contact-form__name
+                        input(type='text' name='name' placeholder='Your name *').contact-form__name
                     .contact-form__input-wrapper
-                        input(type='text' name='email' placeholder='Ваш email *').contact-form__email
+                        input(type='text' name='email' placeholder='Your email *').contact-form__email
                     .contact-form__input-wrapper
-                        textarea(name='text' placeholder='Ваше сообщение *').contact-form__mess
-                input(type='submit' value='Отправить').contact-form__submit.button
-                input(type='reset' value='Очистить').contact-form__reset.button
+                        textarea(name='text' placeholder='Your message *').contact-form__mess
+                input(type='submit' value='Send').contact-form__submit.button
+                input(type='reset' value='Clear').contact-form__reset.button
 
         a(href="#").up-arrow.talks__up-arrow
             svg.up-arrow__icon

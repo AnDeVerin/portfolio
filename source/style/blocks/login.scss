@@ -43,7 +43,7 @@
   &:after {
     @include centered('x');
     top: 53px;
-    content: 'Введите логин';
+    content: 'Input username';
     padding: 16px;
     width: 180px;
     text-align: center;
@@ -67,7 +67,7 @@
   &:after {
     @include centered('x');
     top: 53px;
-    content: 'Введите пароль';
+    content: 'Input login';
     padding: 16px;
     width: 180px;
     text-align: center;
@@ -161,7 +161,7 @@
   &:after {
     @include centered('x');
     top: -64px;
-    content: 'Роботам вход закрыт';
+    content: 'Robots are not allowed';
     padding: 16px;
     width: 180px;
     text-align: center;

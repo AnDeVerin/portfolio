@@ -34,8 +34,8 @@ block content
             .user__photo
                 .user__photo-avatar
                     img(src="assets/img/content/about.jpg", alt="").user__photo-img
-            .user__name Андрей Вершинин
-            .user__desc Личный сайт веб-разработчика
+            .user__name Andrey Vershinin
+            .user__desc Web-developer
 
     main.section.about#section-about
         svg(
@@ -51,26 +51,32 @@ block content
             polygon(points="0,10 100,10 100,0")
 
         .about__left
-            +title('Обо мне', 'stars2.png', 'about__section-title')
+            +title('About me', 'stars2.png', 'about__section-title')
             .user-about.about__section-user
                 .user-about__picture
-                    img(src="assets/img/content/about.jpg", alt="Андрей Вершинин - веб-разработчик").user-about__picture-img
+                    img(src="assets/img/content/about.jpg", alt="Andrey Vershinin").user-about__picture-img
                 .user-about__title
                     .subtitle
-                        | Кто я
+                        | Who I am
                 .user-about__text
-                    p Я веб разработчик из Кирова. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём контент. А пока посмотрите, как тут всё классно и красиво!
+                    P I am a web developer from Kirov, Russia. I build modern sites and web applications. I enjoy working on interesting and complex projects.
+                    //- p Я веб разработчик из Кирова. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                    p I made this site as my self-study educational project. I will refresh the content later. For now, look at all nice pages and feel free to contact me if needed.
+                    //- p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём контент. А пока посмотрите, как тут всё классно и красиво!
 
         .about__right
             .about-data
                 .about-data__description.about-user-info
                     .about-user-info__title
-                        .subtitle Чем я могу быть
+                        .subtitle What I can do
                             br
-                            span.subtitle__second-line вам полезен
+                            span.subtitle__second-line for you
                     .about-user-info__text
-                        p Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
+                        p
+                        | Beautiful and interactive web applications makes me most excited about being software developer.
+                        | I am quite good at frontend but I also can do some backend things.
+                        | I believe in continuous education and I see myself as a full-stack web developer in the future.
+                        //- p Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
 
                 .about-data__content
                     ul.skills
@@ -93,7 +99,7 @@ block content
 
     section.section.map
         .contacts.map__contacts
-            .contact__title.subtitle Контакты
+            .contact__title.subtitle Contacts
             ul.contact__contact-list
                 li.contact__item
                     a(href=contacts.skype.link).contact__link

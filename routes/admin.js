@@ -62,13 +62,13 @@ router.post('/submit', (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.json({status: 'Неправильный логин и пароль!'});
+      return res.json({status: 'Wrong password or user name!'});
     }
     req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
-      return res.json({status: 'Добро пожаловать! \n Перенаправляем...', logged: true});
+      return res.json({status: 'Welcome! \n Redirecting...', logged: true});
     });
   })(req, res, next);
 });
@@ -77,7 +77,7 @@ router.post('/admin/addpost', isLoggedIn, (req, res) => {
   //требуем наличия заголовка, даты и текста
   if (!req.body.title || !req.body.date || !req.body.text) {
     //если что-либо не указано - сообщаем об этом
-    return res.json({status: 'Укажите данные!'});
+    return res.json({status: 'Input data!'});
   }
   //создаем новую запись блога и передаем в нее поля из формы
   const Model = mongoose.model('blog');
@@ -90,7 +90,7 @@ router.post('/admin/addpost', isLoggedIn, (req, res) => {
   item.save().then(
       //обрабатываем и отправляем ответ в браузер
       info => {
-        return res.json({status: 'Запись успешно добавлена'});
+        return res.json({status: 'New post added successfully'});
       }, e => {
         //если есть ошибки, то получаем их список и так же передаем их
         const error = Object.keys(e.errors).
@@ -99,7 +99,7 @@ router.post('/admin/addpost', isLoggedIn, (req, res) => {
 
         //обрабатываем шаблон и отправляем его в браузер
         res.json({
-          status: 'При добавление записи произошла ошибка: ' + error,
+          status: 'New post could not be loaded : ' + error,
         });
       });
 });
@@ -119,7 +119,7 @@ router.post('/admin/saveskills', isLoggedIn, (req, res) => {
   skillDoc.save().then(
       //обрабатываем и отправляем ответ в браузер
       info => {
-        return res.json({status: 'Запись успешно добавлена'});
+        return res.json({status: 'Data saved successfully'});
       }, e => {
         //если есть ошибки, то получаем их список и так же передаем их
         const error = Object.keys(e.errors).
@@ -128,7 +128,7 @@ router.post('/admin/saveskills', isLoggedIn, (req, res) => {
 
         //обрабатываем шаблон и отправляем его в браузер
         res.json({
-          status: 'При добавление записи произошла ошибка: ' + error,
+          status: 'Your data could not be loaded : ' + error,
         });
       });
 });
@@ -139,7 +139,7 @@ router.post('/admin/upload', isLoggedIn, (req, res) => {
   form.uploadDir = path.join(process.cwd(), config.upload);
   form.parse(req, function(err, fields, files) {
     if (err) {
-      return res.json({status: 'Не удалось загрузить картинку'});
+      return res.json({status: 'New project could not be loaded '});
     }
     //если ошибок нет, то создаем новую picture и передаем в нее поле из формы
     const Model = mongoose.model('project');
@@ -161,7 +161,7 @@ router.post('/admin/upload', isLoggedIn, (req, res) => {
           console.log(item);
 
           item.save().then(
-              i => res.json({status: 'Картинка успешно загружена'}),
+              i => res.json({status: 'New project added successfully'}),
               e => res.json({status: e.message}),
           );
           // const item = new Model({name: fields.name});

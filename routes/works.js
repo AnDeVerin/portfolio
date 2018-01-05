@@ -7,19 +7,19 @@ router.get('/works', function(req, res) {
     title: 'My works',
     myWorks: [ // basic set of works
       {
-        title: 'Мой сайт-портфолио',
+        title: 'My portfolio website',
         techStack: 'JavaScript, Node.js, Mongo.db',
-        link: 'index.html',
+        link: '/',
         picture: 'assets/img/content/s1.jpg',
       },
       {
-        title: 'Cайт интернет-магазина',
+        title: 'An online store website',
         techStack: 'HTML5 & CSS3',
         link: 'https://interiorsite.000webhostapp.com/',
         picture: 'assets/img/content/s2.jpg',
       },
       {
-        title: 'Лендинг интернет-агентства',
+        title: 'An agency landing page',
         techStack: 'HTML5 & CSS3',
         link: 'https://andeverin.github.io/waxom-homepage/',
         picture: 'assets/img/content/s3.jpg',

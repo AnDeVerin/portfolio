@@ -1,7 +1,7 @@
 extends ../_template
 
 block title
-    | Блог
+    = title
 
 block content
     include ../common/preloader
@@ -27,8 +27,8 @@ block content
             .user__photo
                 .user__photo-avatar
                     img(src="assets/img/content/about.jpg", alt="").user__photo-img
-            .title.title_blog Блог
-            .user__desc Статьи, которые я написал
+            .title.title_blog Blog
+            .user__desc Articles I wrote
 
     main.section.blog
         svg(
@@ -39,49 +39,49 @@ block content
 
         ul.blog__table-of-contents
             li.article-title.article-title_active
-                a(href='#').article-title__link Самое важное в SASS
+                a(href='#').article-title__link The most important things in SASS
             li.article-title
-                a(href='#').article-title__link Приёмы в вёрстке, без которых не обходится ни один сайт
+                a(href='#').article-title__link Some tricks in layout
             li.article-title
-                a(href='#').article-title__link Самый необходимый набор Gulp плагинов
+                a(href='#').article-title__link Essential set of Gulp plugins
             li.article-title
-                a(href='#').article-title__link Почему я выбрал Frontend
+                a(href='#').article-title__link Why I choose Frontend
 
         .blog__articles
             article.article
-                h3.article__heading Самое важное в SASS
-                time(datetime='2017-11-22').article__date 22 ноября 2017
+                h3.article__heading The most important things in SASS
+                time(datetime='2017-11-22').article__date November 22, 2017
                 p.article__text
-                    | Таким образом начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Разнообразный и богатый опыт новая модель организационной деятельности играет важную роль в формировании новых предложений. Товарищи! новая модель организационной деятельности играет важную роль в формировании систем массового участия.
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloremque, enim eveniet fugit mollitia perferendis sapiente velit veritatis! Cum cumque dicta exercitationem harum magni maxime necessitatibus nihil quidem repellendus tempore?
+
                 p.article__text
-                    | Не следует, однако забывать, что укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании систем массового участия. Идейные соображения высшего порядка, а также рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Товарищи! постоянный количественный рост и сфера нашей активности способствует подготовки и реализации модели развития. С другой стороны рамки и место обучения кадров влечет за собой процесс внедрения и модернизации системы обучения кадров, соответствует насущным потребностям.
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto corporis ducimus inventore ipsam provident quisquam quo repellat sit veritatis! Blanditiis, dicta fuga iste modi nesciunt officiis quisquam reprehenderit totam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda blanditiis ducimus modi molestias pariatur possimus repellat saepe similique sunt suscipit, tenetur ut vitae. Deleniti excepturi inventore iste iure tempora. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dicta ducimus explicabo magni recusandae rem, repudiandae tenetur. Debitis dignissimos doloribus et iure nisi placeat porro quos vero? Debitis, sed, tempore.
 
             article.article
-                h3.article__heading Приёмы в вёрстке, без которых не обходится ни один сайт
-                time(datetime='2017-11-13').article__date 13 ноября 2017
+                h3.article__heading Some tricks in layout
+                time(datetime='2017-11-13').article__date November 13, 2017
                 p.article__text
-                    | Таким образом начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Разнообразный и богатый опыт новая модель организационной деятельности играет важную роль в формировании новых предложений. Товарищи! новая модель организационной деятельности играет важную роль в формировании систем массового участия.
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. At distinctio dolorum exercitationem fugit, harum illo molestias nesciunt officia, reiciendis repellat similique tenetur. At labore laborum nisi praesentium repellat reprehenderit saepe? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aspernatur assumenda corporis, distinctio dolor earum enim eos, et eum maiores maxime molestias mollitia necessitatibus nemo nihil optio perspiciatis quod recusandae.
                 p.article__text
-                    | Не следует, однако забывать, что укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании систем массового участия. Идейные соображения высшего порядка, а также рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Товарищи! постоянный количественный рост и сфера нашей активности способствует подготовки и реализации модели развития. С другой стороны рамки и место обучения кадров влечет за собой процесс внедрения и модернизации системы обучения кадров, соответствует насущным потребностям.
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus atque dolorem ducimus expedita facere impedit, iusto maiores minima modi molestiae nam necessitatibus officia optio porro praesentium provident quisquam sunt voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur dolore doloremque error molestiae molestias mollitia necessitatibus nisi repudiandae rerum sed tempora temporibus ut, velit. Adipisci consectetur labore minima. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aut dolor id possimus quam quisquam reprehenderit voluptas! Aperiam dolorum enim, hic, in labore odio omnis, optio pariatur perspiciatis quas repellat?
 
     footer.footer.footer__blog
         .infoblock
             .infoblock__section
                 .infoblock__text.footer__text
-                    | Этот сайт я сделал в рамках самостоятельного обучения по программе онлайн-школы &#32;
-                    a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool.
+                    | This website is a result of my independent-study educational project.
 
             .infoblock__section
                 .infoblock__links
                     ul.infoblock__page-links
                         li.page-links__item
-                            a(href="works").page-links__link Мои работы
+                            a(href="works").page-links__link Portfolio
                         li.page-links__item
-                            a(href="about").page-links__link Обо мне
+                            a(href="about").page-links__link About me
                         li.page-links__item
-                            a(href="#").page-links__link Блог
+                            a(href="#").page-links__link Blog
                         li.page-links__item
-                            a(href="/").page-links__link Авторизация
+                            a(href="/").page-links__link Login
 
                     ul.infoblock___socials
                         each item, key in socialLinks
@@ -102,4 +102,6 @@ block content
                         span.footer__text= contacts.adr.name
 
         .copyright.footer__text
-            | &#169; Вёрстка и программирование Андрей Вершинин, идея и дизайн LoftSchool, 2017
+            | &#169; Coded by Andrey Vershinin, designed by &#32;
+            a(href='https://loftschool.com/' target='_blank').copyright__ls LoftSchool
+            |, 2017
