@@ -3,6 +3,24 @@
 
   document.addEventListener('DOMContentLoaded', function() {
 
+    //--- polyfill for closest method (from MDN) -----------------------------
+    if (!Element.prototype.matches)
+      Element.prototype.matches = Element.prototype.msMatchesSelector ||
+          Element.prototype.webkitMatchesSelector;
+
+    if (!Element.prototype.closest)
+      Element.prototype.closest = function(s) {
+        var el = this;
+        if (!document.documentElement.contains(el)) return null;
+        do {
+          if (el.matches(s)) return el;
+          el = el.parentElement || el.parentNode;
+        } while (el !== null);
+        return null;
+      };
+    //------------------------------------------------------------------------
+
+
     let pageIdElem = document.querySelector('[data-page]');
     if (!pageIdElem) {
       return;
@@ -74,6 +92,7 @@
         preloaderFadeOut();
       }
 
+      images.forEach = [].forEach;
       images.forEach(function(img, i, images) {
         let fakeImg = document.createElement('img');
         fakeImg.src = img;
@@ -336,7 +355,11 @@
         let techItem = document.querySelector('.work-description__technology');
         let linkItem = document.querySelector('.work-description__button');
 
-        titleItem.style.opacity = '0';
+        titleItem.textContent = slideTitle;
+        techItem.textContent = slideTechno;
+        linkItem.href = slideLink;
+
+/*        titleItem.style.opacity = '0';
         techItem.style.opacity = '0';
 
         setTimeout(function() {
@@ -347,7 +370,7 @@
           titleItem.style.opacity = '';
           techItem.style.opacity = '';
 
-        }, duration);
+        }, duration);*/
 
         return;
       }
@@ -807,6 +830,7 @@
         return;
       }
 
+      inputList.forEach = [].forEach;
       inputList.forEach(function(inputElem) {
         let skillValue = inputElem.value;
         let skillName = inputElem.previousElementSibling.previousElementSibling.textContent;
@@ -872,6 +896,7 @@
         let targetPage = target.dataset.page; // get target page name
 
         //- set active tab
+        tabs.forEach = [].forEach;
         tabs.forEach(function(tab) {
           if (tab === target) {
             tab.classList.add('tabs__item_active');
@@ -882,6 +907,7 @@
         });
 
         //- set active page
+        pages.forEach = [].forEach;
         pages.forEach(function(page) {
           if (page.classList.contains(targetPage)) {
             page.classList.add('admin__page_active');
