@@ -26,9 +26,9 @@ router.post('/mail', function (req, res) {
     //если есть ошибки при отправке - сообщаем об этом
     if (error) {
       console.log(error);
-      return res.json({status: 'При отправке письма произошла ошибка'});
+      return res.json({status: 'Sorry! An error occurred while sending your message.'});
     }
-    res.json({status: 'Письмо успешно отправлено'});
+    res.json({status: 'Your message sent successfully!'});
   });
 });
 
