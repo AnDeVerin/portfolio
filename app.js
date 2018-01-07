@@ -93,7 +93,7 @@ app.use(function(err, req, res, next) {
 });
 
 //server.listen(3000, 'localhost');
-server.listen(80, '0.0.0.0');
+server.listen(3000, '0.0.0.0');
 server.on('listening', function() {
   jsonfile.readFile(fileVersionControl, function(err, obj) {
     if (err) {
